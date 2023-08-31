@@ -49,7 +49,7 @@ contract RebirthCore{
         Pools[PoolID].TotalEtherDeposited += msg.value;
     }
 
-    
+    //TODO: Deposit function for Rebirth Shares 
 
     //OnlyOwner Functions
     function CreatePool(address TokenAddress, address PairAddress, uint256 HoursTillOpen, uint256 LenghtInHours, uint256 SoftCap) public onlyOwner {
