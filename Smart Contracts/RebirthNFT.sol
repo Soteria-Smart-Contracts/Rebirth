@@ -29,7 +29,6 @@ contract RebirthNFT is ERC721Enumerable, Ownable {
   // public
   function mint(uint256 _mintQuantity) public payable {
     uint256 supply = totalSupply();
-    require(!paused);
     require(_mintQuantity > 0);
     require(_mintQuantity <= maxMintAmount);
     require(supply + _mintQuantity <= maxSupply);
