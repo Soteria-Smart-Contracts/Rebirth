@@ -8,7 +8,7 @@ contract RebirthCore{
     ERC20 RelaunchShares;
     uint256[] public OpenPools;
     //Create a fisher yates shuffle array and function to add or remove pools from the array
-    
+    function 
 
     //Struct-Enum Declarations
 
