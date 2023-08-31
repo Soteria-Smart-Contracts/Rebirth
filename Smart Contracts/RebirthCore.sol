@@ -40,7 +40,7 @@ contract RebirthCore{
     }
 
     //OnlyOwner Functions
-    function CreatePool(address TokenAddress, address PairAddress, uint256 HoursTillOpen, uint256 PoolClosingTime, uint256 softCap) public onlyOwner {
+    function CreatePool(address TokenAddress, address PairAddress, uint256 HoursTillOpen, uint256 Len, uint256 softCap) public onlyOwner {
         uint256 PoolID = OpenPools.length;
         Pools[PoolID] = RebirthPool(TokenAddress, PairAddress, (block.timestamp + (HoursTillOpen * 3600)), PoolClosingTime, softCap);
         AddRemoveActivePool(PoolID, true);
