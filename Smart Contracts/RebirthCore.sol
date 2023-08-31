@@ -40,6 +40,9 @@ contract RebirthCore{
     }
 
     //OnlyOwner Functions
+    
+
+
     function setAdmin(address _newAdmin) public onlyOwner {
         SRBH_Admin = _newAdmin;
     }
