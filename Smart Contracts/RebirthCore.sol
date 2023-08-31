@@ -13,6 +13,8 @@ contract RebirthCore{
 
     //Constructor
     constructor() public {
-        
+        SRBH_Admin = msg.sender;
     }
+
+    //
 }
