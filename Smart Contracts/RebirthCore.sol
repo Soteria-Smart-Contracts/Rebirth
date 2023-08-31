@@ -13,7 +13,8 @@ contract RebirthCore{
     struct PoolParameters{
         address TokenAddress;
         address PairAddress;
-        uint256 PoolOpen;
+        uint256 PoolOpeningTime;
+        uint256 PoolClosingTime;
         uint256 softCap;
     }
 
