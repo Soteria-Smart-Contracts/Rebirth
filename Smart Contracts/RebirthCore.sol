@@ -3,6 +3,7 @@ pragma solidity ^0.8.19;
 
 contract RebirthCore{
     //Variable Declarations
+    
 
     //Struct Declarations
 
@@ -11,5 +12,7 @@ contract RebirthCore{
     //Event Declarations
 
     //Constructor
-
+    constructor() public {
+        
+    }
 }
