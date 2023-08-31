@@ -42,6 +42,8 @@ contract RebirthCore{
     }
 }
 
+//TODO: Update 
+
 interface ERC20 {
   function balanceOf(address owner) external view returns (uint256);
   function allowance(address owner, address spender) external view returns (uint256);
@@ -50,3 +52,9 @@ interface ERC20 {
   function transferFrom(address from, address to, uint256 value) external returns (bool); 
   function totalSupply() external view returns (uint);
 } 
+
+interface ERC721{
+    function safeTransferFrom(address from, address to, uint256 tokenId) external;
+    function ownerOf(uint256 _tokenId) external view returns (address);
+    function isApprovedForAll(address _owner, address _operator) external view returns (bool);
+}
