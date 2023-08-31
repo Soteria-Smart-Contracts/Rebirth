@@ -10,8 +10,7 @@ contract RebirthNFT is ERC721Enumerable, Ownable {
   string public baseURI;
   string public baseExtension = ".json";
   uint256 public cost = 0; 
-  uint256 public maxSupply = 500; 
-  uint256 public maxMintAmount = 25; 
+  uint256 public maxSupply = 10000; 
   bool public paused = false;
 
   //Minting Protocol based on Fisher-Yates Shuffle using mapping instead of array
