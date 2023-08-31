@@ -10,6 +10,10 @@ contract RebirthCore{
 
     enum AlternativePayoutOption { SRBHTokens, NFTFreemints, RelaunchShares }
 
+    struct PoolParameters{
+        
+    }
+
     //Mapping Declarations
 
     //Event Declarations
