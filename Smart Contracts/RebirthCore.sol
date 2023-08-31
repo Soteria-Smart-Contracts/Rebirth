@@ -50,9 +50,9 @@ contract RebirthCore{
         if(AddRemove){
             OpenPools.push(PoolID);
             OpenPoolsIndexer[PoolID] = OpenPools.length - 1;
-        }else{
-            uint256 lastPool = OpenPools[OpenPools.length - 1];
-            OpenPools[OpenPoolsIndexer[PoolID]] = lastPool;
+        }
+        else{
+            OpenPools[OpenPoolsIndexer[PoolID]] = OpenPools[OpenPools.length - 1];
             OpenPools.pop();
             OpenPoolsIndexer[lastPool] = index;
             delete OpenPoolsIndexer[PoolID];
