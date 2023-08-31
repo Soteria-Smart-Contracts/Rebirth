@@ -16,5 +16,6 @@ contract RebirthCore{
         SRBH_Admin = msg.sender;
     }
 
-    //
+    //OnlyOwner Functions
+    
 }
