@@ -12,7 +12,9 @@ contract RebirthCore{
 
     struct PoolParameters{
         address tokenAddress;
-        address pairAddress, uint256 time, uint256 softCap
+        address pairAddress;
+        uint256 time
+        uint256 softCap
     }
 
     //Mapping Declarations
