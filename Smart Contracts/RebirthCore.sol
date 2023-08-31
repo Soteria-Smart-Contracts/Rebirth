@@ -43,7 +43,7 @@ contract RebirthCore{
 
     //Public Functions
 
-
+    function 
 
     //OnlyOwner Functions
     function CreatePool(address TokenAddress, address PairAddress, uint256 HoursTillOpen, uint256 LenghtInHours, uint256 SoftCap) public onlyOwner {
