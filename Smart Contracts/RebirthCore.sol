@@ -46,7 +46,19 @@ contract RebirthCore{
 
     //Internal Functions
 
-    function AddRemoveActivePool(uint256 PoolID, bool AddRemove)
+    function AddRemoveActivePool(uint256 PoolID, bool AddRemove) internal {
+        if(AddRemove){
+            OpenPools.push(PoolID);
+            OpenPoolsIndexer[PoolID] = OpenPools.length - 1;
+        }else{
+            uint256 index = OpenPoolsIndexer[PoolID];
+            uint256 lastPool = OpenPools[OpenPools.length - 1];
+            OpenPools[index] = lastPool;
+            OpenPools.pop();
+            OpenPoolsIndexer[lastPool] = index;
+            delete OpenPoolsIndexer[PoolID];
+        }
+    }
 }
 
 //TODO: Update interfaces depending on existing contracts
