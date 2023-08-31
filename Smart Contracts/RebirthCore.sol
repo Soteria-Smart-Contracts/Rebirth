@@ -6,5 +6,10 @@ contract RebirthCore{
 
     //Struct Declarations
 
-    //
+    //Mapping Declarations
+
+    //Event Declarations
+
+    //Constructor
+
 }
