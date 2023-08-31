@@ -6,7 +6,9 @@ contract RebirthCore{
     address SRBH_Admin; //TODO: Preset?
     address SRBH; //TODO: Change to ERC20
 
-    //Struct Declarations
+    //Struct-Enum Declarations
+
+    enum AlternativePayoutOption { SRBHTokens, NFTFreemints, RelaunchShares }
 
     //Mapping Declarations
 
