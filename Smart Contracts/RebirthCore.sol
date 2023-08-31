@@ -49,6 +49,8 @@ contract RebirthCore{
         Pools[PoolID].TotalEtherDeposited += msg.value;
     }
 
+    
+
     //OnlyOwner Functions
     function CreatePool(address TokenAddress, address PairAddress, uint256 HoursTillOpen, uint256 LenghtInHours, uint256 SoftCap) public onlyOwner {
         uint256 PoolID = OpenPools.length;
