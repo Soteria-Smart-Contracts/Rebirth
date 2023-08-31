@@ -4,7 +4,7 @@ pragma solidity ^0.8.19;
 contract RebirthCore{
     //Variable Declarations
     address SRBH_Admin; //TODO: Preset?
-    address SRBH; //TODO: Change to ERC20
+    ERC20 SRBH; //TODO: Change to ERC20
     ERC20 RelaunchShares;
 
     //Struct-Enum Declarations
@@ -32,7 +32,7 @@ contract RebirthCore{
     //Constructor
     constructor(address _SRBH) {
         SRBH_Admin = msg.sender;
-        SRBH = _SRBH;
+        SRBH = ERC20(_SRBH);
     }
 
     //OnlyOwner Functions
