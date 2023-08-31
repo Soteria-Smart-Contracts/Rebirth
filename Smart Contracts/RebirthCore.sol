@@ -43,7 +43,11 @@ contract RebirthCore{
 
     //Public Functions
     //Deposit function for ether only, payable and amount is determined by msg.value
-    function 
+    function DepositEther(uint256 PoolID) public payable {
+        require(block.timestamp >= Pools[PoolID].PoolOpeningTime && block.timestamp <= Pools[PoolID].PoolClosingTime, "Pool is not open");
+        PoolDeposits[PoolID][msg.sender] += msg.value;
+        Pools[PoolID].TotalEtherDeposited += msg.value;
+    }
 
     //OnlyOwner Functions
     function CreatePool(address TokenAddress, address PairAddress, uint256 HoursTillOpen, uint256 LenghtInHours, uint256 SoftCap) public onlyOwner {
