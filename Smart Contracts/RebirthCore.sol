@@ -21,6 +21,7 @@ contract RebirthCore{
     }
 
     //Mapping Declarations
+    mapping(uint256 => PoolParameters) public Pools;
 
     //Event Declarations
 
