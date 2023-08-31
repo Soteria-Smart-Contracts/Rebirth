@@ -39,6 +39,10 @@ contract RebirthCore{
         RelaunchShares = ERC20(_RelaunchShares);
     }
 
+    //Public Functions
+
+    
+
     //OnlyOwner Functions
     function CreatePool(address TokenAddress, address PairAddress, uint256 HoursTillOpen, uint256 LenghtInHours, uint256 softCap) public onlyOwner {
         uint256 PoolID = OpenPools.length;
