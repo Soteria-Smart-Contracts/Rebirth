@@ -42,7 +42,7 @@ contract RebirthCore{
     }
 
     //Public Functions
-
+    //Deposit function 
     function 
 
     //OnlyOwner Functions
