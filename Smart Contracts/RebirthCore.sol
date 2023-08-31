@@ -43,6 +43,10 @@ contract RebirthCore{
     function setAdmin(address _newAdmin) public onlyOwner {
         SRBH_Admin = _newAdmin;
     }
+
+    //Internal Functions
+
+    function AddRemoveActivePool
 }
 
 //TODO: Update interfaces depending on existing contracts
