@@ -5,7 +5,7 @@ contract RebirthCore{
     //Variable Declarations
     address SRBH_Admin; //TODO: Preset?
     address SRBH; //TODO: Change to ERC20
-    address RelaunchShares;
+    ERC20 RelaunchShares;
 
     //Struct-Enum Declarations
 
@@ -40,3 +40,12 @@ contract RebirthCore{
         SRBH_Admin = _newAdmin;
     }
 }
+
+interface ERC20 {
+  function balanceOf(address owner) external view returns (uint256);
+  function allowance(address owner, address spender) external view returns (uint256);
+  function approve(address spender, uint value) external returns (bool);
+  function transfer(address to, uint value) external returns (bool);
+  function transferFrom(address from, address to, uint256 value) external returns (bool); 
+  function totalSupply() external view returns (uint);
+} 
