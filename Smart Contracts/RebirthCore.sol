@@ -46,7 +46,7 @@ contract RebirthCore{
 
     //Internal Functions
 
-    function AddRemoveActivePool
+    function AddRemoveActivePool(uint256 PoolID, bool )
 }
 
 //TODO: Update interfaces depending on existing contracts
