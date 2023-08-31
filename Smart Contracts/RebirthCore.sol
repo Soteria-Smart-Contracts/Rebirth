@@ -7,7 +7,7 @@ contract RebirthCore{
     ERC20 SRBH; //TODO: Change to ERC20
     ERC20 RelaunchShares;
     uint256[] public OpenPools;
-    uint256 
+    uint256[] 
 
     //Struct-Enum Declarations
 
