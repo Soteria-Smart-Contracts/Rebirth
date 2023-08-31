@@ -19,7 +19,7 @@ contract RebirthCore{
     }
 
     //Constructor
-    constructor() {
+    constructor(address SRBH) {
         SRBH_Admin = msg.sender;
     }
 
