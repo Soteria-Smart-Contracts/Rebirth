@@ -11,7 +11,8 @@ contract RebirthCore{
     enum AlternativePayoutOption { SRBHTokens, NFTFreemints, RelaunchShares }
 
     struct PoolParameters{
-        
+        address tokenAddress;
+        address pairAddress, uint256 time, uint256 softCap
     }
 
     //Mapping Declarations
