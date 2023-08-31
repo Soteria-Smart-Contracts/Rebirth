@@ -45,7 +45,6 @@ contract RebirthCore{
     }
 
     //Internal Functions
-
     function AddRemoveActivePool(uint256 PoolID, bool AddRemove) internal {
         if(AddRemove){
             OpenPools.push(PoolID);
