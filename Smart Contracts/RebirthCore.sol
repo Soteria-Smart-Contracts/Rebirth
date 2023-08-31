@@ -30,9 +30,10 @@ contract RebirthCore{
     }
 
     //Constructor
-    constructor(address _SRBH) {
+    constructor(address _SRB) {
         SRBH_Admin = msg.sender;
         SRBH = ERC20(_SRBH);
+        RelaunchShares
     }
 
     //OnlyOwner Functions
