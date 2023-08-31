@@ -17,7 +17,7 @@ contract RebirthNFT is ERC721Enumerable, Ownable {
   uint256 public MaxUnMinted = 500; //If this we're an array, this would be the equivalent of UnMinted.length
 
 
-  constructor() ERC721("Hopper", "HOP") {
+  constructor() ERC721("RebirthNFT", "RBNFT") {
     setBaseURI("ipfs://REPLACE/");
   }
 
