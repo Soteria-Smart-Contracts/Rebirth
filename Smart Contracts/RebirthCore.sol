@@ -5,6 +5,7 @@ contract RebirthCore{
     //Variable Declarations
     address SRBH_Admin; //TODO: Preset?
     address SRBH; //TODO: Change to ERC20
+    address RelaunchShares;
 
     //Struct-Enum Declarations
 
