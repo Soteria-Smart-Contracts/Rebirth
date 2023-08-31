@@ -21,6 +21,8 @@ contract RebirthCore{
 
     //Mapping Declarations
     mapping(uint256 => RebirthPool) public Pools;
+    mapping() OpenPoolsIndexer;
+
 
     //Event Declarations
 
