@@ -17,7 +17,7 @@ contract RebirthCore{
         uint256 PoolOpeningTime;
         uint256 PoolClosingTime;
         uint256 SoftCap;
-        uint256 
+        uint256 TotalEtherDeposited;
     }
 
     //Mapping Declarations
