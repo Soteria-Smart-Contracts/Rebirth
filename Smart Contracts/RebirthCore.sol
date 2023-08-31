@@ -11,14 +11,19 @@ contract RebirthCore{
 
     //Event Declarations
 
+    //Modifier Declarations
+    modifier onlyOwner() {
+        require(msg.sender == SRBH_Admin);
+        _;
+    }
+
     //Constructor
     constructor() public {
         SRBH_Admin = msg.sender;
     }
 
     //OnlyOwner Functions
-    modifier onlyOwner() {
-        require(msg.sender == SRBH_Admin);
-        _;
+    function setAdmin(address _newAdmin) public onlyOwner {
+        SRBH_Admin = _newAdmin;
     }
 }
