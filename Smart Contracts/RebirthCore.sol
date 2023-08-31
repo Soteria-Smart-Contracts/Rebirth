@@ -19,8 +19,9 @@ contract RebirthCore{
     }
 
     //Constructor
-    constructor(address SRBH) {
+    constructor(address _SRBH) {
         SRBH_Admin = msg.sender;
+        SRBH = _SRBH;
     }
 
     //OnlyOwner Functions
