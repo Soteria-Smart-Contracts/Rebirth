@@ -42,7 +42,7 @@ contract RebirthCore{
     }
 }
 
-//TODO: Update 
+//TODO: Update interfaces depending on existing contracts
 
 interface ERC20 {
   function balanceOf(address owner) external view returns (uint256);
