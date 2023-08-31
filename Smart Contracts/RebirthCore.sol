@@ -54,8 +54,6 @@ contract RebirthCore{
         else{
             OpenPools[OpenPoolsIndexer[PoolID]] = OpenPools[OpenPools.length - 1];
             OpenPools.pop();
-            OpenPoolsIndexer[lastPool] = index;
-            delete OpenPoolsIndexer[PoolID];
         }
     }
 }
