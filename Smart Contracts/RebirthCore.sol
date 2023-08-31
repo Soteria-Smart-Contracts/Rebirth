@@ -17,5 +17,8 @@ contract RebirthCore{
     }
 
     //OnlyOwner Functions
-    
+    modifier onlyOwner() {
+        require(msg.sender == SRBH_Admin);
+        _;
+    }
 }
