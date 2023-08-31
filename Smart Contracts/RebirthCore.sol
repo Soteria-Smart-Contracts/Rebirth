@@ -4,7 +4,7 @@ pragma solidity ^0.8.19;
 contract RebirthCore{
     //Variable Declarations
     address SRBH_Admin;
-    address SRBH_Token;
+    address SRBH;
 
     //Struct Declarations
 
