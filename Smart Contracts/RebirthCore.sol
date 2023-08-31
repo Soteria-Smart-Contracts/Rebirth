@@ -4,7 +4,7 @@ pragma solidity ^0.8.19;
 contract RebirthCore{
     //Variable Declarations
     address SRBH_Admin;
-    address SRBH;
+    address SRBH; //Change to ERC20
 
     //Struct Declarations
 
