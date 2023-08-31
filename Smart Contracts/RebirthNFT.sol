@@ -74,7 +74,6 @@ contract RebirthNFT is ERC721Enumerable, Ownable {
   }
 
   //only owner
-
   
   function setCost(uint256 _newCost) public onlyOwner() {
     cost = _newCost;
