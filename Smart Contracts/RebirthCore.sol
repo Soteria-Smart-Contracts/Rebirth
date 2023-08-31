@@ -42,7 +42,7 @@ contract RebirthCore{
     }
 
     //Public Functions
-    //Deposit function 
+    //Deposit function for ether only, payable and amount is determined by msg.value
     function 
 
     //OnlyOwner Functions
