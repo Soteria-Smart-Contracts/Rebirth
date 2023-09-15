@@ -54,6 +54,7 @@ contract RebirthProtocolCore{
 
     //TODO: Rebirth shares functionality
     //TODO: Deposit function for Rebirth Shares 
+    //TODO: New
 
     //OnlyOwner Functions
     function CreatePool(address TokenAddress, address PairAddress, uint256 HoursTillOpen, uint256 LenghtInHours, uint256 SoftCap) public onlyOwner {
