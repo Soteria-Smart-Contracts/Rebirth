@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: UNLICENSE
 pragma solidity ^0.8.19;
 
-contract RebirthCore{
+contract RebirthProtocolCore{
     //Variable Declarations
     address RBH_Admin; //TODO: Preset?
     ERC20 RBH;
