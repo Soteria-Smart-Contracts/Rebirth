@@ -59,7 +59,7 @@ contract RebirthProtocolCore{
     //TODO: New RBH live pair functionality and how its gonna fkin work
 
     //OnlyOwner Functions
-    function CreatePool(address TokenAddress, address PairAddress, uint256 HoursTillOpen, uint256 LenghtInHours, uint256 SoftCap) public onlyOwner {
+    function CreatePool(address TokenAddress, address PairAddress, uint256 HoursTillOpen, uint256 LenghtInHours, uint256 SoftCap, string TokenName, string) public onlyOwner {
         uint256 PoolID = OpenPools.length;
         uint256 StartTime = (block.timestamp + (HoursTillOpen * 3600));
         uint256 EndTime = StartTime + (LenghtInHours * 3600);
