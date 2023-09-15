@@ -52,6 +52,7 @@ contract RebirthProtocolCore{
         Pools[PoolID].TotalEtherDeposited += msg.value;
     }
 
+    //TODO: Rebirth shares functionality
     //TODO: Deposit function for Rebirth Shares 
 
     //OnlyOwner Functions
