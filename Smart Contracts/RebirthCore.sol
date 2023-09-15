@@ -3,13 +3,13 @@ pragma solidity ^0.8.19;
 
 contract RebirthCore{
     //Variable Declarations
-    address SRBH_Admin; //TODO: Preset?
-    ERC20 SRBH; //
+    address RBH_Admin; //TODO: Preset?
+    ERC20 RBH; //
     address FreemintContract; //TODO: Set up in alternative payouts
     uint256[] public OpenPools;
     //Struct-Enum Declarations
 
-    enum AlternativePayoutOption { SRBHTokens, NFTFreemints, RelaunchShares }
+    enum AlternativePayoutOption { RBHTokens, NFTFreemints, RelaunchShares }
 
     struct RebirthPool{
         address TokenAddress;
@@ -32,14 +32,14 @@ contract RebirthCore{
 
     //Modifier Declarations
     modifier onlyOwner() {
-        require(msg.sender == SRBH_Admin);
+        require(msg.sender == RBH_Admin);
         _;
     }
 
     //Constructor
-    constructor(address _SRBH, address _RelaunchShares) {
-        SRBH_Admin = msg.sender;
-        SRBH = ERC20(_SRBH);
+    constructor(address _RBH, address _RelaunchShares) {
+        RBH_Admin = msg.sender;
+        RBH = ERC20(_RBH);
         RelaunchShares = ERC20(_RelaunchShares);
     }
 
@@ -63,7 +63,7 @@ contract RebirthCore{
     }
 
     function setAdmin(address _newAdmin) public onlyOwner {
-        SRBH_Admin = _newAdmin;
+        RBH_Admin = _newAdmin;
     }
 
     //Internal Functions
