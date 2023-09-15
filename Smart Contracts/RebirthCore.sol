@@ -24,7 +24,7 @@ contract RebirthCore{
     mapping(uint256 => RebirthPool) public Pools;
     mapping(uint256 => mapping(address => uint256)) public PoolDeposits;
     mapping(uint256 => uint256) OpenPoolsIndexer;
-    mapping(address => uint2256) NFT_Gift
+    mapping(address => uint2256) NFT_Min
 
 
     //Event Declarations
