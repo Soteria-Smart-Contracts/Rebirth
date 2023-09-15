@@ -65,6 +65,10 @@ contract RebirthCore{
         RBH_Admin = _newAdmin;
     }
 
+    function SetFreemintContract(address _FreemintContract) public onlyOwner {
+        FreemintContract = _FreemintContract;
+    }
+
     //Internal Functions
     function AddRemoveActivePool(uint256 PoolID, bool AddRemove) internal {
         if(AddRemove){
