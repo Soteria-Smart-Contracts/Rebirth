@@ -15,7 +15,7 @@ contract RebirthProtocolCore{
 
     struct RebirthPool{
         string Name;
-        
+        string Symbol;
         address TokenAddress;
         address PairAddress;
         uint256 PoolOpeningTime;
