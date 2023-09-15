@@ -63,7 +63,7 @@ contract RebirthProtocolCore{
         uint256 PoolID = OpenPools.length;
         uint256 StartTime = (block.timestamp + (HoursTillOpen * 3600));
         uint256 EndTime = StartTime + (LenghtInHours * 3600);
-        Pools[PoolID] = RebirthPool(TokenName, TokenSymbol, PairAddress, StartTime, EndTime, SoftCap, 0, false);
+        Pools[PoolID] = RebirthPool(TokenName, TokenSymbol, TokenAddress, PairAddress, StartTime, EndTime, SoftCap, 0, false);
         AddRemoveActivePool(PoolID, true);
     }
 
