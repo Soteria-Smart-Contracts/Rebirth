@@ -5,7 +5,7 @@ contract RebirthCore{
     //Variable Declarations
     address RBH_Admin; //TODO: Preset?
     ERC20 RBH;
-    UniswapV2Factory UniswapFactory;
+    IUniswapV2Factory UniswapFactory;
     address FreemintContract; //TODO: Set up in alternative payouts
     uint256[] public OpenPools;
     //Struct-Enum Declarations
