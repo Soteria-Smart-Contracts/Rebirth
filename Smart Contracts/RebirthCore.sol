@@ -40,7 +40,6 @@ contract RebirthCore{
     constructor(address _RBH, address _RelaunchShares) {
         RBH_Admin = msg.sender;
         RBH = ERC20(_RBH);
-        RelaunchShares = ERC20(_RelaunchShares);
     }
 
     //Public Functions
