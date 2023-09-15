@@ -60,7 +60,6 @@ contract RebirthCore{
         AddRemoveActivePool(PoolID, true);
     }
 
-
     function setAdmin(address _newAdmin) public onlyOwner {
         SRBH_Admin = _newAdmin;
     }
