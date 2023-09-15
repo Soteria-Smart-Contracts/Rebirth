@@ -5,7 +5,7 @@ contract RebirthCore{
     //Variable Declarations
     address SRBH_Admin; //TODO: Preset?
     ERC20 SRBH; //TODO: Change to ERC20
-    address 
+    address FreemintContract;
     uint256[] public OpenPools;
     //Struct-Enum Declarations
 
