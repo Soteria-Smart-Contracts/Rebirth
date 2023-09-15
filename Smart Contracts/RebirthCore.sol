@@ -77,7 +77,7 @@ contract RebirthProtocolCore{
 
     //Only freemint contract
 
-    function Free
+    function Freeminted(uint256 Amount)
 
     //Internal Functions
     function AddRemoveActivePool(uint256 PoolID, bool AddRemove) internal {
