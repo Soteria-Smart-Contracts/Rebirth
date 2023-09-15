@@ -14,6 +14,8 @@ contract RebirthProtocolCore{
     enum AlternativePayoutOption { RBHTokens, NFTFreemints, RelaunchShares }
 
     struct RebirthPool{
+        string Name;
+        
         address TokenAddress;
         address PairAddress;
         uint256 PoolOpeningTime;
