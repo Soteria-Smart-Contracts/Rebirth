@@ -4,7 +4,7 @@ pragma solidity ^0.8.19;
 contract RebirthCore{
     //Variable Declarations
     address SRBH_Admin; //TODO: Preset?
-    ERC20 RBH; //TODO: Change to ERC20
+    ERC20 SRBH; //TODO: Change to ERC20
     address 
     uint256[] public OpenPools;
     //Struct-Enum Declarations
