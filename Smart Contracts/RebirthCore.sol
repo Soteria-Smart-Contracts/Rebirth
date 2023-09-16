@@ -117,12 +117,8 @@ contract RebirthProtocolCore{
         address[] memory Path = new address[](2);
         Path[0] = Pools[PoolID].TokenAddress;
         Path[1] = UniswapRouter.WETH();
-                //Sell tokens for wrapped eth MUST BE WRAPPED ETH
 
-        //Sell tokens for wrapped eth MUST BE WRAPPED ETH
-        
-
-
+        UniswapRouter.swapExactTokensForETH(Token.balanceOf(address(this)), 0, Path, address(this), block.timestamp);
 
 
         //Buy back RBH with wrapped eth
