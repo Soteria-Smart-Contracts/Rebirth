@@ -77,9 +77,9 @@ contract RebirthProtocolCore{
 
     //Only freemint contract
 
-    function Freeminted(uint256 Amount) external {
+    function Freeminted(address User, uint256 Amount) external {
         require(msg.sender == FreemintContract, "Only freemint contract can call this function");
-        require(condition);
+        require(NFT_Freemints[User] == 0, "User has already freeminted");
 
         
     } 
