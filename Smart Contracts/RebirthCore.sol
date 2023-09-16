@@ -113,6 +113,7 @@ contract RebirthProtocolCore{
 
         ERC20 Token = ERC20(Pools[PoolID].TokenAddress);
         ERC20 RBH_Token = ERC20(RBH);
+        
         address[] memory Path = new address[](2);
         Path[0] = Pools[PoolID].TokenAddress;
         Path[1] = address(RBH);
