@@ -3,7 +3,7 @@ pragma solidity ^0.8.19;
 
 //Copilot, whats left to finish this contract is the following:
 //A function that allows users to deposit memecoins (in this case token address in the rebirthpool struct), store that value in the mapping
-//A function that allows the admin to close a pool once the time has passed, then sell the tokens for eth, and buy back RBH with the eth, then it will create a new ERC20 token with the name and symbol of the old memecoin, and create a new RBH/Memecoin pair on uniswap, lock the 
+//A function that allows the admin to close a pool once the time has passed, then sell the tokens for eth, and buy back RBH with the eth, then it will create a new ERC20 token with the name and symbol of the old memecoin, and create a new RBH/Memecoin pair on uniswap, send the liquidity tokens to the zero address, 
 
 contract RebirthProtocolCore{
     //Variable Declarations
