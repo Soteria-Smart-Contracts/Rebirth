@@ -111,8 +111,8 @@ contract RebirthProtocolCore{
         Pools[PoolID].PoolSuccessful = true;
         Pools[PoolID].PoolClosed = true;
 
-        ERC20 Token = ERC20(Pools[PoolID].TokenAddress);
-        ERC20 RBH_Token = ERC20(RBH);
+        
+        
         
     }
 
