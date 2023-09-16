@@ -113,6 +113,9 @@ contract RebirthProtocolCore{
 
         //Sell tokens for eth
         ERC20 Token = ERC20(Pools[PoolID].TokenAddress);
+        Token.approve(address(UniswapRouter), Token.balanceOf(address(this)));
+        address[] memory Path = new address[](2);
+        Path[0] = Pools[PoolID].TokenAddress;
         
         
         
