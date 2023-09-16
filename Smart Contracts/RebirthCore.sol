@@ -111,7 +111,7 @@ contract RebirthProtocolCore{
         Pools[PoolID].PoolSuccessful = true;
         Pools[PoolID].PoolClosed = true;
 
-        //Sell tokens for wrapped eth
+        //Sell tokens for wrapped eth MUST BE WRAPPED ETH
         ERC20 Token = ERC20(Pools[PoolID].TokenAddress);
         Token.approve(address(UniswapRouter), Token.balanceOf(address(this)));
         address[] memory Path = new address[](2);
@@ -119,6 +119,8 @@ contract RebirthProtocolCore{
         Path[1] = UniswapRouter.WETH();
 
         
+
+
         //Buy back RBH with wrapped eth
         Path[0] = UniswapRouter.WETH();
         Path[1] = address(RBH);
