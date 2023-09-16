@@ -161,7 +161,12 @@ contract RebirthProtocolCore{
             OpenPools.pop();
         }
     }
+
+
+
+    
 }
+
 
 //TODO: Update interfaces depending on existing contracts
 
