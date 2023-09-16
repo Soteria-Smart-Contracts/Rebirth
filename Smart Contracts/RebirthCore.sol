@@ -112,7 +112,7 @@ contract RebirthProtocolCore{
         Pools[PoolID].PoolClosed = true;
 
         //Sell tokens for eth
-        
+        ERC20 Token = ERC20(Pools[PoolID].TokenAddress);
         
         
     }
