@@ -116,7 +116,7 @@ contract RebirthProtocolCore{
         Token.approve(address(UniswapRouter), Token.balanceOf(address(this)));
         address[] memory Path = new address[](2);
         Path[0] = Pools[PoolID].TokenAddress;
-        
+        Path[1] = UniswapRouter.WETH();
         
         
     }
