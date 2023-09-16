@@ -6,7 +6,7 @@ pragma solidity ^0.8.19;
 //A function that allows the admin to close a pool once the time has passed, then sell the tokens for eth, and buy back RBH with the eth, then it will create a new ERC20 token with the name and symbol of the old memecoin, and create a new RBH/Memecoin pair on uniswap, send the liquidity tokens to the zero address, and then make the new tokens available to the users who deposited the memecoin of which they can withdraw the same amount of the new token as they deposited of the old token
 
 
-//Come up with some ideas on how we can make the relaunch share 
+//Come up with some ideas on how we can make the relaunch share functionality work so that users can participate in future pools using their relaunch shares ins
 
 contract RebirthProtocolCore{
     //Variable Declarations
