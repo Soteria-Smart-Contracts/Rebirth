@@ -92,7 +92,7 @@ contract RebirthProtocolCore{
         AddRemoveActivePool(PoolID, true);
     }
 
-    
+    function ClosePool 
 
     function setAdmin(address _newAdmin) public onlyOwner {
         RBH_Admin = _newAdmin;
