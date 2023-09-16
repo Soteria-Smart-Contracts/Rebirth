@@ -102,9 +102,10 @@ contract RebirthProtocolCore{
         require(block.timestamp >= Pools[PoolID].PoolClosingTime, "Pool is still open");
         if (Pools[PoolID].TotalTokensDeposited < Pools[PoolID].SoftCap){
             Pools[PoolID].PoolSuccessful = false;
-            AddRemoveActivePool(PoolID, false);
             return;
         }
+
+        AddRemoveActivePool(PoolID, false);
 
         Pools[PoolID].PoolSuccessful = true;
 
