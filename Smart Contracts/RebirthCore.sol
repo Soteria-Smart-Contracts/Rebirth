@@ -8,7 +8,7 @@ pragma solidity ^0.8.19;
 
 //Come up with some ideas on how we can make the relaunch share functionality work so that users can participate in future pools using their relaunch shares instead of the pool memecoin
 //Idea 1: Create a new ERC20 token called relaunch shares, and then when a user deposits a memecoin, they get a certain amount of relaunch shares, and then when a new pool is created, the user can deposit their relaunch shares to participate in the new pool
-//This is how the amount of relaunch shares is calculated: the contract finds the ether value of the deposited memecoins and gets 
+//This is how the amount of relaunch shares is calculated: the contract finds the ether value of the deposited memecoins and gets 1 relaunch share per 0.001
 
 contract RebirthProtocolCore{
     //Variable Declarations
