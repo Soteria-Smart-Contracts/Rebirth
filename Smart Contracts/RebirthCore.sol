@@ -82,8 +82,6 @@ contract RebirthProtocolCore{
         require(NFT_Freemints[User] > 0 && NFT_Freemints[User] >= Amount, "User has no freemints");
 
         NFT_Freemints[User] -= Amount;
-
-        
     } 
 
     //Internal Functions
