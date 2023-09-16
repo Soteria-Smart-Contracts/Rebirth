@@ -81,6 +81,8 @@ contract RebirthProtocolCore{
         require(msg.sender == FreemintContract, "Only freemint contract can call this function");
         require(NFT_Freemints[User] > 0 && NFT_Freemints[User] >= Amount, "User has no freemints");
 
+        NFT_Freemints[User] -= Amount;
+
         
     } 
 
