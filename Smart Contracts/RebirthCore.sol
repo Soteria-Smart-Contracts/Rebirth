@@ -30,7 +30,7 @@ contract RebirthProtocolCore{
         uint256 PoolOpeningTime;
         uint256 PoolClosingTime;
         uint256 SoftCap;
-        uint256 TotalEtherDeposited;
+        uint256 TotalTokensDeposited;
         bool PoolSuccessful;
     }
 
@@ -56,7 +56,7 @@ contract RebirthProtocolCore{
     }
 
     //Public Functions
-    
+
 
 
 
