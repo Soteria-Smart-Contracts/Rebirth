@@ -84,7 +84,6 @@ contract RebirthProtocolCore{
         uint256 StartTime = (block.timestamp + (HoursTillOpen * 3600));
         uint256 EndTime = StartTime + (LenghtInHours * 3600);
         //find decimals from token contract
-        uint256 decimals = ERC20(TokenAddress).decimals();
         Pools[PoolID] = RebirthPool(TokenName, TokenSymbol, TokenAddress, PairAddress, StartTime, EndTime, SoftCap, 0, false);
         AddRemoveActivePool(PoolID, true);
     }
