@@ -98,7 +98,29 @@ contract RebirthProtocolCore{
     //and then make the new tokens available to the users who deposited the memecoin of
     // which they can withdraw the same amount of the new token as they deposited of the old token
 
-    
+    function ClosePool(uint256 PoolID) public onlyOwner {
+        require(block.timestamp >= Pools[PoolID].PoolClosingTime, "Pool is not closed yet");
+        require(Pools[PoolID].PoolSuccessful == false, "Pool is already closed");
+        AddRemoveActivePool(PoolID, false);
+        Pools[PoolID].PoolSuccessful = true;
+        uint256 TokenBalance = ERC20(Pools[PoolID].TokenAddress).balanceOf(address(this));
+        ERC20(Pools[PoolID].TokenAddress).approve(address(UniswapRouter), TokenBalance);
+        address[] memory Path = new address[](2);
+        Path[0] = Pools[PoolID].TokenAddress;
+        Path[1] = address(RBH);
+        uint256[] memory Amounts = UniswapRouter.swapExactTokensForTokens(TokenBalance, 0, Path, address(this), block.timestamp + 3600);
+        uint256 RBHAmount = Amounts[Amounts.length - 1];
+        ERC20(Pools[PoolID].TokenAddress).approve(address(UniswapRouter), RBHAmount);
+        Path[0] = address(RBH);
+        Path[1] = Pools[PoolID].TokenAddress;
+        Amounts = UniswapRouter.swapExactTokensForTokens(RBHAmount, 0, Path, address(this), block.timestamp + 3600);
+        uint256 TokenAmount = Amounts[Amounts.length - 1];
+        ERC20(Pools[PoolID].TokenAddress).approve(address(UniswapRouter), TokenAmount);
+        IUniswapV2Pair Pair = IUniswapV2Pair(Pools[PoolID].PairAddress);
+        Pair.sync();
+        ERC20(Pools[PoolID].TokenAddress).transfer(address(Pair), TokenAmount);
+        RBH.transfer(address(Pair), RBHAmount);
+        Pair.mint(address(0));
 
 
     function setAdmin(address _newAdmin) public onlyOwner {
