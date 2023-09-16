@@ -2,7 +2,7 @@
 pragma solidity ^0.8.19;
 
 //Copilot, whats left to finish this contract is the following:
-//A function that allows users to deposit 
+//A function that allows users to deposit memecoins 
 
 contract RebirthProtocolCore{
     //Variable Declarations
