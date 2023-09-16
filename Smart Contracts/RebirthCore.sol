@@ -92,7 +92,12 @@ contract RebirthProtocolCore{
         AddRemoveActivePool(PoolID, true);
     }
 
-    
+    function ClosePool(uint256 PoolID) public onlyOwner {
+        require(block.timestamp >= Pools[PoolID].PoolClosingTime, "Pool is still open");
+        require(Pools[PoolID].TotalTokensDeposited >= Pools[PoolID].SoftCap, "Pool was unsuccessful");
+        Pools[PoolID].PoolSuccessful = true;
+        AddRemoveActivePool(PoolID, false);
+        
 
     function setAdmin(address _newAdmin) public onlyOwner {
         RBH_Admin = _newAdmin;
