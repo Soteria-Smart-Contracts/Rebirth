@@ -122,6 +122,9 @@ contract RebirthProtocolCore{
 
         //Buy back RBH with eth
         Path[0] = UniswapRouter.WETH();
+        Path[1] = address(RBH);
+
+        UniswapRouter.swapExactETHForTokens{value: address(this).balance}(0, Path, address(this), block.timestamp + 300);
         
         
     }
