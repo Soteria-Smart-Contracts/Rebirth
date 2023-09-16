@@ -120,10 +120,11 @@ contract RebirthProtocolCore{
 
         UniswapRouter.swapExactTokensForETH(Token.balanceOf(address(this)), 0, Path, address(this), block.timestamp);
 
-
         //Buy back RBH with wrapped eth
         Path[0] = UniswapRouter.WETH();
         Path[1] = address(RBH);
+
+        UniswapRouter.swapExactETHForTokens{value: address(this).balance}(0, Path, address(this), block.timestamp);
 
     
 
