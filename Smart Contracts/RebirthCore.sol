@@ -111,6 +111,7 @@ contract RebirthProtocolCore{
         Pools[PoolID].PoolSuccessful = true;
         Pools[PoolID].PoolClosed = true;
 
+        //Sell tokens for eth
         
         
         
