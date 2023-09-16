@@ -79,7 +79,8 @@ contract RebirthProtocolCore{
 
     function Freeminted(uint256 Amount) external {
         require(msg.sender == FreemintContract, "Only freemint contract can call this function");
-        
+        require(condition);
+
         
     } 
 
