@@ -94,6 +94,7 @@ contract RebirthProtocolCore{
 
     function ClosePool(uint256 PoolID) public onlyOwner{
         
+
     }
 
     function setAdmin(address _newAdmin) public onlyOwner {
