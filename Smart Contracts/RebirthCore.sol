@@ -111,15 +111,14 @@ contract RebirthProtocolCore{
         Pools[PoolID].PoolSuccessful = true;
         Pools[PoolID].PoolClosed = true;
 
-        //Sell tokens for eth
+        //Sell tokens for wrapped eth
         ERC20 Token = ERC20(Pools[PoolID].TokenAddress);
         Token.approve(address(UniswapRouter), Token.balanceOf(address(this)));
         address[] memory Path = new address[](2);
         Path[0] = Pools[PoolID].TokenAddress;
         Path[1] = UniswapRouter.WETH();
 
-        UniswapRouter.swapExactTokensForETH(Token.balanceOf(address(this)), 0, Path, address(this), block.timestamp + 300);
-
+        
         //Buy back RBH with wrapped eth
         Path[0] = UniswapRouter.WETH();
         Path[1] = address(RBH);
