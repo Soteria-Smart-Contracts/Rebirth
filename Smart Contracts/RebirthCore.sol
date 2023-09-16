@@ -114,40 +114,6 @@ contract RebirthProtocolCore{
         ERC20 Token = ERC20(Pools[PoolID].TokenAddress);
         ERC20 RBH_Token = ERC20(RBH);
         
-        address[] memory Path = new address[](2);
-        Path[0] = Pools[PoolID].TokenAddress;
-        Path[1] = address(RBH);
-
-        uint256 TokenBalance = Token.balanceOf(address(this));
-        uint256 RBHBalance = RBH_Token.balanceOf(address(this));
-        uint256 RBHTokenBalance = RBH_Token.totalSupply();
-
-        uint256 RBHValue = UniswapRouter.getAmountsOut(TokenBalance, Path)[1];
-
-        uint256 RBHForLiquidity = (RBHValue / 100) * 50;
-        uint256 RBHForPool = (RBHValue / 100) * 50;
-
-        uint256 RBHForTokenHolders = (RBHForPool / 100) * 5;
-        uint256 RBHForAdmin = (RBHForPool / 100) * 5;
-        uint256 RBHForLiquidityPools = (RBHForPool / 100) * 90;
-
-        //Sell the tokens for RBH
-        Token.approve(address(UniswapRouter), TokenBalance);
-        UniswapRouter.swapExactTokensForTokens(TokenBalance, 0, Path, address(this), block.timestamp);
-
-        //Send RBH to the liquidity pool
-        RBH_Token.approve(address(UniswapRouter), RBHForLiquidity);
-        UniswapRouter.addLiquidityETH{value: RBHForLiquidity}(address(RBH), RBHForLiquidity, 0, 0, address(this), block.timestamp);
-
-        //Send RBH to the pool
-        RBH_Token.transfer(Pools[PoolID].PairAddress, RBHForPool);
-
-        //Send RBH to the admin
-        RBH_Token.transfer(RBH_Admin, RBHForAdmin);
-
-        //Send RBH to the liquidity pools
-        RBH_Token.tran
-    
     }
 
 
