@@ -162,9 +162,8 @@ contract RebirthProtocolCore{
         }
     }
 
-
-
-    
+    receive() external payable {
+    }
 }
 
 
