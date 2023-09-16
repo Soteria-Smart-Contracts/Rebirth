@@ -1,7 +1,8 @@
 // SPDX-License-Identifier: UNLICENSE
 pragma solidity ^0.8.19;
 
-//Copilot, whats left to finish this contract is 
+//Copilot, whats left to finish this contract is the following:
+//
 
 contract RebirthProtocolCore{
     //Variable Declarations
