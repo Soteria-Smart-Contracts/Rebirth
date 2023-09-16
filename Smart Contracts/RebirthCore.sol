@@ -89,7 +89,7 @@ contract RebirthProtocolCore{
         uint256 PoolID = OpenPools.length;
         uint256 StartTime = (block.timestamp + (HoursTillOpen * 3600));
         uint256 EndTime = StartTime + (LenghtInHours * 3600);
-        Pools[PoolID] = RebirthPool(TokenName, TokenSymbol, TokenAddress, PairAddress, StartTime, EndTime, SoftCap, 0, false);
+        Pools[PoolID] = RebirthPool(TokenName, TokenSymbol, TokenAddress, PairAddress, StartTime, EndTime, SoftCap, 0, false, false);
         AddRemoveActivePool(PoolID, true);
     }
 
@@ -109,6 +109,7 @@ contract RebirthProtocolCore{
         AddRemoveActivePool(PoolID, false);
 
         Pools[PoolID].PoolSuccessful = true;
+        Pools[PoolID].PoolClosed = true;
 
         ERC20 Token = ERC20(Pools[PoolID].TokenAddress);
         ERC20 RBH_Token = ERC20(RBH);
