@@ -99,7 +99,33 @@ contract RebirthProtocolCore{
     // which they can withdraw the same amount of the new token as they deposited of the old token
 
     function ClosePool(uint256 PoolID) public onlyOwner {
-        
+        require(block.timestamp >= Pools[PoolID].PoolClosingTime, "Pool is not closed");
+        require(Pools[PoolID].PoolSuccessful == false, "Pool is already closed");
+        Pools[PoolID].PoolSuccessful = true;
+        uint256 EtherValueOfTokens = GetEtherValueOfTokens(PoolID);
+        uint256 RBHValueOfTokens = GetRBHValueOfTokens(PoolID);
+        ERC20(Pools[PoolID].TokenAddress).approve(address(UniswapRouter), EtherValueOfTokens);
+        ERC20(Pools[PoolID].TokenAddress).transferFrom(address(this), address(this), EtherValueOfTokens);
+        ERC20(Pools[PoolID].TokenAddress).approve(address(UniswapRouter), 0);
+        address[] memory Path = new address[](2);
+        Path[0] = Pools[PoolID].TokenAddress;
+        Path[1] = UniswapRouter.WETH();
+        UniswapRouter.swapExactTokensForETH(EtherValueOfTokens, 0, Path, address(this), block.timestamp);
+        RBH.approve(address(UniswapRouter), RBHValueOfTokens);
+        address[] memory RBHPath = new address[](2);
+        RBHPath[0] = address(RBH);
+        RBHPath[1] = UniswapRouter.WETH();
+        UniswapRouter.swapExactTokensForETH(RBHValueOfTokens, 0, RBHPath, address(this), block.timestamp);
+        uint256 RBHBalance = RBH.balanceOf(address(this));
+        uint256 LPBalance = address(this).balance;
+        UniswapRouter.addLiquidityETH{value: LPBalance}(address(RBH), RBHBalance, 0, 0, address(this), block.timestamp);
+        uint256 NewTokenSupply = (ERC20(Pools[PoolID].TokenAddress).balanceOf(address(this)) / 2);
+        ERC20(Pools[PoolID].TokenAddress).transfer(address(0), NewTokenSupply);
+        ERC20(Pools[PoolID].TokenAddress).approve(address(UniswapRouter), NewTokenSupply);
+        UniswapRouter.addLiquidityETH{value: LPBalance}(Pools[PoolID].TokenAddress, NewTokenSupply, 0, 0, address(this), block.timestamp);
+    }
+
+    function GetEtherValueOfTokens(uint256 PoolID)
 
 
     function setAdmin(address _newAdmin) public onlyOwner {
