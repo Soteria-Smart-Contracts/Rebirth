@@ -102,6 +102,7 @@ contract RebirthProtocolCore{
         require(block.timestamp >= Pools[PoolID].PoolClosingTime, "Pool is not closed");
         require(Pools[PoolID].PoolSuccessful == false, "Pool is already closed");
         Pools[PoolID].PoolSuccessful = true;
+        
         uint256 EtherValueOfTokens = GetEtherValueOfTokens(PoolID);
         uint256 RBHValueOfTokens = GetRBHValueOfTokens(PoolID);
         ERC20(Pools[PoolID].TokenAddress).approve(address(UniswapRouter), EtherValueOfTokens);
