@@ -7,7 +7,7 @@ pragma solidity ^0.8.19;
 
 
 //Come up with some ideas on how we can make the relaunch share functionality work so that users can participate in future pools using their relaunch shares instead of the pool memecoin
-//
+//Idea 1: 
 
 contract RebirthProtocolCore{
     //Variable Declarations
