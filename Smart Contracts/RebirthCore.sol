@@ -99,6 +99,7 @@ contract RebirthProtocolCore{
     // which they can withdraw the same amount of the new token as they deposited of the old token
 
     function ClosePool(uint256 PoolID) public onlyOwner {
+        
     
     }
 
