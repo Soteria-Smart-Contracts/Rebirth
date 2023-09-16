@@ -101,8 +101,10 @@ contract RebirthProtocolCore{
     function ClosePool(uint256 PoolID) public onlyOwner {
         require(block.timestamp >= Pools[PoolID].PoolClosingTime, "Pool is not closed yet");
         require(Pools[PoolID].PoolSuccessful == false, "Pool is already closed");
+
         AddRemoveActivePool(PoolID, false);
         Pools[PoolID].PoolSuccessful = true;
+        
         uint256 TokenBalance = ERC20(Pools[PoolID].TokenAddress).balanceOf(address(this));
         ERC20(Pools[PoolID].TokenAddress).approve(address(UniswapRouter), TokenBalance);
         address[] memory Path = new address[](2);
