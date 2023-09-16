@@ -48,7 +48,7 @@ contract RebirthProtocolCore{
 
     //Public Functions
     //Deposit function for ether only, payable and amount is determined by msg.value
-    // function DepositEther(uint256 PoolID) public payable {
+    // function DepositEther(uint256 PoolID) public payable { TODO: This is old, do we need?
     //     require(block.timestamp >= Pools[PoolID].PoolOpeningTime && block.timestamp <= Pools[PoolID].PoolClosingTime, "Pool is not open");
     //     PoolDeposits[PoolID][msg.sender] += msg.value;
     //     Pools[PoolID].TotalEtherDeposited += msg.value;
