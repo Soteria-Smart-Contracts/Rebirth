@@ -32,6 +32,7 @@ contract RebirthProtocolCore{
         uint256 SoftCap;
         uint256 TotalTokensDeposited;
         bool PoolSuccessful;
+        bool PoolClosed;
     }
 
     //Mapping Declarations
