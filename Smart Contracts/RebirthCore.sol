@@ -100,7 +100,7 @@ contract RebirthProtocolCore{
 
     function ClosePool(uint256 PoolID) public onlyOwner {
         require(block.timestamp >= Pools[PoolID].PoolClosingTime, "Pool is still open");
-        require(!Pools[PoolID].PoolSuccessful, "Pool is already closed");
+        
 
         Pools[PoolID].PoolSuccessful = true;
 
