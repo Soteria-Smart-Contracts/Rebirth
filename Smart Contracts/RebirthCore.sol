@@ -92,7 +92,7 @@ contract RebirthProtocolCore{
         AddRemoveActivePool(PoolID, true);
     }
 
-    function ClosePool(uint256 PoolID) public onlyOwner{
+    function ClosePool(uint256 PoolID) public onlyOwner {
         
 
     }
