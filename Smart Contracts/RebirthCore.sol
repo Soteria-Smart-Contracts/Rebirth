@@ -91,9 +91,9 @@ contract RebirthProtocolCore{
         Pools[PoolID] = RebirthPool(TokenName, TokenSymbol, TokenAddress, PairAddress, StartTime, EndTime, SoftCap, 0, false);
         AddRemoveActivePool(PoolID, true);
     }
-
+// 
     function ClosePool(uint256 PoolID) public onlyOwner{
-        
+
 
     }
 
