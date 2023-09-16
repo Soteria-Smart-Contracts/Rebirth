@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: UNLICENSE
 pragma solidity ^0.8.19;
 
+//Copilot, 
+
 contract RebirthProtocolCore{
     //Variable Declarations
     address RBH_Admin;
