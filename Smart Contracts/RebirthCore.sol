@@ -124,7 +124,7 @@ contract RebirthProtocolCore{
         Path[0] = UniswapRouter.WETH();
         Path[1] = address(RBH);
 
-        UniswapRouter.swapExactETHForTokens{value: address(this).balance}(0, Path, address(this), block.timestamp + 300);
+        UniswapRouter.swapExactETHForTokens(0, Path, address(this), block.timestamp + 300);
         
         
     }
