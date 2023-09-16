@@ -56,8 +56,7 @@ contract RebirthProtocolCore{
     }
 
     //Public Functions
-
-    function 
+    
 
 
 
