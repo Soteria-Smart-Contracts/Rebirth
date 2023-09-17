@@ -224,7 +224,14 @@ contract RebirthProtocolCore{
     //GetUserPools
     //GetOpenPools
 
-    function GetOpenPools
+    function GetOpenPools() public view returns (uint256[] memory){
+        return OpenPools;
+    }
+
+    function GetPoolDetails(uint256 PoolID) public view returns (RebirthPool memory){
+        return Pools[PoolID];
+    }
+
 
 
 
