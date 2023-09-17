@@ -218,6 +218,8 @@ contract RebirthProtocolCore{
 
     //View Functions
     //TODO: Add view functions
+    //Possible view functions:
+    //GetPoolDetails
     
 
     receive() external payable {
