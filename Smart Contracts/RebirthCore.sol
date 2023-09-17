@@ -40,7 +40,7 @@ contract RebirthProtocolCore{
     struct UserPoolDetails{
         uint256 AmountDeposited;
         AlternativePayoutOption AlternatePayoutChoice;
-        bool Withdrawn;
+        bool Claimed;
     }
 
     //Mapping Declarations
