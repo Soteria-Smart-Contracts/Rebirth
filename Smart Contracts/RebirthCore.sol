@@ -108,7 +108,7 @@ contract RebirthProtocolCore{
         AddRemoveActivePool(PoolID, false);
 
 
-        //Cal
+        //Calculate the 
 
 
         if (Pools[PoolID].TotalTokensDeposited < Pools[PoolID].SoftCap){
