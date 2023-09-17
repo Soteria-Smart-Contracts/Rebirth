@@ -112,13 +112,13 @@ contract RebirthProtocolCore{
 
         //check uniswap for the memecoin value of 0.001 eth
 
-        uint256 MemecoinsPerRelaunchShare = 0; //TODO: Calculate this
         
         address[] memory Path = new address[](2);
         Path[0] = Pools[PoolID].TokenAddress;
         Path[1] = UniswapRouter.WETH();
 
         UniswapRouter.getAmountsOut(0.001 ether, Path);
+        uint256 MemecoinsPerRelaunchShare = UniswapRouter.getAmountsOut(0.001 ether, Path)[1];
 
 
         if (Pools[PoolID].TotalTokensDeposited < Pools[PoolID].SoftCap){
