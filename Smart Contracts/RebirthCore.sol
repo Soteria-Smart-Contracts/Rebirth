@@ -125,9 +125,6 @@ contract RebirthProtocolCore{
         PoolDeposits[PoolID][msg.sender].Claimed = true;
     }
 
-    //TODO: Deposit function for Rebirth Shares 
-
-
     //OnlyOwner Functions
     function CreatePool(address TokenAddress, address PairAddress, uint256 HoursTillOpen, uint256 LenghtInHours, uint256 SoftCap, string memory TokenName, string memory TokenSymbol) public onlyOwner {
         uint256 PoolID = OpenPools.length;
