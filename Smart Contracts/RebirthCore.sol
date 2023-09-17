@@ -87,7 +87,7 @@ contract RebirthProtocolCore{
         }
         else{
             //execute alternative payout option, nft freemints cost 10x relaunch shares
-            
+            UserRelaunchSharesEquivalent = PoolDeposits[PoolID][msg.sender].AmountDeposited / 0.001 ether;
             if(PoolDeposits[PoolID][msg.sender].AlternatePayoutChoice == AlternativePayoutOption.RBHTokens){
                 //Send RBH tokens to the user
                 address[] memory Path = new address[](2);
