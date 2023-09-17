@@ -217,12 +217,7 @@ contract RebirthProtocolCore{
     }
 
     //View Functions
-    //TODO: Add view functions
-    //Possible view functions:
-    //GetPoolDetails
-    //GetUserPoolDetails
-    //GetUserPools
-    //GetOpenPools
+    
 
     function GetOpenPools() public view returns (uint256[] memory){
         return OpenPools;
@@ -239,9 +234,6 @@ contract RebirthProtocolCore{
     function GetUserPools(address User) public view returns (uint256[] memory){
         return YourPools[User];
     }
-
-
-
 
     receive() external payable {
     }
