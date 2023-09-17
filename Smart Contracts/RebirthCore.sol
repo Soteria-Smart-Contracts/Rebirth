@@ -32,7 +32,6 @@ contract RebirthProtocolCore{
         uint256 PoolClosingTime;
         uint256 SoftCap;
         uint256 MemecoinsPerRelaunchShare;
-        
         uint256 TotalTokensDeposited;
         bool PoolSuccessful;
         bool PoolClosed;
@@ -77,6 +76,8 @@ contract RebirthProtocolCore{
 
         YourPools[msg.sender].push(PoolID);
     }
+
+    
 
 
     //Deposit function for ether only, payable and amount is determined by msg.value
