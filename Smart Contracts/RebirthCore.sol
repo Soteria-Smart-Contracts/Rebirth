@@ -81,6 +81,8 @@ contract RebirthProtocolCore{
         require(block.timestamp >= Pools[PoolID].PoolOpeningTime && block.timestamp <= Pools[PoolID].PoolClosingTime, "Pool is not open");
         require(RelaunchShares[msg.sender] >= Amount, "Not enough relaunch shares");
 
+        
+
     }
 
     function ClaimPool(uint256 PoolID) public{
