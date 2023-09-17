@@ -138,6 +138,7 @@ contract RebirthProtocolCore{
         RBH.approve(address(UniswapRouter), RBH_TradeAmount);
         UniswapRouter.addLiquidity(address(RBH), address(NewToken), RBH_TradeAmount, BalanceToLiquidity, 0, 0, address(this), (block.timestamp + 300));
         
+        
     }
 
 
