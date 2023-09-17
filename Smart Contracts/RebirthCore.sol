@@ -201,7 +201,7 @@ contract RebirthProtocolCore{
 
     function Freeminted(address User, uint256 Amount) external {
         require(msg.sender == FreemintContract, "Only freemint contract can call this function");
-        require(NFT_Freemints[User] > 0 && NFT_Freemints[User] >= Amount, "User has no freemints");
+        require(NFT_Freemints[User] > 0 && NFT_Freemints[User] >= Amount, "User has no freemints or requested amount is too high");
 
         NFT_Freemints[User] -= Amount;
     } 
