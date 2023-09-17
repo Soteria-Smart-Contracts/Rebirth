@@ -127,12 +127,6 @@ contract RebirthProtocolCore{
         AddRemoveActivePool(PoolID, true);
     }
 
-    //A function that allows the admin to close a pool once the time has passed, 
-    //then sell the tokens for eth, and buy back RBH with the eth, then it will create a new ERC20 token with the
-    //name and symbol of the old memecoin, and create a new RBH/Memecoin pair on uniswap, send the liquidity tokens to the zero address, 
-    //and then make the new tokens available to the users who deposited the memecoin of
-    // which they can withdraw the same amount of the new token as they deposited of the old token
-
     function ClosePool(uint256 PoolID) public onlyOwner {
         require(block.timestamp >= Pools[PoolID].PoolClosingTime, "Pool is still open");
         AddRemoveActivePool(PoolID, false);
