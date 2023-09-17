@@ -31,6 +31,7 @@ contract RebirthProtocolCore{
         uint256 PoolOpeningTime;
         uint256 PoolClosingTime;
         uint256 SoftCap;
+        uint256 MemecoinsPerRelaunchShare;
         uint256 TotalTokensDeposited;
         bool PoolSuccessful;
         bool PoolClosed;
