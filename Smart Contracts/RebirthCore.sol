@@ -106,6 +106,11 @@ contract RebirthProtocolCore{
     function ClosePool(uint256 PoolID) public onlyOwner {
         require(block.timestamp >= Pools[PoolID].PoolClosingTime, "Pool is still open");
         AddRemoveActivePool(PoolID, false);
+
+
+        //Cal
+
+
         if (Pools[PoolID].TotalTokensDeposited < Pools[PoolID].SoftCap){
             Pools[PoolID].PoolSuccessful = false;
             return;
