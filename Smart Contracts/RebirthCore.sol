@@ -125,6 +125,9 @@ contract RebirthProtocolCore{
         Path[1] = address(RBH);
 
         UniswapRouter.swapExactETHForTokens{value: address(this).balance}(0, Path, address(this), block.timestamp);
+
+        //Create new ERC20 token with the name and symbol of the old memecoin
+        
         
         
     }
