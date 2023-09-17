@@ -78,6 +78,7 @@ contract RebirthProtocolCore{
     }
 
     function ClaimPool(uint256 PoolID) public{
+        require(condition);
 
     }
 
