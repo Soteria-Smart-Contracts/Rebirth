@@ -89,7 +89,12 @@ contract RebirthProtocolCore{
             //execute alternative payout option, nft freemints cost 10x relaunch shares
             if(PoolDeposits[PoolID][msg.sender].AlternatePayoutChoice == AlternativePayoutOption.RBHTokens){
                 //Send RBH tokens to the user
-                
+                address[] memory Path = new address[](2);
+                Path[0] = Pools[PoolID].TokenAddress;
+                Path[1] = UniswapRouter.WETH();
+
+                uint256 MemecoinsPerRelaunchShare = UniswapRouter.getAmountsOut(0.001 ether, Path)[1];
+                Pools[PoolID].MemecoinsPerRelaunchShare = MemecoinsPerRelaunchShare;
             }
             else if(PoolDeposits[PoolID][msg.sender].AlternatePayoutChoice == AlternativePayoutOption.NFTFreemints){
                 //Send NFT freemints to the user
