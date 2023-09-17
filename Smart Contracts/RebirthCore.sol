@@ -134,15 +134,12 @@ contract RebirthProtocolCore{
         uint256 BalanceToLiquidity = Token.balanceOf(address(this));
         RebirthedToken NewToken = new RebirthedToken(((Token.balanceOf(address(this)) * 210) / 100), Pools[PoolID].Name, Pools[PoolID].Symbol);
 
-
         //Create new RBH/Memecoin pair on uniswap, send the liquidity tokens to the zero address
         IUniswapV2Pair NewTokenPair = IUniswapV2Pair(UniswapFactory.createPair(address(RBH), address(NewToken)));
         NewToken.approve(address(UniswapRouter), BalanceToLiquidity);
         RBH.approve(address(UniswapRouter), RBH_TradeAmount);
         UniswapRouter.addLiquidity(address(RBH), address(NewToken), RBH_TradeAmount, BalanceToLiquidity, 0, 0, address(this), (block.timestamp + 300));
         ERC20(address(NewTokenPair)).transfer(address(0), ERC20(address(NewTokenPair)).balanceOf(address(this)));
-        
-        
     }
 
 
