@@ -112,7 +112,8 @@ contract RebirthProtocolCore{
 
         //check uniswap for the memecoin value of 0.001 eth
 
-        Ether
+        uint256 MemecoinsPerRelaunchShare = 0; //TODO: Calculate this
+        
 
 
 
