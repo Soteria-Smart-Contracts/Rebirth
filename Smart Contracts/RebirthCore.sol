@@ -81,6 +81,12 @@ contract RebirthProtocolCore{
         require(block.timestamp >= Pools[PoolID].PoolOpeningTime && block.timestamp <= Pools[PoolID].PoolClosingTime, "Pool is not open");
         require(RelaunchShares[msg.sender] >= Amount, "Not enough relaunch shares");
 
+        address[] memory Path = new address[](2);
+        Path[0] = Pools[PoolID].TokenAddress;
+        Path[1] = UniswapRouter.WETH();
+
+        uint256 MemecoinsPerRelaunchShare = UniswapRouter.getAmountsOut(0.001 ether, Path)[1];
+
         PoolDeposits[PoolID][msg.sender].AmountDeposited += Amount * Pools[PoolID].MemecoinsPerRelaunchShare;
 
     }
