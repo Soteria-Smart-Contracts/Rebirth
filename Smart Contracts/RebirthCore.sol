@@ -112,7 +112,7 @@ contract RebirthProtocolCore{
 
         //check uniswap for the memecoin value of 0.001 eth
 
-        
+        Ether
 
 
 
