@@ -216,6 +216,10 @@ contract RebirthProtocolCore{
         }
     }
 
+    //View Functions
+    //TODO: Add view functions
+    
+
     receive() external payable {
     }
 }
