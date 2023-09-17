@@ -50,8 +50,6 @@ contract RebirthProtocolCore{
     mapping(address => uint256) public RelaunchShares; //TODO: Set up in alternative payouts
     mapping(address => uint256) NFT_Freemints; //TODO: Set up in alternative payouts
 
-
-
     //Event Declarations
 
     //Modifier Declarations
