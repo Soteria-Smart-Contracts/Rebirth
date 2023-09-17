@@ -232,6 +232,12 @@ contract RebirthProtocolCore{
         return Pools[PoolID];
     }
 
+    function GetUserPoolDetails(uint256 PoolID, address User) public view returns (UserPoolDetails memory){
+        return PoolDeposits[PoolID][User];
+    }
+
+    
+
 
 
 
