@@ -94,7 +94,7 @@ contract RebirthProtocolCore{
                 Path[0] = UniswapRouter.WETH();
                 Path[1] = address(RBH);
 
-                uint256 RBHpayout = UniswapRouter.getAmountsOut(0.001 ether * , Path)[1];
+                uint256 RBHpayout = UniswapRouter.getAmountsOut(0.001 ether * ,Path)[1];
             }
             else if(PoolDeposits[PoolID][msg.sender].AlternatePayoutChoice == AlternativePayoutOption.NFTFreemints){
                 //Send NFT freemints to the user
