@@ -78,7 +78,9 @@ contract RebirthProtocolCore{
     }
 
     function DepositRelaunchShares(uint256 PoolID, uint256 Amount, AlternativePayoutOption AlternatePayoutChoice) public {
-        
+                require(block.timestamp >= Pools[PoolID].PoolOpeningTime && block.timestamp <= Pools[PoolID].PoolClosingTime, "Pool is not open");
+    
+
     }
 
     function ClaimPool(uint256 PoolID) public{
