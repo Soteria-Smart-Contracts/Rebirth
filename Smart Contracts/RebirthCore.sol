@@ -108,7 +108,7 @@ contract RebirthProtocolCore{
         AddRemoveActivePool(PoolID, false);
 
 
-        //Calculate the 
+        //Calculate the relaunch shares per 
 
 
         if (Pools[PoolID].TotalTokensDeposited < Pools[PoolID].SoftCap){
