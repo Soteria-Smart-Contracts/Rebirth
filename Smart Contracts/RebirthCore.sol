@@ -65,6 +65,8 @@ contract RebirthProtocolCore{
         require(ERC20(Pools[PoolID].TokenAddress).transferFrom(msg.sender, address(this), Amount), "Transfer failed");
         PoolDeposits[PoolID][msg.sender] += Amount;
         Pools[PoolID].TotalTokensDeposited += Amount;
+
+        YourPools[msg.sender].push(PoolID);
     }
 
 
