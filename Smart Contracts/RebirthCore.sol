@@ -37,8 +37,7 @@ contract RebirthProtocolCore{
     }
 
     struct UserPoolDetails{
-        uint256 PoolID;
-        uint256 AmountDeposited;
+ uint256 AmountDeposited;
         uint256 AmountWithdrawn;
         bool Withdrawn;
     }
