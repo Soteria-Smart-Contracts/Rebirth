@@ -79,6 +79,8 @@ contract RebirthProtocolCore{
 
     function ClaimPool(uint256 PoolID) public{
         require(Pools[PoolID].PoolClosed, "Pool is still open");
+        require(!PoolDeposits[PoolID][msg.sender].Claimed, "Already claimed");
+        
 
     }
 
