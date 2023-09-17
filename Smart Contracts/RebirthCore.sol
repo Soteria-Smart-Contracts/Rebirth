@@ -82,7 +82,9 @@ contract RebirthProtocolCore{
         require(!PoolDeposits[PoolID][msg.sender].Claimed, "Already claimed");
         require(PoolDeposits[PoolID][msg.sender].AmountDeposited > 0, "No tokens deposited");
 
-        if(Pools[PoolID].)
+        if(Pools[PoolID].PoolSuccessful){
+            
+        }
 
     }
 
