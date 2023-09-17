@@ -142,6 +142,7 @@ contract RebirthProtocolCore{
 
         if (Pools[PoolID].TotalTokensDeposited < Pools[PoolID].SoftCap){
             Pools[PoolID].PoolSuccessful = false;
+            //send old memecoin to admin
             return;
         }
         else{
