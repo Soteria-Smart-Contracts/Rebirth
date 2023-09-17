@@ -90,7 +90,7 @@ contract RebirthProtocolCore{
         uint256 PoolID = OpenPools.length;
         uint256 StartTime = (block.timestamp + (HoursTillOpen * 3600));
         uint256 EndTime = StartTime + (LenghtInHours * 3600);
-        Pools[PoolID] = RebirthPool(TokenName, TokenSymbol, TokenAddress, PairAddress, StartTime, EndTime, SoftCap, 0, false, false);
+        Pools[PoolID] = RebirthPool(TokenName, TokenSymbol, TokenAddress, address(0), PairAddress, StartTime, EndTime, SoftCap, 0, false, false);
         AddRemoveActivePool(PoolID, true);
     }
 
@@ -172,10 +172,6 @@ contract RebirthProtocolCore{
 
 
 //TODO: Update interfaces depending on existing contracts
-
-//SPDX-License-Identifier:UNLICENSE
-pragma solidity ^0.8.20;
-
 
 contract RebirthedToken {
     uint256 public tokenCap;
