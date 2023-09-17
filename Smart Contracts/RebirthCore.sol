@@ -111,9 +111,6 @@ contract RebirthProtocolCore{
             return;
         }
         else{
-
-            AddRemoveActivePool(PoolID, false);
-
             Pools[PoolID].PoolSuccessful = true;
             Pools[PoolID].PoolClosed = true;
 
