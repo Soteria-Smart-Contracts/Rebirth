@@ -109,7 +109,7 @@ contract RebirthProtocolCore{
             Pools[PoolID].PoolSuccessful = false;
             return;
         }
-        else{}
+        else{
 
         AddRemoveActivePool(PoolID, false);
 
@@ -141,6 +141,7 @@ contract RebirthProtocolCore{
         RBH.approve(address(UniswapRouter), RBH_TradeAmount);
         UniswapRouter.addLiquidity(address(RBH), address(NewToken), RBH_TradeAmount, BalanceToLiquidity, 0, 0, address(this), (block.timestamp + 300));
         ERC20(address(NewTokenPair)).transfer(address(0), ERC20(address(NewTokenPair)).balanceOf(address(this)));
+        }
     }
 
 
