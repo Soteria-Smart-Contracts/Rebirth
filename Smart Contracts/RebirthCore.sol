@@ -98,6 +98,7 @@ contract RebirthProtocolCore{
             }
             else if(PoolDeposits[PoolID][msg.sender].AlternatePayoutChoice == AlternativePayoutOption.NFTFreemints){
                 //Send NFT freemints to the user
+                NFT_Freemints[msg.sender] += UserRelaunchSharesEquivalent * 10;
             }
             else if(PoolDeposits[PoolID][msg.sender].AlternatePayoutChoice == AlternativePayoutOption.RelaunchShares){
                 //Send relaunch shares to the user
