@@ -176,7 +176,7 @@ contract RebirthProtocolCore{
             //Create new ERC20 token with the name and symbol of the old memecoin
             uint256 BalanceToLiquidity = Token.balanceOf(address(this));
             RebirthedToken NewToken = new RebirthedToken(((Token.balanceOf(address(this)) * 210) / 100), Pools[PoolID].Name, Pools[PoolID].Symbol);
-            RebirthedToken.transfer(_to, _amount);
+            RebirthedToken.transfer(RBH_Admin, );
 
             //Create new RBH/Memecoin pair on uniswap, send the liquidity tokens to the zero address
             IUniswapV2Pair NewTokenPair = IUniswapV2Pair(UniswapFactory.createPair(address(RBH), address(NewToken)));
