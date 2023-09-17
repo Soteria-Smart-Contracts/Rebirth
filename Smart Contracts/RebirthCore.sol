@@ -39,7 +39,7 @@ contract RebirthProtocolCore{
     //Mapping Declarations
     mapping(uint256 => RebirthPool) public Pools;
     mapping(uint256 => mapping(address => uint256)) public PoolDeposits;
-    mapping(address => )
+    mapping(address => uint256[]) public YourPools;
     mapping(uint256 => uint256) OpenPoolsIndexer;
     mapping(address => uint256) NFT_Freemints; //TODO: Set up in alternative payouts
 
