@@ -90,8 +90,8 @@ contract RebirthProtocolCore{
             if(PoolDeposits[PoolID][msg.sender].AlternatePayoutChoice == AlternativePayoutOption.RBHTokens){
                 //Send RBH tokens to the user
                 address[] memory Path = new address[](2);
-                Path[0] = Pools[PoolID].TokenAddress;
-                Path[1] = UniswapRouter.WETH();
+                Path[0] = UniswapRouter.WETH();
+                Path[1] = address(RBH);
 
                 uint256 MemecoinsPerRelaunchShare = UniswapRouter.getAmountsOut(0.001 ether, Path)[1];
                 Pools[PoolID].MemecoinsPerRelaunchShare = MemecoinsPerRelaunchShare;
