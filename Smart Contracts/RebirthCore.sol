@@ -176,7 +176,7 @@ contract RebirthProtocolCore{
 pragma solidity ^0.8.20;
 
 
-contract AntonioCoin {
+contract RebirthedToken {
     uint256 public tokenCap;
     uint256 public totalSupply;
     string public name;
