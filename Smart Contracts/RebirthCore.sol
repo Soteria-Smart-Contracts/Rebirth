@@ -139,9 +139,7 @@ contract RebirthProtocolCore{
         require(block.timestamp >= Pools[PoolID].PoolClosingTime, "Pool is still open");
         AddRemoveActivePool(PoolID, false);
         
-        address[] memory Path = new address[](2);
-        Path[0] = Pools[PoolID].TokenAddress;
-        Path[1] = UniswapRouter.WETH();
+        
 
         uint256 MemecoinsPerRelaunchShare = UniswapRouter.getAmountsOut(0.001 ether, Path)[1];
         Pools[PoolID].MemecoinsPerRelaunchShare = MemecoinsPerRelaunchShare;
