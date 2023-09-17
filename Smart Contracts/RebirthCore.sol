@@ -87,7 +87,16 @@ contract RebirthProtocolCore{
         }
         else{
             //execute alternative payout option, nft freemints cost 10x relaunch shares
-            
+            if(PoolDeposits[PoolID][msg.sender].AlternatePayoutChoice == AlternativePayoutOption.RBHTokens){
+                //Send RBH tokens to the user
+                
+            }
+            else if(PoolDeposits[PoolID][msg.sender].AlternatePayoutChoice == AlternativePayoutOption.NFTFreemints){
+                //Send NFT freemints to the user
+            }
+            else if(PoolDeposits[PoolID][msg.sender].AlternatePayoutChoice == AlternativePayoutOption.RelaunchShares){
+                //Send relaunch shares to the user
+            }
         }
 
     }
