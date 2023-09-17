@@ -118,7 +118,7 @@ contract RebirthProtocolCore{
         Path[0] = Pools[PoolID].TokenAddress;
         Path[1] = UniswapRouter.WETH();
 
-        UniswapRouter.getAmountsOut(0.001 ether, [UniswapRouter.WETH(), Pools[PoolID].TokenAddress]);
+        UniswapRouter.getAmountsOut(0.001 ether, Path);
 
 
         if (Pools[PoolID].TotalTokensDeposited < Pools[PoolID].SoftCap){
