@@ -186,7 +186,6 @@ contract RebirthProtocolCore{
         }
     }
 
-
     function setAdmin(address _newAdmin) public onlyOwner {
         RBH_Admin = _newAdmin;
     }
@@ -196,7 +195,6 @@ contract RebirthProtocolCore{
     }
 
     //Only freemint contract
-
     function Freeminted(address User, uint256 Amount) external {
         require(msg.sender == FreemintContract, "Only freemint contract can call this function");
         require(NFT_Freemints[User] > 0 && NFT_Freemints[User] >= Amount, "User has no freemints or requested amount is too high");
