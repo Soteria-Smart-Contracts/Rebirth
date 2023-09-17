@@ -86,7 +86,8 @@ contract RebirthProtocolCore{
             //Send the new contract tokens to the user
         }
         else{
-            //
+            //execute alternative payout option, nft freemints cost 10x relaunch shares
+            
         }
 
     }
