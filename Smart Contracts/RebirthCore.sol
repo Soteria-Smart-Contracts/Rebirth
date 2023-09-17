@@ -16,7 +16,7 @@ contract RebirthProtocolCore{
     ERC20 RBH;
     IUniswapV2Factory UniswapFactory = IUniswapV2Factory(0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f);
     IUniswapV2Router02 UniswapRouter = IUniswapV2Router02(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D); 
-    address FreemintContract; //TODO: Set up in alternative payouts
+    address FreemintContract;
     uint256[] public OpenPools;
     //Struct-Enum Declarations
 
@@ -48,8 +48,8 @@ contract RebirthProtocolCore{
     mapping(uint256 => mapping(address => UserPoolDetails)) public PoolDeposits;
     mapping(address => uint256[]) public YourPools;
     mapping(uint256 => uint256) OpenPoolsIndexer;
-    mapping(address => uint256) public RelaunchShares; //TODO: Set up in alternative payouts
-    mapping(address => uint256) NFT_Freemints; //TODO: Set up in alternative payouts
+    mapping(address => uint256) public RelaunchShares;
+    mapping(address => uint256) NFT_Freemints; 
 
     //Event Declarations
 
