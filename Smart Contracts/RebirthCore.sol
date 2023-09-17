@@ -85,6 +85,9 @@ contract RebirthProtocolCore{
         if(Pools[PoolID].PoolSuccessful){
             //Send the new contract tokens to the user
         }
+        else{
+            //
+        }
 
     }
 
