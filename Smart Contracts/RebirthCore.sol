@@ -77,7 +77,7 @@ contract RebirthProtocolCore{
         YourPools[msg.sender].push(PoolID);
     }
 
-    function DepositRelaunchShares(uint256 PoolID)
+    function DepositRelaunchShares(uint256 PoolID, uint256 Amount, AlternativePayoutOption AlternatePayoutChoice)
 
     function ClaimPool(uint256 PoolID) public{
         require(Pools[PoolID].PoolClosed, "Pool is still open");
