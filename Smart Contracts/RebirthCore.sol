@@ -1,14 +1,6 @@
 // SPDX-License-Identifier: UNLICENSE
 pragma solidity 0.8.19;
 
-//Copilot, whats left to finish this contract is the following:
-//A function that allows users to deposit memecoins (in this case token address in the rebirthpool struct), store that value in the mapping
-//A function that allows the admin to close a pool once the time has passed, then sell the tokens for eth, and buy back RBH with the eth, then it will create a new ERC20 token with the name and symbol of the old memecoin, and create a new RBH/Memecoin pair on uniswap, send the liquidity tokens to the zero address, and then make the new tokens available to the users who deposited the memecoin of which they can withdraw the same amount of the new token as they deposited of the old token
-
-
-//Come up with some ideas on how we can make the relaunch share functionality work so that users can participate in future pools using their relaunch shares instead of the pool memecoin
-//Idea 1: Create a new ERC20 token called relaunch shares, and then when a user deposits a memecoin, they get a certain amount of relaunch shares, and then when a new pool is created, the user can deposit their relaunch shares to participate in the new pool
-//This is how the amount of relaunch shares is calculated: the contract finds the ether value of the deposited memecoins and gets 1 relaunch share per 0.001 ether value of the deposited memecoin, then when a new pool is created, the contract finds the equivalent memecoin value of the relaunch shares and then the user can participate in the pool as if they deposited that amount of memecoin
 
 contract RebirthProtocolCore{
     //Variable Declarations
