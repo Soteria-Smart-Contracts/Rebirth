@@ -115,7 +115,7 @@ contract RebirthProtocolCore{
         uint256 MemecoinsPerRelaunchShare = 0; //TODO: Calculate this
         
 
-        UniswapRouter.getAmountsOut()
+        UniswapRouter.getAmountsOut(0.001 ether, address(RBH), Pools[PoolID].TokenAddress);
 
 
         if (Pools[PoolID].TotalTokensDeposited < Pools[PoolID].SoftCap){
