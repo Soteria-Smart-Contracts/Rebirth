@@ -128,6 +128,9 @@ contract RebirthProtocolCore{
 
         //Create new ERC20 token with the name and symbol of the old memecoin
         
+
+
+        //Create new RBH/Memecoin pair on uniswap, send the liquidity tokens to the zero address
         
         
     }
