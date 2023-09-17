@@ -158,6 +158,9 @@ contract RebirthProtocolCore{
             ERC20 Token = ERC20(Pools[PoolID].TokenAddress);
             Token.approve(address(UniswapRouter), Token.balanceOf(address(this)));
 
+            Path[0] = Pools[PoolID].TokenAddress;
+            Path[1] = UniswapRouter.WETH();
+
             UniswapRouter.swapExactTokensForETH(Token.balanceOf(address(this)), 0, Path, address(this), block.timestamp);
 
             //Buy back RBH with wrapped eth
