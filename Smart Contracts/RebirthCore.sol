@@ -224,6 +224,8 @@ contract RebirthProtocolCore{
     //GetUserPools
     //GetOpenPools
 
+    function GetOpenPools
+
 
 
     receive() external payable {
