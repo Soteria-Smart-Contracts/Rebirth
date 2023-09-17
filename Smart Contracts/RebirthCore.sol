@@ -124,6 +124,14 @@ contract RebirthProtocolCore{
         uint256 StartTime = (block.timestamp + (HoursTillOpen * 3600));
         uint256 EndTime = StartTime + (LenghtInHours * 3600);
         Pools[PoolID] = RebirthPool(TokenName, TokenSymbol, TokenAddress, address(0), PairAddress, StartTime, EndTime, SoftCap, 0, 0, false, false);
+
+        address[] memory Path = new address[](2);
+        Path[0] = Pools[PoolID].TokenAddress;
+        Path[1] = UniswapRouter.WETH();
+
+        uint256 MemecoinsPerRelaunchShare = UniswapRouter.getAmountsOut(0.001 ether, Path)[1];
+        Pools[PoolID].MemecoinsPerRelaunchShare = MemecoinsPerRelaunchShare;
+
         AddRemoveActivePool(PoolID, true);
     }
 
