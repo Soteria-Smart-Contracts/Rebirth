@@ -78,7 +78,7 @@ contract RebirthProtocolCore{
     }
 
     function ClaimPool(uint256 PoolID) public{
-        
+
     }
 
 
@@ -98,7 +98,7 @@ contract RebirthProtocolCore{
         uint256 PoolID = OpenPools.length;
         uint256 StartTime = (block.timestamp + (HoursTillOpen * 3600));
         uint256 EndTime = StartTime + (LenghtInHours * 3600);
-        Pools[PoolID] = RebirthPool(TokenName, TokenSymbol, TokenAddress, address(0), PairAddress, StartTime, EndTime, SoftCap, 0, false, false);
+        Pools[PoolID] = RebirthPool(TokenName, TokenSymbol, TokenAddress, address(0), PairAddress, StartTime, EndTime, SoftCap, 0, 0, false, false);
         AddRemoveActivePool(PoolID, true);
     }
 
