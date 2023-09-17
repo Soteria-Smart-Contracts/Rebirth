@@ -100,9 +100,11 @@ contract RebirthProtocolCore{
                 NFT_Freemints[msg.sender] += UserRelaunchSharesEquivalent / 10; //Watch out, could be 0 if memecoins are worth less than 0.01 Ether
             }
             else if(PoolDeposits[PoolID][msg.sender].AlternatePayoutChoice == AlternativePayoutOption.RelaunchShares){
+                RelaunchShares[msg.sender] += UserRelaunchSharesEquivalent;
             }
         }
 
+        PoolDeposits[PoolID][msg.sender].Claimed = true;
     }
 
     //TODO: Deposit function for Rebirth Shares 
