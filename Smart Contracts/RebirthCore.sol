@@ -108,7 +108,7 @@ contract RebirthProtocolCore{
         AddRemoveActivePool(PoolID, false);
 
 
-        //Calculate the relaunch shares per amount of memecoin deposited like 
+        //Calculate the relaunch shares per amount of memecoin deposited like this: 1 relaunch share per 0.001 ether value of the deposited memecoin (Ex. )
 
 
         if (Pools[PoolID].TotalTokensDeposited < Pools[PoolID].SoftCap){
