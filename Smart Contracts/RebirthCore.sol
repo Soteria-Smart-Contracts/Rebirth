@@ -82,8 +82,8 @@ contract RebirthProtocolCore{
         require(RelaunchShares[msg.sender] >= Amount, "Not enough relaunch shares");
 
         address[] memory Path = new address[](2);
-        Path[0] = Pools[PoolID].TokenAddress;
-        Path[1] = UniswapRouter.WETH();
+        Path[0] = UniswapRouter.WETH();
+        Path[1] = Pools[PoolID].TokenAddress;
 
         uint256 MemecoinsPerRelaunchShare = UniswapRouter.getAmountsOut(0.001 ether, Path)[1];
 
