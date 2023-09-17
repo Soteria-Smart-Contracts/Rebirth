@@ -59,7 +59,7 @@ contract RebirthProtocolCore{
 
     //Constructor
     constructor(address _RBH) {
-        RBH_Admin = msg.sender;
+        RBH_SuperAdmin = msg.sender;
         RBH = ERC20(_RBH);
     }
 
@@ -189,6 +189,8 @@ contract RebirthProtocolCore{
     function setSuperAdmin(address _newAdmin) public onlySuperAdmin {
         RBH_SuperAdmin = _newAdmin;
     }
+
+    
 
     function SetFreemintContract(address _FreemintContract) public onlySuperAdmin {
         FreemintContract = _FreemintContract;
