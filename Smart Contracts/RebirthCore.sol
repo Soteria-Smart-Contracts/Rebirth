@@ -46,7 +46,7 @@ contract RebirthProtocolCore{
     //Event Declarations
 
     //Modifier Declarations
-    modifier onlyOwner() {
+    modifier onlyAdmin() {
         require(msg.sender == RBH_Admin);
         _;
     }
