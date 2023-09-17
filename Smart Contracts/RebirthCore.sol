@@ -138,11 +138,6 @@ contract RebirthProtocolCore{
     function ClosePool(uint256 PoolID) public onlyOwner {
         require(block.timestamp >= Pools[PoolID].PoolClosingTime, "Pool is still open");
         AddRemoveActivePool(PoolID, false);
-        
-        
-
-        uint256 MemecoinsPerRelaunchShare = UniswapRouter.getAmountsOut(0.001 ether, Path)[1];
-        Pools[PoolID].MemecoinsPerRelaunchShare = MemecoinsPerRelaunchShare;
 
         if (Pools[PoolID].TotalTokensDeposited < Pools[PoolID].SoftCap){
             Pools[PoolID].PoolSuccessful = false;
