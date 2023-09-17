@@ -92,8 +92,8 @@ contract RebirthProtocolCore{
 
         if(Pools[PoolID].PoolSuccessful){
             //Send the new contract tokens to the user
-            ERC20 RebirthedToken = ERC20(Pools[PoolID].RebirthedTokenAddress);
-            RebirthedToken.transfer(msg.sender, PoolDeposits[PoolID][msg.sender].AmountDeposited);
+            ERC20 NewMemecoin = ERC20(Pools[PoolID].RebirthedTokenAddress);
+            NewMemecoin.transfer(msg.sender, PoolDeposits[PoolID][msg.sender].AmountDeposited);
         }
         else{
             //execute alternative payout option, nft freemints cost 10x relaunch shares
