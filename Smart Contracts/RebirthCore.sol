@@ -137,7 +137,7 @@ contract RebirthProtocolCore{
         NewToken.approve(address(UniswapRouter), BalanceToLiquidity);
         RBH.approve(address(UniswapRouter), RBH_TradeAmount);
         UniswapRouter.addLiquidity(address(RBH), address(NewToken), RBH_TradeAmount, BalanceToLiquidity, 0, 0, address(this), (block.timestamp + 300));
-        ERC20(NewTokenPair).transfer(address(0), ERC20(NewTokenPair).balanceOf(address(this)));
+        ERC20(address(NewTokenPair)).transfer(address(0), ERC20(address(NewTokenPair)).balanceOf(address(this)));
         
     }
 
