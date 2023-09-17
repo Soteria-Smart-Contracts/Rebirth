@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: UNLICENSE
-pragma solidity ^0.8.19;
+pragma solidity 0.8.19;
 
 //Copilot, whats left to finish this contract is the following:
 //A function that allows users to deposit memecoins (in this case token address in the rebirthpool struct), store that value in the mapping
