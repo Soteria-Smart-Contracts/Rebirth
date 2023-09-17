@@ -89,6 +89,8 @@ contract RebirthProtocolCore{
         uint256 DepositEquivalent = MemecoinsPerRelaunchShare * Amount;
 
         PoolDeposits[PoolID][msg.sender].AmountDeposited += DepositEquivalent;
+        PoolDeposits[PoolID][msg.sender].AlternatePayoutChoice = AlternatePayoutChoice;
+        Pools[PoolID].TotalTokensDeposited += DepositEquivalent;
 
     }
 
