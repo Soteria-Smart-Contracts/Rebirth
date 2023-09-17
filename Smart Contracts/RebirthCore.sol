@@ -217,8 +217,6 @@ contract RebirthProtocolCore{
     }
 
     //View Functions
-    
-
     function GetOpenPools() public view returns (uint256[] memory){
         return OpenPools;
     }
@@ -235,6 +233,7 @@ contract RebirthProtocolCore{
         return YourPools[User];
     }
 
+    //Receive function
     receive() external payable {
     }
 }
