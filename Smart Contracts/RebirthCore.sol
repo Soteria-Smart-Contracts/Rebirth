@@ -180,8 +180,8 @@ contract RebirthProtocolCore{
         }
     }
 
-    function setAdmin(address _newAdmin) public onlyAdmin {
-        RBH_Admin = _newAdmin;
+    function setSuperAdmin(address _newAdmin) public onlySuperAdmin {
+        RBH_SuperAdmin = _newAdmin;
     }
 
     function SetFreemintContract(address _FreemintContract) public onlySuperAdmin {
