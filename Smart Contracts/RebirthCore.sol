@@ -77,7 +77,9 @@ contract RebirthProtocolCore{
         YourPools[msg.sender].push(PoolID);
     }
 
-    function ClaimPool(uint256 PoolID)
+    function ClaimPool(uint256 PoolID) public{
+        
+    }
 
 
     //Deposit function for ether only, payable and amount is determined by msg.value
