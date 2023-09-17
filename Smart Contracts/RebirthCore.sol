@@ -111,12 +111,6 @@ contract RebirthProtocolCore{
     function ClosePool(uint256 PoolID) public onlyOwner {
         require(block.timestamp >= Pools[PoolID].PoolClosingTime, "Pool is still open");
         AddRemoveActivePool(PoolID, false);
-
-
-        //Calculate the relaunch shares per amount of memecoin deposited like this: 1 relaunch share per 0.001 ether value of the deposited memecoin (Ex. 500 memcoin for 1 relaunch share)
-
-        //check uniswap for the memecoin value of 0.001 eth
-
         
         address[] memory Path = new address[](2);
         Path[0] = Pools[PoolID].TokenAddress;
