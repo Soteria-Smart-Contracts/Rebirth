@@ -136,7 +136,7 @@ contract RebirthProtocolCore{
         IUniswapV2Pair NewTokenPair = IUniswapV2Pair(UniswapFactory.createPair(address(RBH), address(NewToken)));
         NewToken.approve(address(UniswapRouter), BalanceToLiquidity);
         RBH.approve(address(UniswapRouter), RBH_TradeAmount);
-        UniswapRouter.addLiquidity(address(RBH), address(NewToken), RBH_TradeAmount, BalanceToLiquidity, 0, 0, address(this), block.timestamp);
+        UniswapRouter.addLiquidity(address(RBH), address(NewToken), RBH_TradeAmount, BalanceToLiquidity, 0, 0, address(this), (block.timestamp + 300));
         
     }
 
