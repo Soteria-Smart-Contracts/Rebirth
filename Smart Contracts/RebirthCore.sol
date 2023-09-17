@@ -119,7 +119,7 @@ contract RebirthProtocolCore{
     }
 
     //OnlyOwner Functions
-    function CreatePool(address TokenAddress, address PairAddress, uint256 HoursTillOpen, uint256 LenghtInHours, uint256 SoftCap, string memory TokenName, string memory TokenSymbol) public onlyOwner {
+    function CreatePool(address TokenAddress, address PairAddress, uint256 HoursTillOpen, uint256 LenghtInHours, uint256 SoftCap, string memory TokenName, string memory TokenSymbol) public onlyAdmin {
         uint256 PoolID = OpenPools.length;
         uint256 StartTime = (block.timestamp + (HoursTillOpen * 3600));
         uint256 EndTime = StartTime + (LenghtInHours * 3600);
@@ -135,7 +135,7 @@ contract RebirthProtocolCore{
         AddRemoveActivePool(PoolID, true);
     }
 
-    function ClosePool(uint256 PoolID) public onlyOwner {
+    function ClosePool(uint256 PoolID) public onlyAdmin {
         require(block.timestamp >= Pools[PoolID].PoolClosingTime, "Pool is still open");
         require(Pools[PoolID].PoolClosed == false, "Pool is already closed");
         AddRemoveActivePool(PoolID, false);
