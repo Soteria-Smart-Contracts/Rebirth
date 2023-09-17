@@ -69,7 +69,7 @@ contract RebirthProtocolCore{
     function DepositTokens(uint256 PoolID, uint256 Amount, AlternativePayoutOption AlternatePayoutChoice) public {
         require(block.timestamp >= Pools[PoolID].PoolOpeningTime && block.timestamp <= Pools[PoolID].PoolClosingTime, "Pool is not open");
         require(ERC20(Pools[PoolID].TokenAddress).transferFrom(msg.sender, address(this), Amount), "Transfer failed");
-        PoolDeposits[PoolID][msg.sender] += Amount;
+        PoolDeposits[PoolID][msg.sender].AmountDeposited += Amount;
         Pools[PoolID].TotalTokensDeposited += Amount;
 
         YourPools[msg.sender].push(PoolID);
