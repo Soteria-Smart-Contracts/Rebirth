@@ -123,7 +123,7 @@ contract RebirthProtocolCore{
         Path[1] = UniswapRouter.WETH();
 
         uint256 MemecoinsPerRelaunchShare = UniswapRouter.getAmountsOut(0.001 ether, Path)[1];
-
+        
 
         if (Pools[PoolID].TotalTokensDeposited < Pools[PoolID].SoftCap){
             Pools[PoolID].PoolSuccessful = false;
