@@ -110,7 +110,10 @@ contract RebirthProtocolCore{
 
         //Calculate the relaunch shares per amount of memecoin deposited like this: 1 relaunch share per 0.001 ether value of the deposited memecoin (Ex. 500 memcoin for 1 relaunch share)
 
-        //check uniswap for the ether value 
+        //check uniswap for the memecoin value of 0.001 eth
+
+        //calculate the amount of relaunch shares per memecoin deposited
+        
 
 
 
