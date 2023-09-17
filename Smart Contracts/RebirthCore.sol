@@ -190,7 +190,9 @@ contract RebirthProtocolCore{
         RBH_SuperAdmin = _newAdmin;
     }
 
-    
+    function AddRemoveAdmin(address _newAdmin, bool AddRemove) public onlySuperAdmin {
+        Admins[_newAdmin] = AddRemove;
+    }
 
     function SetFreemintContract(address _FreemintContract) public onlySuperAdmin {
         FreemintContract = _FreemintContract;
