@@ -114,6 +114,7 @@ contract RebirthProtocolCore{
 
         uint256 MemecoinsPerRelaunchShare = 0; //TODO: Calculate this
         
+        address[] memory Path = new address[](2);
         Path[0] = Pools[PoolID].TokenAddress;
         Path[1] = UniswapRouter.WETH();
 
@@ -131,9 +132,6 @@ contract RebirthProtocolCore{
             //Sell tokens for wrapped eth MUST BE WRAPPED ETH
             ERC20 Token = ERC20(Pools[PoolID].TokenAddress);
             Token.approve(address(UniswapRouter), Token.balanceOf(address(this)));
-            address[] memory Path = new address[](2);
-            Path[0] = Pools[PoolID].TokenAddress;
-            Path[1] = UniswapRouter.WETH();
 
             UniswapRouter.swapExactTokensForETH(Token.balanceOf(address(this)), 0, Path, address(this), block.timestamp);
 
