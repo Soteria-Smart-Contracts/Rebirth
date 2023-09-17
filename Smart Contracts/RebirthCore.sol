@@ -36,6 +36,13 @@ contract RebirthProtocolCore{
         bool PoolClosed;
     }
 
+    struct UserPoolDetails{
+        uint256 PoolID;
+        uint256 AmountDeposited;
+        uint256 AmountWithdrawn;
+        bool Withdrawn;
+    }
+
     //Mapping Declarations
     mapping(uint256 => RebirthPool) public Pools;
     mapping(uint256 => mapping(address => uint256)) public PoolDeposits;
