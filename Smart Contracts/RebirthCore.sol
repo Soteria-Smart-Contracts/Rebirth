@@ -86,9 +86,9 @@ contract RebirthProtocolCore{
         Path[1] = Pools[PoolID].TokenAddress;
 
         uint256 MemecoinsPerRelaunchShare = UniswapRouter.getAmountsOut(0.001 ether, Path)[1];
-        DepositEquivalent = MemecoinsPerRelaunchShare * Amount;
+        uint256 DepositEquivalent = MemecoinsPerRelaunchShare * Amount;
 
-        PoolDeposits[PoolID][msg.sender].AmountDeposited += Amount * Pools[PoolID].MemecoinsPerRelaunchShare;
+        PoolDeposits[PoolID][msg.sender].AmountDeposited += DepositEquivalent;
 
     }
 
