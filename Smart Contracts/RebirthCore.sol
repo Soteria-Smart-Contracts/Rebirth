@@ -26,6 +26,7 @@ contract RebirthProtocolCore{
         string Name;
         string Symbol;
         address TokenAddress;
+        address RebirthedTokenAddress;
         address PairAddress;
         uint256 PoolOpeningTime;
         uint256 PoolClosingTime;
