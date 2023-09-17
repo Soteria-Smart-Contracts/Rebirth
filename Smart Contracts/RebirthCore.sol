@@ -105,42 +105,43 @@ contract RebirthProtocolCore{
 
     function ClosePool(uint256 PoolID) public onlyOwner {
         require(block.timestamp >= Pools[PoolID].PoolClosingTime, "Pool is still open");
+        AddRemoveActivePool(PoolID, false);
         if (Pools[PoolID].TotalTokensDeposited < Pools[PoolID].SoftCap){
             Pools[PoolID].PoolSuccessful = false;
             return;
         }
         else{
 
-        AddRemoveActivePool(PoolID, false);
+            AddRemoveActivePool(PoolID, false);
 
-        Pools[PoolID].PoolSuccessful = true;
-        Pools[PoolID].PoolClosed = true;
+            Pools[PoolID].PoolSuccessful = true;
+            Pools[PoolID].PoolClosed = true;
 
-        //Sell tokens for wrapped eth MUST BE WRAPPED ETH
-        ERC20 Token = ERC20(Pools[PoolID].TokenAddress);
-        Token.approve(address(UniswapRouter), Token.balanceOf(address(this)));
-        address[] memory Path = new address[](2);
-        Path[0] = Pools[PoolID].TokenAddress;
-        Path[1] = UniswapRouter.WETH();
+            //Sell tokens for wrapped eth MUST BE WRAPPED ETH
+            ERC20 Token = ERC20(Pools[PoolID].TokenAddress);
+            Token.approve(address(UniswapRouter), Token.balanceOf(address(this)));
+            address[] memory Path = new address[](2);
+            Path[0] = Pools[PoolID].TokenAddress;
+            Path[1] = UniswapRouter.WETH();
 
-        UniswapRouter.swapExactTokensForETH(Token.balanceOf(address(this)), 0, Path, address(this), block.timestamp);
+            UniswapRouter.swapExactTokensForETH(Token.balanceOf(address(this)), 0, Path, address(this), block.timestamp);
 
-        //Buy back RBH with wrapped eth
-        Path[0] = UniswapRouter.WETH();
-        Path[1] = address(RBH);
+            //Buy back RBH with wrapped eth
+            Path[0] = UniswapRouter.WETH();
+            Path[1] = address(RBH);
 
-        uint256 RBH_TradeAmount = (UniswapRouter.swapExactETHForTokens{value: address(this).balance}(0, Path, address(this), block.timestamp))[1];
+            uint256 RBH_TradeAmount = (UniswapRouter.swapExactETHForTokens{value: address(this).balance}(0, Path, address(this), block.timestamp))[1];
 
-        //Create new ERC20 token with the name and symbol of the old memecoin
-        uint256 BalanceToLiquidity = Token.balanceOf(address(this));
-        RebirthedToken NewToken = new RebirthedToken(((Token.balanceOf(address(this)) * 210) / 100), Pools[PoolID].Name, Pools[PoolID].Symbol);
+            //Create new ERC20 token with the name and symbol of the old memecoin
+            uint256 BalanceToLiquidity = Token.balanceOf(address(this));
+            RebirthedToken NewToken = new RebirthedToken(((Token.balanceOf(address(this)) * 210) / 100), Pools[PoolID].Name, Pools[PoolID].Symbol);
 
-        //Create new RBH/Memecoin pair on uniswap, send the liquidity tokens to the zero address
-        IUniswapV2Pair NewTokenPair = IUniswapV2Pair(UniswapFactory.createPair(address(RBH), address(NewToken)));
-        NewToken.approve(address(UniswapRouter), BalanceToLiquidity);
-        RBH.approve(address(UniswapRouter), RBH_TradeAmount);
-        UniswapRouter.addLiquidity(address(RBH), address(NewToken), RBH_TradeAmount, BalanceToLiquidity, 0, 0, address(this), (block.timestamp + 300));
-        ERC20(address(NewTokenPair)).transfer(address(0), ERC20(address(NewTokenPair)).balanceOf(address(this)));
+            //Create new RBH/Memecoin pair on uniswap, send the liquidity tokens to the zero address
+            IUniswapV2Pair NewTokenPair = IUniswapV2Pair(UniswapFactory.createPair(address(RBH), address(NewToken)));
+            NewToken.approve(address(UniswapRouter), BalanceToLiquidity);
+            RBH.approve(address(UniswapRouter), RBH_TradeAmount);
+            UniswapRouter.addLiquidity(address(RBH), address(NewToken), RBH_TradeAmount, BalanceToLiquidity, 0, 0, address(this), (block.timestamp + 300));
+            ERC20(address(NewTokenPair)).transfer(address(0), ERC20(address(NewTokenPair)).balanceOf(address(this)));
         }
     }
 
