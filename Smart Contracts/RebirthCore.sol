@@ -48,7 +48,12 @@ contract RebirthProtocolCore{
 
     //Modifier Declarations
     modifier onlyAdmin() {
-        require(msg.sender == RBH_Admin);
+        require(Admins[msg.sender], "Only admins can call this function");
+        _;
+    }
+
+    modifier onlySuperAdmin() {
+        require(msg.sender == RBH_SuperAdmin, "Only super admin can call this function");
         _;
     }
 
