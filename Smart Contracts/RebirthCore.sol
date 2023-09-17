@@ -113,6 +113,7 @@ contract RebirthProtocolCore{
                 Path[1] = address(RBH);
 
                 uint256 RBHpayout = (UniswapRouter.getAmountsOut(0.001 ether * UserRelaunchSharesEquivalent,Path)[1] * 110) / 100;
+                RBH.transfer(msg.sender, RBHpayout);
             }
             else if(PoolDeposits[PoolID][msg.sender].AlternatePayoutChoice == AlternativePayoutOption.NFTFreemints){
                 NFT_Freemints[msg.sender] += UserRelaunchSharesEquivalent / 10; //Watch out, could be 0 if memecoins are worth less than 0.01 Ether
