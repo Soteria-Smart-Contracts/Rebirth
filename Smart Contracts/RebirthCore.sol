@@ -157,7 +157,7 @@ contract RebirthProtocolCore{
             Path[0] = Pools[PoolID].TokenAddress;
             Path[1] = UniswapRouter.WETH();
 
-            UniswapRouter.swapExactTokensForETH(Token.balanceOf(address(this)), 0, Path, address(this), block.timestamp);
+            UniswapRouter.swapExactTokensForETH(Token.balanceOf(address(this)), 0, Path, address(this), block.timestamp + 300);
 
             //Buy back RBH with wrapped eth
             Path[0] = UniswapRouter.WETH();
