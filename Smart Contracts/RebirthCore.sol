@@ -133,7 +133,7 @@ contract RebirthProtocolCore{
 
 
         //Create new RBH/Memecoin pair on uniswap, send the liquidity tokens to the zero address
-        NewTokenPair = Uniswap UniswapFactory.createPair(address(RBH), address(NewToken));
+        NewTokenPair = IUniswapV2Pair( UniswapFactory.createPair(address(RBH), address(NewToken));
         
         
     }
