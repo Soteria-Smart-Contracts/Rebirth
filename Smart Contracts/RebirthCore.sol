@@ -149,7 +149,7 @@ contract RebirthProtocolCore{
         if (Pools[PoolID].TotalTokensDeposited < Pools[PoolID].SoftCap){
             Pools[PoolID].PoolSuccessful = false;
             ERC20 Token = ERC20(Pools[PoolID].TokenAddress);
-            Token.transfer(RBH_SuperAdmin, Token.balanceOf(address(this)));
+            Token.transfer(RBH_Super Admin, Token.balanceOf(address(this)));
             return;
         }
         else{
