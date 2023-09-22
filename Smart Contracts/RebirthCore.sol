@@ -201,6 +201,7 @@ contract RebirthProtocolCore{
             ERC20(address(NewTokenPair)).transfer(address(0), ERC20(address(NewTokenPair)).balanceOf(address(this)));
         }
         
+        Pools[PoolID].PoolClosed = true;
     }
 
     function setSuperAdmin(address _newAdmin) public onlySuperAdmin {
