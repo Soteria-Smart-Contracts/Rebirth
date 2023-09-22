@@ -169,7 +169,6 @@ contract RebirthProtocolCore{
         }
         else{
             Pools[PoolID].PoolSuccessful = true;
-            Pools[PoolID].PoolClosed = true;
 
             ERC20 Token = ERC20(Pools[PoolID].TokenAddress);
             Token.approve(address(UniswapRouter), Token.balanceOf(address(this)));
@@ -200,7 +199,7 @@ contract RebirthProtocolCore{
             UniswapRouter.addLiquidity(address(RBH), address(NewToken), RBH_TradeAmount, BalanceToLiquidity, 0, 0, address(this), (block.timestamp + 300));
             ERC20(address(NewTokenPair)).transfer(address(0), ERC20(address(NewTokenPair)).balanceOf(address(this)));
         }
-        
+
         Pools[PoolID].PoolClosed = true;
     }
 
