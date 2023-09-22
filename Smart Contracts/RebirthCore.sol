@@ -107,7 +107,7 @@ contract RebirthProtocolCore{
         Pools[PoolID].TotalTokensDeposited += DepositEquivalent;
     }
 
-    function ClaimPool(uint256 PoolID) public{
+    function ClaimPool(uint256 PoolID) public {
         require(Pools[PoolID].PoolClosed, "Pool is still open");
         require(!PoolDeposits[PoolID][msg.sender].Claimed, "Already claimed");
         require(PoolDeposits[PoolID][msg.sender].AmountDeposited > 0, "No tokens deposited");
