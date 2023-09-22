@@ -4,11 +4,11 @@ pragma solidity 0.8.19;
 
 contract RebirthProtocolCore{
     //Variable Declarations
-    address RBH_SuperAdmin;
-    ERC20 RBH;
+    address public RBH_SuperAdmin;
+    ERC20 public RBH;
     IUniswapV2Factory UniswapFactory = IUniswapV2Factory(0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f);
     IUniswapV2Router02 UniswapRouter = IUniswapV2Router02(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
-    address FreemintContract;
+    address public FreemintContract;
     uint256[] public OpenPools;
     //Struct-Enum Declarations
 
@@ -32,6 +32,7 @@ contract RebirthProtocolCore{
     struct UserPoolDetails{
         uint256 AmountDeposited;
         AlternativePayoutOption AlternatePayoutChoice;
+        bool PreviouslyDeposited;
         bool Claimed;
     }
 
@@ -60,6 +61,7 @@ contract RebirthProtocolCore{
     //Constructor
     constructor(address _RBH) {
         RBH_SuperAdmin = msg.sender;
+        Admins[msg.sender] = true;
         RBH = ERC20(_RBH);
     }
 
@@ -68,16 +70,28 @@ contract RebirthProtocolCore{
     function DepositTokens(uint256 PoolID, uint256 Amount, AlternativePayoutOption AlternatePayoutChoice) public {
         require(block.timestamp >= Pools[PoolID].PoolOpeningTime && block.timestamp <= Pools[PoolID].PoolClosingTime, "Pool is not open");
         require(ERC20(Pools[PoolID].TokenAddress).transferFrom(msg.sender, address(this), Amount), "Transfer failed");
+
+        if(!PoolDeposits[PoolID][msg.sender].PreviouslyDeposited){
+            require(Amount >= 1000); //Requires first time depositors to deposit some amount of token
+            YourPools[msg.sender].push(PoolID);
+        }
+
         PoolDeposits[PoolID][msg.sender].AmountDeposited += Amount;
         PoolDeposits[PoolID][msg.sender].AlternatePayoutChoice = AlternatePayoutChoice;
+        PoolDeposits[PoolID][msg.sender].PreviouslyDeposited = true;
         Pools[PoolID].TotalTokensDeposited += Amount;
-
-        YourPools[msg.sender].push(PoolID);
     }
 
     function DepositRelaunchShares(uint256 PoolID, uint256 Amount, AlternativePayoutOption AlternatePayoutChoice) public {
         require(block.timestamp >= Pools[PoolID].PoolOpeningTime && block.timestamp <= Pools[PoolID].PoolClosingTime, "Pool is not open");
+        require(Amount > 0);
         require(RelaunchShares[msg.sender] >= Amount, "Not enough relaunch shares");
+
+        if(!PoolDeposits[PoolID][msg.sender].PreviouslyDeposited){
+            YourPools[msg.sender].push(PoolID);
+        }
+
+        RelaunchShares[msg.sender] -= Amount;
 
         address[] memory Path = new address[](2);
         Path[0] = UniswapRouter.WETH();
@@ -88,6 +102,7 @@ contract RebirthProtocolCore{
 
         PoolDeposits[PoolID][msg.sender].AmountDeposited += DepositEquivalent;
         PoolDeposits[PoolID][msg.sender].AlternatePayoutChoice = AlternatePayoutChoice;
+        PoolDeposits[PoolID][msg.sender].PreviouslyDeposited = true;
         Pools[PoolID].TotalTokensDeposited += DepositEquivalent;
     }
 
@@ -127,13 +142,13 @@ contract RebirthProtocolCore{
     //OnlyOwner Functions
     function CreatePool(address TokenAddress, address PairAddress, uint256 HoursTillOpen, uint256 LenghtInHours, uint256 SoftCap, string memory TokenName, string memory TokenSymbol) public onlyAdmin {
         uint256 PoolID = OpenPools.length;
-        uint256 StartTime = (block.timestamp + (HoursTillOpen * 3600));
-        uint256 EndTime = StartTime + (LenghtInHours * 3600);
+        uint256 StartTime = (block.timestamp + (HoursTillOpen * 60)); //TODO EDIT TIMES BACK TO 3600
+        uint256 EndTime = StartTime + (LenghtInHours * 60); //TODO EDIT TIMES 3600
         Pools[PoolID] = RebirthPool(TokenName, TokenSymbol, TokenAddress, address(0), PairAddress, StartTime, EndTime, SoftCap, 0, 0, false, false);
 
         address[] memory Path = new address[](2);
-        Path[0] = Pools[PoolID].TokenAddress;
-        Path[1] = UniswapRouter.WETH();
+        Path[0] = UniswapRouter.WETH();
+        Path[1] = Pools[PoolID].TokenAddress;
 
         uint256 MemecoinsPerRelaunchShare = UniswapRouter.getAmountsOut(0.001 ether, Path)[1];
         Pools[PoolID].MemecoinsPerRelaunchShare = MemecoinsPerRelaunchShare;
