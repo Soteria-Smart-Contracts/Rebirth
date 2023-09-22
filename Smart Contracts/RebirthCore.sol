@@ -10,6 +10,7 @@ contract RebirthProtocolCore{
     IUniswapV2Router02 UniswapRouter = IUniswapV2Router02(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
     address public FreemintContract;
     uint256[] public OpenPools;
+    uint256 internal PoolIncrement;
     //Struct-Enum Declarations
 
     enum AlternativePayoutOption { RBHTokens, NFTFreemints, RelaunchShares }
@@ -141,7 +142,8 @@ contract RebirthProtocolCore{
 
     //OnlyOwner Functions
     function CreatePool(address TokenAddress, address PairAddress, uint256 HoursTillOpen, uint256 LenghtInHours, uint256 SoftCap, string memory TokenName, string memory TokenSymbol) public onlyAdmin {
-        uint256 PoolID = OpenPools.length;
+        uint256 PoolID = PoolIncrement;
+        PoolIncrement++;
         uint256 StartTime = (block.timestamp + (HoursTillOpen * 60)); //TODO: EDIT TIMES BACK TO 3600
         uint256 EndTime = StartTime + (LenghtInHours * 60); //TODO: EDIT TIMES 3600
         Pools[PoolID] = RebirthPool(TokenName, TokenSymbol, TokenAddress, address(0), PairAddress, StartTime, EndTime, SoftCap, 0, 0, false, false);
@@ -165,7 +167,6 @@ contract RebirthProtocolCore{
             Pools[PoolID].PoolSuccessful = false;
             ERC20 Token = ERC20(Pools[PoolID].TokenAddress);
             Token.transfer(RBH_SuperAdmin, Token.balanceOf(address(this)));
-            return;
         }
         else{
             Pools[PoolID].PoolSuccessful = true;
