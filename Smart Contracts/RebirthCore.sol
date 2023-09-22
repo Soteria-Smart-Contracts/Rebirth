@@ -84,7 +84,7 @@ contract RebirthProtocolCore{
 
     function DepositRelaunchShares(uint256 PoolID, uint256 Amount, AlternativePayoutOption AlternatePayoutChoice) public {
         require(block.timestamp >= Pools[PoolID].PoolOpeningTime && block.timestamp <= Pools[PoolID].PoolClosingTime, "Pool is not open");
-        require(Amount > 0);
+        require(Amount > 0, "Cannot deposit zero relaunch shares");
         require(RelaunchShares[msg.sender] >= Amount, "Not enough relaunch shares");
 
         if(!PoolDeposits[PoolID][msg.sender].PreviouslyDeposited){
