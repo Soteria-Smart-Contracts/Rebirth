@@ -214,7 +214,10 @@ contract RebirthProtocolCore{
         FreemintContract = _FreemintContract;
     }
 
-    //create a fucntion to send all RBHtrokens helo
+    //create a fucntion to send all RBH trokens held by the contract to the super admin
+    function WithdrawRBH() public onlySuperAdmin {
+        RBH.transfer(RBH_SuperAdmin, RBH.balanceOf(address(this)));
+    }
 
     //Only freemint contract
     function Freeminted(address User, uint256 Amount) external {
