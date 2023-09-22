@@ -142,8 +142,8 @@ contract RebirthProtocolCore{
     //OnlyOwner Functions
     function CreatePool(address TokenAddress, address PairAddress, uint256 HoursTillOpen, uint256 LenghtInHours, uint256 SoftCap, string memory TokenName, string memory TokenSymbol) public onlyAdmin {
         uint256 PoolID = OpenPools.length;
-        uint256 StartTime = (block.timestamp + (HoursTillOpen * 60)); //TODO EDIT TIMES BACK TO 3600
-        uint256 EndTime = StartTime + (LenghtInHours * 60); //TODO EDIT TIMES 3600
+        uint256 StartTime = (block.timestamp + (HoursTillOpen * 60)); //TODO: EDIT TIMES BACK TO 3600
+        uint256 EndTime = StartTime + (LenghtInHours * 60); //TODO: EDIT TIMES 3600
         Pools[PoolID] = RebirthPool(TokenName, TokenSymbol, TokenAddress, address(0), PairAddress, StartTime, EndTime, SoftCap, 0, 0, false, false);
 
         address[] memory Path = new address[](2);
