@@ -214,6 +214,8 @@ contract RebirthProtocolCore{
         FreemintContract = _FreemintContract;
     }
 
+    //create a fucntion to send all RBHtrokens helo
+
     //Only freemint contract
     function Freeminted(address User, uint256 Amount) external {
         require(msg.sender == FreemintContract, "Only freemint contract can call this function");
