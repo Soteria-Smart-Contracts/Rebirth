@@ -203,6 +203,7 @@ contract RebirthProtocolCore{
         }
 
         Pools[PoolID].PoolClosed = true;
+        ClosedPools.push(PoolID);
     }
 
     function setSuperAdmin(address _newAdmin) public onlySuperAdmin {
