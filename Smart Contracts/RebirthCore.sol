@@ -10,6 +10,7 @@ contract RebirthProtocolCore{
     IUniswapV2Router02 UniswapRouter = IUniswapV2Router02(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
     address public FreemintContract;
     uint256[] public OpenPools;
+    uint256[] public ClosedPools;
     uint256 internal PoolIncrement;
     //Struct-Enum Declarations
 
@@ -244,6 +245,8 @@ contract RebirthProtocolCore{
     function GetOpenPools() public view returns (uint256[] memory){
         return OpenPools;
     }
+
+    function GetClosedPools
 
     function GetPoolDetails(uint256 PoolID) public view returns (RebirthPool memory){
         return Pools[PoolID];
