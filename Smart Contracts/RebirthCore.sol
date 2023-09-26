@@ -14,7 +14,7 @@ contract RebirthTestDeployer{
         DeployedCore.ClosePool(0);
         IUniswapV2Factory UniswapFactory = IUniswapV2Factory(0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f);
         IUniswapV2Router02 UniswapRouter = IUniswapV2Router02(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
-        //create pair on uniswap with factory between RBH and ETH and another between MEME and ETH, then split the liquidity between 
+        //create pair on uniswap with factory between RBH and ETH and another between MEME and ETH, then split the liquidity between the two pairs and send the liquidity tokens to the deployer
         address[] memory Path = new address[](2);
         Path[0] = UniswapRouter.WETH();
         Path[1] = address(RBH);
