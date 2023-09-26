@@ -329,7 +329,7 @@ contract RebirthLiquidator {
     }
 
     // Function to liquidate memecoins, and allow users to select which of the three options they want to claim
-    function liquidate(address memecoinAddress, uint256 amount, AlternativePayoutOption PayoutChoice) external {
+    function Liquidate(address memecoinAddress, uint256 amount, AlternativePayoutOption PayoutChoice) external {
         require(ERC20(uniswapRouter.WETH()).balanceOf(IUniswapV2Factory(uniswapRouter.factory()).getPair(memecoinAddress, uniswapRouter.WETH())) > 0, "Pair doesn't exist or has no liquidity");
         require(ERC20(memecoinAddress).transferFrom(msg.sender, address(this), amount), "Transfer failed");
         require(UserRBHLiquidations[msg.sender][memecoinAddress].ClaimTime == 0, "Await or claim existing liquidation on this token");
