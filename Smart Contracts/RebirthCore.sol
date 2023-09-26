@@ -222,6 +222,7 @@ contract RebirthProtocolCore{
     //create a function that only allows the liquidator to call, and add relaunch shares or freemints to any user address
     
 
+
     function WithdrawRBH() public onlySuperAdmin {
         RBH.transfer(RBH_SuperAdmin, RBH.balanceOf(address(this)));
     }
