@@ -268,7 +268,9 @@ contract RebirthProtocolCore{
     }
 }
 
-contract RebirthLiquidator
+contract RebirthLiquidator{
+    
+}
 
 
 //TODO: Update interfaces depending on existing contracts
