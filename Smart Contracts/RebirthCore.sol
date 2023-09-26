@@ -102,7 +102,7 @@ contract RebirthProtocolCore{
         require(Amount > 0, "Cannot deposit zero relaunch shares");
         require(RelaunchShares[msg.sender] >= Amount, "Not enough relaunch shares");
 
-        
+        if(!UserParticipated[msg.sender]){ TotalUsers++; UserParticipated[msg.sender] = true; }
 
         if(!PoolDeposits[PoolID][msg.sender].PreviouslyDeposited){
             YourPools[msg.sender].push(PoolID);
