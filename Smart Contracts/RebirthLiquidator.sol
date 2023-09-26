@@ -5,9 +5,15 @@ contract RebirthTestDeployer{
     //this deployer needs to deploy a liquidator contract instance, an RBH token to put into its constructor, and a seperate memecoin to test the liquidator with
 
     constructor() {
+        //Deploy RBH token
         
-    }
-        
+        //Deploy liquidator contract
+        //Deploy memecoin
+        //Add liquidity to memecoin
+        //Transfer memecoin to liquidator contract
+        //Liquidate memecoin
+        //Claim RBH
+
     }
 }
 
