@@ -9,7 +9,6 @@ contract RebirthTestDeployer{
         address Liquidator = address(new RebirthLiquidator(address(this), RBHToken));
         address MemeCoin = address(new RebirthedToken(1000000000000000000000000000, "Test Memecoin", "TMEME"))
 
-        //transfer all meme coins to msg.sender and half of the rbh to both the sender and the liquidator
         ERC20(MemeCoin).transfer(msg.sender, ERC20(MemeCoin).balanceOf(address(this)));
         ERC20(RBHToken).transfer(msg.sender, (ERC20(RBHToken).balanceOf(address(this)) / 2));
         ERC20(RBHToken).transfer(Liquidator, (ERC20(RBHToken).balanceOf(address(this)) / 2));
