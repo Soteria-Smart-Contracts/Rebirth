@@ -268,7 +268,7 @@ contract RebirthProtocolCore{
     }
 }
 
-//This next contract needs to be able to accept any memecoin with any ethereum 
+//This next contract needs to be able to accept any memecoin with any ethereum liquidity on uniswap, sell the ether, send to the rebirthcore superadmin address, then 
 contract RebirthLiquidator{
 
 }
