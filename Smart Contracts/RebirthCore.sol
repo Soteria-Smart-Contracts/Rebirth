@@ -297,7 +297,9 @@ contract RebirthLiquidator {
 
     mapping(address => mapping(address => uint256)) public ClaimTime;
 
-    struct User
+    struct UserLiquidation{
+        
+    }
 
     enum AlternativePayoutOption { RBHTokens, NFTFreemints, RelaunchShares }
 
