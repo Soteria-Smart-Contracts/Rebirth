@@ -224,16 +224,12 @@ contract RebirthProtocolCore{
         Liquidator = _Liquidator;
     }
 
-    function SetFreemint(address User, uint256 Amount) public onlySuperAdmin {
+    function AddFreemint(address User, uint256 Amount) public  {
         NFT_Freemints[User] += Amount;
     }
 
-    function SetRelaunchShare(address User, uint256 Amount) public onlySuperAdmin {
+    function AddRelaunchShare(address User, uint256 Amount) public onlySuperAdmin {
         RelaunchShares[User] += Amount;
-    }
-
-    function WithdrawRBH(uint256 Amount) public onlySuperAdmin {
-        RBH.transfer(RBH_SuperAdmin, Amount);
     }
 
     function WithdrawRBH() public onlySuperAdmin {
