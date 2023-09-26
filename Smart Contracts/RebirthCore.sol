@@ -179,7 +179,7 @@ contract RebirthProtocolCore{
             ERC20 Token = ERC20(Pools[PoolID].TokenAddress);
             Token.transfer(RBH_SuperAdmin, Token.balanceOf(address(this)));
 
-            calculate
+            //caclculate the ether equivalent of the tokens deposited and add it to the total ether deposited
         }
         else{
             Pools[PoolID].PoolSuccessful = true;
