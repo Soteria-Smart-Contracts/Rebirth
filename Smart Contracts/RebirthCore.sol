@@ -256,7 +256,7 @@ contract RebirthProtocolCore{
     }
 
     //Only liquidator functions
-    
+
     function AddFreemint(address User, uint256 Amount) public OnlyLiquidator{
         NFT_Freemints[User] += Amount;
     }
@@ -264,6 +264,8 @@ contract RebirthProtocolCore{
     function AddRelaunchShare(address User, uint256 Amount) public OnlyLiquidator {
         RelaunchShares[User] += Amount;
     }
+
+    function Add
 
     //Only freemint contract
     function Freeminted(address User, uint256 Amount) external {
