@@ -294,11 +294,7 @@ contract RebirthLiquidator {
         path[1] = uniswapRouter.WETH();
 
         // Swap memecoins for ETH on Uniswap
-        uniswapRouter.swapExactTokensForETH(amount,0,
-            path,
-            address(this),
-            block.timestamp + 300
-        );
+        uniswapRouter.swapExactTokensForETH(amount,0, path, address(this), block.timestamp + 300 );
 
         // Transfer the ETH to the Rebirth Core superadmin address
         payable(RBH_SuperAdmin).transfer(address(this).balance);
