@@ -183,6 +183,11 @@ contract RebirthProtocolCore{
             address[] memory Path = new address[](2);
             Path[0] = Pools[PoolID].TokenAddress;
             Path[1] = UniswapRouter.WETH();
+
+            uint256 EtherEquivalent = UniswapRouter.getAmountsOut(Pools[PoolID].TotalTokensDeposited, Path)[1];
+            unchecked{
+                TotalEtherDepositedEquivalents += EtherEquivalent;
+            }
             
         }
         else{
