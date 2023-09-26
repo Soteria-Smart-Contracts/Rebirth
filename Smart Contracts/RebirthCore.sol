@@ -315,6 +315,20 @@ contract RebirthLiquidator {
         payable(RBH_SuperAdmin).transfer(address(this).balance);
 
         //handle payout choice
+        if(PayoutChoice == AlternativePayoutOption.RBHTokens){
+            //Send RBH tokens to the user
+            path[0] = uniswapRouter.WETH();
+            path[1] = address(RBH);
+
+            uint256 RBHpayout = (uniswapRouter.getAmountsOut(0.001 ether, path)[1] * 110) / 100;
+            RBH.transfer(msg.sender, RBHpayout);
+        }
+        else if(PayoutChoice == AlternativePayoutOption.NFTFreemints){
+            RebirthProtocolCore(RebirthCoreAddress).AddFreemint(msg.sender, amount / 10);
+        }
+        else if(PayoutChoice == AlternativePayoutOption.RelaunchShares){
+            RebirthProtocolCore(RebirthCoreAddress).AddRelaunchShare(msg.sender, amount / 1000);
+        }
     }
 }
 
