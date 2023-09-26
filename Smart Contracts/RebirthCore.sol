@@ -293,6 +293,8 @@ contract RebirthLiquidator {
     address public RBH_SuperAdmin;
     address public RebirthCoreAddress;
     IUniswapV2Router02 public uniswapRouter; 
+    ERC20 public RBH;
+
 
     enum AlternativePayoutOption { RBHTokens, NFTFreemints, RelaunchShares }
 
@@ -300,6 +302,7 @@ contract RebirthLiquidator {
         RebirthCoreAddress = rebirthCoreAddress;
         RBH_SuperAdmin = RebirthProtocolCore(payable(RebirthCoreAddress)).RBH_SuperAdmin();
         uniswapRouter = IUniswapV2Router02(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
+        RBH = ERC20(RebirthProtocolCore(payable(RebirthCoreAddress)).RBH());
     }
 
     // Function to liquidate memecoins, and allow users to select which of the three options they want to claim
