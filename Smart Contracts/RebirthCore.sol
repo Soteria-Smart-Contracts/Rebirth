@@ -84,7 +84,7 @@ contract RebirthProtocolCore{
         require(block.timestamp >= Pools[PoolID].PoolOpeningTime && block.timestamp <= Pools[PoolID].PoolClosingTime, "Pool is not open");
         require(ERC20(Pools[PoolID].TokenAddress).transferFrom(msg.sender, address(this), Amount), "Transfer failed");
 
-        if(UserParticipated[msg.sender] == false){
+        if(!UserParticipated[msg.sender]){
             TotalUsers++;
             UserParticipated[msg.sender] = true;
         }
