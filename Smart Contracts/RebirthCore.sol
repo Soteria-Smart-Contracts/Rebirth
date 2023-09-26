@@ -83,6 +83,8 @@ contract RebirthProtocolCore{
         require(block.timestamp >= Pools[PoolID].PoolOpeningTime && block.timestamp <= Pools[PoolID].PoolClosingTime, "Pool is not open");
         require(ERC20(Pools[PoolID].TokenAddress).transferFrom(msg.sender, address(this), Amount), "Transfer failed");
 
+        if
+
         if(!PoolDeposits[PoolID][msg.sender].PreviouslyDeposited){
             require(Amount >= 1000); //Requires first time depositors to deposit some amount of token
             YourPools[msg.sender].push(PoolID);
