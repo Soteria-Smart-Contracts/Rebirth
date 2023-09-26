@@ -280,7 +280,7 @@ contract RebirthLiquidator {
         uniswapRouter = IUniswapV2Router02(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
     }
 
-    // Function to liquidate memecoins
+    // Function to liquidate memecoins, a
     function liquidate(address memecoinAddress, uint256 amount) external {
         //check if the pair for memecoin address and uniswap router have liqudity
         require(ERC20(uniswapRouter.WETH()).balanceOf(IUniswapV2Factory(uniswapRouter.factory()).getPair(memecoinAddress, uniswapRouter.WETH())) > 0, "Pair doesn't exist or has no liquidity");
