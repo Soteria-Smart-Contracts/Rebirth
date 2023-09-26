@@ -8,6 +8,7 @@ contract RebirthProtocolCore{
     ERC20 public RBH;
     IUniswapV2Factory UniswapFactory = IUniswapV2Factory(0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f);
     IUniswapV2Router02 UniswapRouter = IUniswapV2Router02(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
+    RebirthLiquidator public Liquidator;
     address public FreemintContract;
     uint256[] public OpenPools;
     uint256[] public ClosedPools;
