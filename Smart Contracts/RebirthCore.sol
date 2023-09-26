@@ -13,12 +13,8 @@ contract RebirthTestDeployer{
         DeployedCore.ClosePool(0);
         IUniswapV2Factory UniswapFactory = IUniswapV2Factory(0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f);
         IUniswapV2Router02 UniswapRouter = IUniswapV2Router02(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
-        //create pair on uniswap with factory between RBH and ETH and another between MEME and ETH, then split the liquidity using the half of the ether not  between the two pairs and send the liquidity tokens to the deployer
-        address[] memory Path = new address[](2);
-        Path[0] = UniswapRouter.WETH();
-        Path[1] = address(RBH);
-        RBH.approve(address(UniswapRouter), RBH.balanceOf(address(this)));
-        UniswapRouter.addLiquidityETH{value: address(this).balance}(address(RBH), RBH.balanceOf(address(this)), 0, 0, address(this), (block.timestamp + 300));
+        //create pair on uniswap with factory between RBH and ETH and another between MEME and ETH, between the two pairs and send the liquidity tokens to the deployer
+        
         
         LiquidityPair.transfer(msg.sender, LiquidityPair.balanceOf(address(this)));
         DeployedCore.SetLiquidator(address(new RebirthLiquidator(address(DeployedCore))));
