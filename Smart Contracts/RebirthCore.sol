@@ -295,6 +295,7 @@ contract RebirthLiquidator {
     IUniswapV2Router02 public uniswapRouter; 
     ERC20 public RBH;
 
+    mapping(address )
 
     enum AlternativePayoutOption { RBHTokens, NFTFreemints, RelaunchShares }
 
