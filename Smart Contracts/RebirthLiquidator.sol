@@ -2,8 +2,8 @@
 pragma solidity 0.8.19;
 
 contract RebirthTestDeployer{
-    //this deployer needs to deploy a liquidator contract instance
-    
+    //this deployer needs to deploy a liquidator contract instance, an RBH token to put into its constructor
+
     constructor() {
         
     }
