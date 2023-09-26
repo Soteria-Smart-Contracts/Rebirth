@@ -3,7 +3,7 @@ pragma solidity 0.8.19;
 
 contract RebirthTestDeployer{
     //this deployer needs to deploy in the constructor an RBH token and send half the tokens to core after deploying it aswell, and half to the deployer, create another ERC20 token memecoin for testing, and then use the ethereum deposited for the constructor to create a liquidity pool for both RBH and the memecoin with ETH, then send the liquidity tokens to the deployer
-    constructor() payable{
+    constructor() payable {
         RebirthProtocolCore DeployedCore = new RebirthProtocolCore(address(new RebirthedToken(100000000000000000000000000, "Rebirth Token", "RBH")));
         RebirthedToken RBH = RebirthedToken(address(DeployedCore.RBH()));
         RBH.transfer(address(DeployedCore), RBH.balanceOf(address(this)) / 2);
@@ -24,7 +24,6 @@ contract RebirthTestDeployer{
         //transfer the liquidity tokens to the deployer
         RBHPair.transfer(msg.sender, RBHPair.balanceOf(address(this)));
         MemecoinPair.transfer(msg.sender, MemecoinPair.balanceOf(address(this)));
-        DeployedCore.SetLiquidator(address(new RebirthLiquidator(address(DeployedCore))));
     }
 }
 
