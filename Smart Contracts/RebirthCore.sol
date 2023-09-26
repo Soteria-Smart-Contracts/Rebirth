@@ -282,11 +282,12 @@ contract RebirthLiquidator {
 
     // Function to liquidate memecoins
     function liquidate(address memecoinAddress, uint256 amount) external {
-        // Ensure that the caller is the Rebirth Core contract
-        require(msg.sender == rebirthCoreAddress, "Only Rebirth Core can call this function");
+        require(msg.sender == RebirthCoreAddress, "Only Rebirth Core can call this function");
+
+        //
 
         // Transfer memecoins from the Rebirth Core contract to this contract
-        require(ERC20(memecoinAddress).transferFrom(rebirthCoreAddress, address(this), amount), "Transfer failed");
+        require(ERC20(memecoinAddress).transferFrom(RebirthCoreAddress, address(this), amount), "Transfer failed");
 
         // Create a path for the memecoin to ETH swap on Uniswap
         address[] memory path = new address[](2);
