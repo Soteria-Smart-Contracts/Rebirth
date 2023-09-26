@@ -274,6 +274,8 @@ contract RebirthLiquidator {
     address public RebirthCoreAddress;
     IUniswapV2Router02 public uniswapRouter; 
 
+    enum AlternativePayoutOption { RBHTokens, NFTFreemints, RelaunchShares }
+
     constructor(address rebirthCoreAddress) {
         RebirthCoreAddress = rebirthCoreAddress;
         RBH_SuperAdmin = msg.sender;
