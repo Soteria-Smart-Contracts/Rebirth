@@ -178,6 +178,8 @@ contract RebirthProtocolCore{
             Pools[PoolID].PoolSuccessful = false;
             ERC20 Token = ERC20(Pools[PoolID].TokenAddress);
             Token.transfer(RBH_SuperAdmin, Token.balanceOf(address(this)));
+
+            calculate
         }
         else{
             Pools[PoolID].PoolSuccessful = true;
