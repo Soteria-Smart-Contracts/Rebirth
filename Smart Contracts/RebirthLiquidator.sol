@@ -330,7 +330,7 @@ contract RebirthProtocolCore{
 //This next contract needs to be able to accept any memecoin with any ethereum liquidity on uniswap, sell the ether, send to the rebirthcore superadmin address, then allow the user to claim once again one of the 3 available options
 contract RebirthLiquidator {
     address public RBH_SuperAdmin;
-    address public RebirthCoreAddress;
+    address public  ;
     IUniswapV2Router02 public uniswapRouter; 
     ERC20 public RBH;
     uint256 public TotalEtherLiquidated;
