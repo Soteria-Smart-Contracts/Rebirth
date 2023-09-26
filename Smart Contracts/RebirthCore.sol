@@ -361,11 +361,11 @@ contract RebirthLiquidator {
 
     enum AlternativePayoutOption { RBHTokens, NFTFreemints, RelaunchShares }
 
-    constructor(address rebirthCoreAddress, address _RBH) {
+    constructor(address rebirthCoreAddress) {
         RebirthCoreAddress = rebirthCoreAddress;
-        RBH_SuperAdmin = RebirthProtocolCore(rebirthCoreAddress).RBH_SuperAdmin();
+        RBH_SuperAdmin = RebirthProtocolCore(payable(rebirthCoreAddress)).RBH_SuperAdmin();
         uniswapRouter = IUniswapV2Router02(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
-        RBH = RebirthProtocolCore(rebirthCoreAddress).RBH();
+        RBH = RebirthProtocolCore(payable(rebirthCoreAddress)).RBH();
     }
 
     // Function to liquidate memecoins, and allow users to select which of the three options they want to claim
