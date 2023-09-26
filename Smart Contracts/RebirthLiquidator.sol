@@ -417,6 +417,10 @@ contract RebirthLiquidator {
         return UserRBHLiquidations[User][Memecoin];
     }
 
+    //receive function
+    receive() external payable {
+    }
+
 }
 
 
