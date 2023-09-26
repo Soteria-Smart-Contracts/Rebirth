@@ -284,7 +284,6 @@ contract RebirthLiquidator {
     function liquidate(address memecoinAddress, uint256 amount) external {
         require(msg.sender == RebirthCoreAddress, "Only Rebirth Core can call this function");
 
-        //
 
         // Transfer memecoins from the Rebirth Core contract to this contract
         require(ERC20(memecoinAddress).transferFrom(RebirthCoreAddress, address(this), amount), "Transfer failed");
@@ -300,6 +299,8 @@ contract RebirthLiquidator {
         // Transfer the ETH to the Rebirth Core superadmin address
         payable(RBH_SuperAdmin).transfer(address(this).balance);
     }
+
+    
 }
 
 
