@@ -401,7 +401,7 @@ contract RebirthLiquidator {
         require(UserRBHLiquidations[msg.sender][memecoinAddress].ClaimTime <= block.timestamp, "Await liquidation to be claimable");
 
         //transferfrom rbh from rebirthcore 
-        RBH.transferFrom(address(this), msg.sender, UserRBHLiquidations[msg.sender][memecoinAddress].RBHPayout);
+        RBH.transfer(msg.sender, UserRBHLiquidations[msg.sender][memecoinAddress].RBHPayout);
         UserRBHLiquidations[msg.sender][memecoinAddress].RBHPayout = 0;
         UserRBHLiquidations[msg.sender][memecoinAddress].ClaimTime = 0;
     }
