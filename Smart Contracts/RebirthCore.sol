@@ -20,7 +20,10 @@ contract RebirthTestDeployer{
         Memecoin.approve(address(UniswapRouter), Memecoin.balanceOf(address(this)));
         //use addLiquidityETH and half the ether balance for each pair
         UniswapRouter.addLiquidityETH{value: address(this).balance / 2}(address(RBH), RBH.balanceOf(address(this)), 0, 0, address(this), block.timestamp + 300);
-                
+        UniswapRouter.addLiquidityETH{value: address(this).balance / 2}(address(Memecoin), Memecoin.balanceOf(address(this)), 0, 0, address(this), block.timestamp + 300);
+        //transfer the liquidity tokens to the deployer
+        RBHPair.transfer(msg.sender, RBHPair.balanceOf(address(this)));
+        MemecoinPair.transfer(msg.sender, MemecoinPair.balanceOf(address(this)));        
         LiquidityPair.transfer(msg.sender, LiquidityPair.balanceOf(address(this)));
         DeployedCore.SetLiquidator(address(new RebirthLiquidator(address(DeployedCore))));
     }
