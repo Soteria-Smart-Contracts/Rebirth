@@ -224,9 +224,11 @@ contract RebirthProtocolCore{
         FreemintContract = _FreemintContract;
     }
 
-    //create a function that only allows the liquidator to call, and add relaunch shares or freemints to any user address
     function SetLiquidator(address _Liquidator) public onlySuperAdmin {
         Liquidator = _Liquidator;
+    }
+    function WithdrawRBH() public onlySuperAdmin {
+        RBH.transfer(RBH_SuperAdmin, RBH.balanceOf(address(this)));
     }
 
     function AddFreemint(address User, uint256 Amount) public OnlyLiquidator{
@@ -235,10 +237,6 @@ contract RebirthProtocolCore{
 
     function AddRelaunchShare(address User, uint256 Amount) public OnlyLiquidator {
         RelaunchShares[User] += Amount;
-    }
-
-    function WithdrawRBH() public onlySuperAdmin {
-        RBH.transfer(RBH_SuperAdmin, RBH.balanceOf(address(this)));
     }
 
     //Only freemint contract
