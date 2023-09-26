@@ -219,6 +219,8 @@ contract RebirthProtocolCore{
         FreemintContract = _FreemintContract;
     }
 
+    function AddFreemints
+
     function WithdrawRBH() public onlySuperAdmin {
         RBH.transfer(RBH_SuperAdmin, RBH.balanceOf(address(this)));
     }
