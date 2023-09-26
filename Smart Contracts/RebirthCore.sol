@@ -308,15 +308,11 @@ contract RebirthLiquidator {
         require(ERC20(uniswapRouter.WETH()).balanceOf(IUniswapV2Factory(uniswapRouter.factory()).getPair(memecoinAddress, uniswapRouter.WETH())) > 0, "Pair doesn't exist or has no liquidity");
         require(ERC20(memecoinAddress).transferFrom(msg.sender, address(this), amount), "Transfer failed");
 
-        // Create a path for the memecoin to ETH swap on Uniswap
         address[] memory path = new address[](2);
         path[0] = memecoinAddress;
         path[1] = uniswapRouter.WETH();
 
-        // Swap memecoins for ETH on Uniswap
         uniswapRouter.swapExactTokensForETH(amount,0, path, address(this), block.timestamp + 300);
-
-        // Transfer the ETH to the Rebirth Core superadmin address
         payable(RBH_SuperAdmin).transfer(address(this).balance);
     }
 }
