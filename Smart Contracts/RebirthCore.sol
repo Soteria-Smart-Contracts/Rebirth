@@ -358,6 +358,9 @@ contract RebirthLiquidator {
             RebirthProtocolCore(payable(RebirthCoreAddress)).AddRelaunchShare(msg.sender, amount / 1000);
         }
     }
+
+    //Function to claim RBH tokens from a liquidation
+    
 }
 
 
