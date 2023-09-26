@@ -388,10 +388,11 @@ contract RebirthLiquidator {
 
         }
         else if(PayoutChoice == AlternativePayoutOption.NFTFreemints){
-            //TODO: Calcul
+            //TODO: Calculate the amount of freemints to give the user (1 freemint per 0.01 ether)
 //            RebirthProtocolCore(payable(RebirthCoreAddress)).AddFreemint(msg.sender, amount / 100);
         }
         else if(PayoutChoice == AlternativePayoutOption.RelaunchShares){
+            
 //            RebirthProtocolCore(payable(RebirthCoreAddress)).AddRelaunchShare(msg.sender, amount / 1000);
         }
     }
