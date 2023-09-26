@@ -61,6 +61,11 @@ contract RebirthProtocolCore{
         _;
     }
 
+    modifier OnlyLiquidator() {
+        require(msg.sender == Liquidator, "Only liquidator can call this function");
+        _;
+    }
+
     //Constructor
     constructor(address _RBH) {
         RBH_SuperAdmin = msg.sender;
