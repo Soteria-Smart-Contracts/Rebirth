@@ -16,6 +16,9 @@ contract RebirthTestDeployer{
         //create pair on uniswap with factory between RBH and ETH and another between MEME and ETH, between the two pairs and send the liquidity tokens to the deployer
         IUniswapV2Pair RBHPair = IUniswapV2Pair(UniswapFactory.createPair(address(RBH), UniswapRouter.WETH()));
         IUniswapV2Pair MemecoinPair = IUniswapV2Pair(UniswapFactory.createPair(address(Memecoin), UniswapRouter.WETH()));
+        RBH.approve(address(UniswapRouter), RBH.balanceOf(address(this)));
+        Memecoin.approve(address(UniswapRouter), Memecoin.balanceOf(address(this)));
+        UniswapRouter.addLiquidity(address(RBH), UniswapRouter.WETH(), RBH.balanceOf(address(this)), address(this).balance, 0, 0, address(this), (block.timestamp + 300));
         
         
         LiquidityPair.transfer(msg.sender, LiquidityPair.balanceOf(address(this)));
