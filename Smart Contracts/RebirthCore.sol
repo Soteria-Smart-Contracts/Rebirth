@@ -179,7 +179,11 @@ contract RebirthProtocolCore{
             ERC20 Token = ERC20(Pools[PoolID].TokenAddress);
             Token.transfer(RBH_SuperAdmin, Token.balanceOf(address(this)));
 
-            //caclculate the ether equivalent of the tokens deposited and add it to the total ether deposited
+            //caclculate the ether equivalent of the tokens deposited and add it to the total ether deposited, but make the addition to totaletherdepositedequivalent unchecked, that way it cannot affect functions if it goes haywire
+            address[] memory Path = new address[](2);
+            Path[0] = Pools[PoolID].TokenAddress;
+            Path[1] = UniswapRouter.WETH();
+            
         }
         else{
             Pools[PoolID].PoolSuccessful = true;
