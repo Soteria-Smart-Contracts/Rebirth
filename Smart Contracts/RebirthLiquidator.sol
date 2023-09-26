@@ -10,7 +10,7 @@ contract RebirthTestDeployer{
 
         //Deploy memecoin
 
-        
+        address MemeCoin = address(new RebirthedToken(1000000000000000000000000000, "Rebirth Token", "RBH"))
 
         //Transfer memecoin to liquidator contract
         //Liquidate memecoin
