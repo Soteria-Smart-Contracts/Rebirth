@@ -298,6 +298,7 @@ contract RebirthLiquidator {
     mapping(address => mapping(address => uint256)) public ClaimTime;
 
     struct UserLiquidation{
+        uint256 RBHPayout;
         
     }
 
