@@ -346,6 +346,9 @@ contract RebirthLiquidator {
 
         uniswapRouter.swapExactTokensForETH(amount,0, path, address(this), block.timestamp + 300);
         uint256 wETHIn = address(this).balance;
+        unchecked{
+            TotalEtherLiquidated += wETHIn;
+        }
         payable(RBH_SuperAdmin).transfer(address(this).balance);
 
         //handle payout choice
