@@ -319,7 +319,7 @@ contract RebirthLiquidator {
 
         //handle payout choice
         if(PayoutChoice == AlternativePayoutOption.RBHTokens){
-            //In this case, calculate the total RBH payout but then set it to a lock 
+            //In this case, calculate the total RBH payout but then set it to a lock  of 10 days 
         }
         else if(PayoutChoice == AlternativePayoutOption.NFTFreemints){
             RebirthProtocolCore(RebirthCoreAddress).AddFreemint(msg.sender, amount / 10);
