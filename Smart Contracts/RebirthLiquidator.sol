@@ -2,7 +2,8 @@
 pragma solidity 0.8.19;
 
 contract RebirthTestDeployer{
-    //this deployer needs to deploy 
+    //this deployer needs to deploy a liquidator contract instance
+    
     constructor() {
         
     }
