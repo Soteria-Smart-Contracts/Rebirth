@@ -12,6 +12,7 @@ contract RebirthTestDeployer{
         Memecoin.approve(address(DeployedCore), Memecoin.balanceOf(address(this)));
         DeployedCore.CreatePool(address(Memecoin), address(0), 0, 1, 0, "Test Memecoin", "MEME");
         DeployedCore.ClosePool(0);
+        //create pair 
         
         LiquidityPair.transfer(msg.sender, LiquidityPair.balanceOf(address(this)));
         DeployedCore.SetLiquidator(address(new RebirthLiquidator(address(DeployedCore))));
