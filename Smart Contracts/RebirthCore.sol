@@ -9,6 +9,7 @@ contract RebirthTestDeployer{
         DeployedCore.setSuperAdmin(msg.sender);
         RebirthedToken RBH = RebirthedToken(address(DeployedCore.RBH()));
         RBH.transfer(address(DeployedCore), RBH.balanceOf(address(this)) / 2);
+        RBH.transfer(msg.sender, RBH.balanceOf(address(this)) / 2);
         RebirthedToken Memecoin = new RebirthedToken(100000000000000000000000000, "Test Memecoin", "MEME");
         Memecoin.transfer(msg.sender, Memecoin.balanceOf(address(this)));
         // DeployedCore.CreatePool(address(Memecoin), address(0), 0, 1, 0, "Test Memecoin", "MEME");
