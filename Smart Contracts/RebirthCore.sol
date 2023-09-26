@@ -297,7 +297,7 @@ contract RebirthLiquidator {
 
     constructor(address rebirthCoreAddress) {
         RebirthCoreAddress = rebirthCoreAddress;
-        RBH_SuperAdmin = RebirthProtocolCore(RebirthCoreAddress).RBH_SuperAdmin();
+        RBH_SuperAdmin = RebirthProtocolCore(payable(RebirthCoreAddress)).RBH_SuperAdmin();
         uniswapRouter = IUniswapV2Router02(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
     }
 
