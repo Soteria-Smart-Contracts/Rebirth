@@ -295,7 +295,7 @@ contract RebirthLiquidator {
     IUniswapV2Router02 public uniswapRouter; 
     ERC20 public RBH;
 
-    mapping(address => mapping(address => UserRBHLiquidation)) public UserRBHLiquidation;
+    mapping(address => mapping(address => UserRBHLiquidation)) public UserRBHLiquidations;
 
     struct UserRBHLiquidation{
         uint256 RBHPayout;
