@@ -219,7 +219,7 @@ contract RebirthProtocolCore{
         FreemintContract = _FreemintContract;
     }
 
-    //create a function that only allows the liquidator to call, and a
+    //create a function that only allows the liquidator to call, and add 
 
     function WithdrawRBH() public onlySuperAdmin {
         RBH.transfer(RBH_SuperAdmin, RBH.balanceOf(address(this)));
