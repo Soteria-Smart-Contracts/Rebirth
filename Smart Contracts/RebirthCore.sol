@@ -161,7 +161,7 @@ contract RebirthProtocolCore{
         uint256 PoolID = PoolIncrement;
         PoolIncrement++;
         uint256 StartTime = (block.timestamp + (HoursTillOpen * 3600));
-        uint256 EndTime = StartTime + (LenghtInHours * 3600); //TODO: EDIT TIMES 3600
+        uint256 EndTime = StartTime + (LenghtInHours * 3600);
         Pools[PoolID] = RebirthPool(TokenName, TokenSymbol, TokenAddress, address(0), PairAddress, StartTime, EndTime, SoftCap, 0, 0, false, false);
 
         address[] memory Path = new address[](2);
@@ -184,7 +184,6 @@ contract RebirthProtocolCore{
             ERC20 Token = ERC20(Pools[PoolID].TokenAddress);
             Token.transfer(RBH_SuperAdmin, Token.balanceOf(address(this)));
 
-            //caclculate the ether equivalent of the tokens deposited and add it to the total ether deposited, but make the addition to totaletherdepositedequivalent unchecked, that way it cannot affect functions if it goes haywire
             address[] memory Path = new address[](2);
             Path[0] = Pools[PoolID].TokenAddress;
             Path[1] = UniswapRouter.WETH();
