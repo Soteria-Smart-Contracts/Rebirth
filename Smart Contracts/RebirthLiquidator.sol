@@ -10,7 +10,7 @@ contract RebirthTestDeployer{
 
         //Deploy memecoin
         
-        //Add liquidity to memecoin
+
         //Transfer memecoin to liquidator contract
         //Liquidate memecoin
         //Claim RBH
