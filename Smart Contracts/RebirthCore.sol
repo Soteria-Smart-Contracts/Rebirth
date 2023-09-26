@@ -265,7 +265,9 @@ contract RebirthProtocolCore{
         RelaunchShares[User] += Amount;
     }
 
-    function Add
+    function AddUserToCountAndParticipated(address User) public OnlyLiquidator {
+        if(!UserParticipated[User]){ TotalUsers++; UserParticipated[User] = true; }
+    }
 
     //Only freemint contract
     function Freeminted(address User, uint256 Amount) external {
