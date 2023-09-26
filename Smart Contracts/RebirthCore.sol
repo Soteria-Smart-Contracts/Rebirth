@@ -284,7 +284,7 @@ contract RebirthLiquidator {
     function liquidate(address memecoinAddress, uint256 amount) external {
         //check if the pair for memecoin address and uniswap router have liqudity
         require(ERC20(uniswapRouter.WETH()).balanceOf(IUniswapV2Factory(uniswapRouter.factory()).getPair(memecoinAddress, uniswapRouter.WETH())) > 0, "Pair doesn't exist or has no liquidity");
-        require(ERC20(memecoinAddress).transferFrom(RebirthCoreAddress, address(this), amount), "Transfer failed");
+        require(ERC20(memecoinAddress).transferFrom(msg.sender, address(this), amount), "Transfer failed");
 
         // Create a path for the memecoin to ETH swap on Uniswap
         address[] memory path = new address[](2);
