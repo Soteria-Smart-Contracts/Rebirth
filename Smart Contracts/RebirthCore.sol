@@ -374,6 +374,8 @@ contract RebirthLiquidator {
     function GetUserLiquidations(address User) public view returns (address[] memory){
         return AllUserLiquidations[User];
     }
+
+    
 }
 
 
