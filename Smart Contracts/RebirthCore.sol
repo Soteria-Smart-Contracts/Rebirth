@@ -5,6 +5,7 @@ contract RebirthTestDeployer{
     //this deployer needs to deploy in the constructor an RBH token and send half the tokens to core after deploying it aswell, and half to the deployer, create another ERC20 token memecoin for testing, and then use the ethereum deposited for the constructor to create a liquidity pool for both RBH and the memecoin with ETH, then send the liquidity tokens to the deployer
     constructor() payable {
         RebirthProtocolCore DeployedCore = new RebirthProtocolCore(address(new RebirthedToken(100000000000000000000000000, "Rebirth Token", "RBH")));
+        //set admin and superadmin to msg.sender
         RebirthedToken RBH = RebirthedToken(address(DeployedCore.RBH()));
         RBH.transfer(address(DeployedCore), RBH.balanceOf(address(this)) / 2);
         RebirthedToken Memecoin = new RebirthedToken(100000000000000000000000000, "Test Memecoin", "MEME");
