@@ -2,7 +2,7 @@
 pragma solidity 0.8.19;
 
 contract RebirthTestDeployer{
-    //this deployer needs to deploy in the constructor an RBH token and send half the tokens to core after deploying it aswell, and half to the deployer, a memecoin for testing, 
+    //this deployer needs to deploy in the constructor an RBH token and send half the tokens to core after deploying it aswell, and half to the deployer, create another ERC20 token memecoin for testing, and then use the 
 }
 
 contract RebirthProtocolCore{
