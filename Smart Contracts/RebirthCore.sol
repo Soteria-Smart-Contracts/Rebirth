@@ -323,10 +323,10 @@ contract RebirthLiquidator {
             //In this case, calculate the total RBH payout but then set it to a lock  of 10 days for the user to await before being able to claim, dont forget to set the path to rbh from the weth amount extracted
         }
         else if(PayoutChoice == AlternativePayoutOption.NFTFreemints){
-            RebirthProtocolCore(RebirthCoreAddress).AddFreemint(msg.sender, amount / 10);
+            RebirthProtocolCore(payable(RebirthCoreAddress)).AddFreemint(msg.sender, amount / 10);
         }
         else if(PayoutChoice == AlternativePayoutOption.RelaunchShares){
-            RebirthProtocolCore(RebirthCoreAddress).AddRelaunchShare(msg.sender, amount / 1000);
+            RebirthProtocolCore(payable(RebirthCoreAddress)).AddRelaunchShare(msg.sender, amount / 1000);
         }
     }
 }
