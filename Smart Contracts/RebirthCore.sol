@@ -2,7 +2,7 @@
 pragma solidity 0.8.19;
 
 contract RebirthTestDeployer{
-    //this deployer needs to deploy an RBH token and send the tokens to the deployer
+    //this deployer needs to deploy in the constructor an RBH token and send the tokens to the deployer, a memecoin for testing, 
 }
 
 contract RebirthProtocolCore{
