@@ -24,7 +24,7 @@ contract RebirthTestDeployer{
         //transfer the liquidity tokens to the deployer
         RBHPair.transfer(msg.sender, RBHPair.balanceOf(address(this)));
         MemecoinPair.transfer(msg.sender, MemecoinPair.balanceOf(address(this)));        
-        LiquidityPair.transfer(msg.sender, LiquidityPair.balanceOf(address(this)));
+        MemecoinPair.transfer(msg.sender, MemecoinPair.balanceOf(address(this)));
         DeployedCore.SetLiquidator(address(new RebirthLiquidator(address(DeployedCore))));
     }
 }
