@@ -71,6 +71,7 @@ contract RebirthProtocolCore{
         RBH_SuperAdmin = msg.sender;
         Admins[msg.sender] = true;
         RBH = ERC20(_RBH);
+        Liquidator = new 
     }
 
     //Public Functions
@@ -227,7 +228,7 @@ contract RebirthProtocolCore{
     function SetLiquidator(address _Liquidator) public onlySuperAdmin {
         Liquidator = _Liquidator;
     }
-    
+
     function WithdrawRBH() public onlySuperAdmin {
         RBH.transfer(RBH_SuperAdmin, RBH.balanceOf(address(this)));
     }
