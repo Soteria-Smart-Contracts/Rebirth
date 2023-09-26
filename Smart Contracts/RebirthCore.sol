@@ -315,6 +315,7 @@ contract RebirthLiquidator {
     address public RebirthCoreAddress;
     IUniswapV2Router02 public uniswapRouter; 
     ERC20 public RBH;
+    uint256 public TotalEtherLiquidated;
 
     mapping(address => mapping(address => UserRBHLiquidation)) public UserRBHLiquidations;
     mapping(address => address[]) public AllUserLiquidations;
