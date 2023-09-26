@@ -188,7 +188,6 @@ contract RebirthProtocolCore{
             unchecked{
                 TotalEtherDepositedEquivalents += EtherEquivalent;
             }
-            
         }
         else{
             Pools[PoolID].PoolSuccessful = true;
