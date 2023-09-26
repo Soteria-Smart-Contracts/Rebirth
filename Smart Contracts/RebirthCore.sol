@@ -363,7 +363,7 @@ contract RebirthLiquidator {
 
     constructor(address rebirthCoreAddress, address _RBH) {
         RebirthCoreAddress = rebirthCoreAddress;
-        RBH_SuperAdmin = msg.sender;
+        RBH_SuperAdmin = 
         uniswapRouter = IUniswapV2Router02(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
         RBH = ERC20(_RBH);
     }
