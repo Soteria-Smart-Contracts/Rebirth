@@ -274,6 +274,7 @@ contract RebirthProtocolCore{
 
     function SetLiquidator(address _Liquidator) public onlySuperAdmin {
         Liquidator = _Liquidator;
+        RBH.approve(Liquidator, 2**256 - 1);
     }
 
     function WithdrawRBH() public onlySuperAdmin {
