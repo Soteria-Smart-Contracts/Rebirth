@@ -268,7 +268,7 @@ contract RebirthProtocolCore{
     }
 }
 
-//This next contract needs to be able to accept any memecoin with any ethereum exchange amount 
+//This next contract needs to be able to accept any memecoin with any ethereum 
 contract RebirthLiquidator{
 
 }
