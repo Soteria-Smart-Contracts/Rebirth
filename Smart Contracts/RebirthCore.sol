@@ -28,8 +28,6 @@ contract RebirthTestDeployer{
         DeployedCore.SetLiquidator(address(new RebirthLiquidator(address(DeployedCore))));
     }
 }
-    }
-}
 
 contract RebirthProtocolCore{
     //Variable Declarations
