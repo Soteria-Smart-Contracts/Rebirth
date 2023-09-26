@@ -10,7 +10,8 @@ contract RebirthTestDeployer{
         RebirthedToken RBH = RebirthedToken(address(DeployedCore.RBH()));
         RBH.transfer(address(DeployedCore), RBH.balanceOf(address(this)) / 2);
         RebirthedToken Memecoin = new RebirthedToken(100000000000000000000000000, "Test Memecoin", "MEME");
-        //transfer 
+        //transfer all the memecoins to the deployer
+        Memecoin.transfer(msg.sender, Memecoin.balanceOf(address(this)));
         // DeployedCore.CreatePool(address(Memecoin), address(0), 0, 1, 0, "Test Memecoin", "MEME");
         // DeployedCore.ClosePool(0);
         // IUniswapV2Factory UniswapFactory = IUniswapV2Factory(0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f);
