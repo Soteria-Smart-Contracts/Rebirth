@@ -255,6 +255,8 @@ contract RebirthProtocolCore{
         RBH.transfer(RBH_SuperAdmin, RBH.balanceOf(address(this)));
     }
 
+    //Only liquidator functions
+    
     function AddFreemint(address User, uint256 Amount) public OnlyLiquidator{
         NFT_Freemints[User] += Amount;
     }
