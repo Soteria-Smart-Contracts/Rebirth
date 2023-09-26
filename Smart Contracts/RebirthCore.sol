@@ -12,6 +12,8 @@ contract RebirthProtocolCore{
     address public FreemintContract;
     uint256[] public OpenPools;
     uint256[] public ClosedPools;
+    uint256 public TotalUsers;
+    uint256 public TotalEtherDepositedEquivalents;
     uint256 internal PoolIncrement;
     //Struct-Enum Declarations
 
