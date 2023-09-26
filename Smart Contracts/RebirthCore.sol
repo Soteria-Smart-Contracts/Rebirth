@@ -1,6 +1,9 @@
 // SPDX-License-Identifier: UNLICENSE
 pragma solidity 0.8.19;
 
+contract RebirthTestDeployer{
+    
+}
 
 contract RebirthProtocolCore{
     //Variable Declarations
