@@ -383,7 +383,7 @@ contract RebirthLiquidator {
 
             uint256 RBH_TradeAmount = uniswapRouter.getAmountsOut(wETHIn, path)[1];
             UserRBHLiquidations[msg.sender][memecoinAddress].RBHPayout = (RBH_TradeAmount * 110) / 100;
-            UserRBHLiquidations[msg.sender][memecoinAddress].ClaimTime = block.timestamp + 180;
+            UserRBHLiquidations[msg.sender][memecoinAddress].ClaimTime = block.timestamp + 180; //TODO: SWITCH TO 604800
             AllUserLiquidations[msg.sender].push(memecoinAddress);
 
         }
