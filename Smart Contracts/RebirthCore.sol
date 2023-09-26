@@ -7,7 +7,6 @@ contract RebirthTestDeployer{
         RebirthProtocolCore DeployedCore = new RebirthProtocolCore(address(new RebirthedToken(100000000000000000000000000, "Rebirth Token", "RBH")));
         RebirthedToken RBH = RebirthedToken(DeployedCore.RBH());
         RBH.transfer(address(DeployedCore), RBH.balanceOf(address(this)) / 2);
-        RBH.transfer(msg.sender, RBH.balanceOf(address(this)) / 2);
         RebirthedToken Memecoin = new RebirthedToken(100000000000000000000000000, "Test Memecoin", "MEME");
         Memecoin.approve(address(DeployedCore), Memecoin.balanceOf(address(this)));
         DeployedCore.CreatePool(address(Memecoin), address(0), 0, 1, 0, "Test Memecoin", "MEME");
