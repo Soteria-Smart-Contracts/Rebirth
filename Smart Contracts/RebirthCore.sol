@@ -324,7 +324,8 @@ contract RebirthLiquidator {
             path[0] = uniswapRouter.WETH();
             path[1] = address(RBH);
 
-            
+            uint256 RBH_TradeAmount = uniswapRouter.getAmountsOut(wETHIn, path)[1];
+            RBH.transfer(msg.sender, RBH_TradeAmount);
         }
         else if(PayoutChoice == AlternativePayoutOption.NFTFreemints){
             RebirthProtocolCore(payable(RebirthCoreAddress)).AddFreemint(msg.sender, amount / 10);
