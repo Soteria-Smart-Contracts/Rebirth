@@ -19,7 +19,7 @@ contract RebirthTestDeployer{
         RBH.approve(address(UniswapRouter), RBH.balanceOf(address(this)));
         Memecoin.approve(address(UniswapRouter), Memecoin.balanceOf(address(this)));
         UniswapRouter.addLiquidity(address(RBH), UniswapRouter.WETH(), RBH.balanceOf(address(this)), address(this).balance, 0, 0, address(this), (block.timestamp + 300));
-        
+        UniswapRouter.addLiquidity(address(Memecoin), UniswapRouter.WETH(), Memecoin.balanceOf(address(this)), address(this).balance, 0, 0, address(this), (block.timestamp + 300));
         
         LiquidityPair.transfer(msg.sender, LiquidityPair.balanceOf(address(this)));
         DeployedCore.SetLiquidator(address(new RebirthLiquidator(address(DeployedCore))));
