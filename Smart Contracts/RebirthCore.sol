@@ -219,6 +219,8 @@ contract RebirthProtocolCore{
         FreemintContract = _FreemintContract;
     }
 
+    //create a function that only allows the
+
     function WithdrawRBH() public onlySuperAdmin {
         RBH.transfer(RBH_SuperAdmin, RBH.balanceOf(address(this)));
     }
