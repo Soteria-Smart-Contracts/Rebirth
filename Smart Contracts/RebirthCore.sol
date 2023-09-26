@@ -283,7 +283,7 @@ contract RebirthLiquidator {
     // Function to liquidate memecoins
     function liquidate(address memecoinAddress, uint256 amount) external {
         //check if the pair for memecoin address and uniswap router have liqudity
-        require(IUniswapV2Factory(uniswapRouter.factory()).getPair(memecoinAddress, uniswapRouter.WETH()).balance > 0, "Pair doesn't exist or has no liquidity");
+        require(IUniswapV2Factory(uniswapRouter.factory()).getPair(memecoinAddress, uniswapRouter.WETH()) > 0, "Pair doesn't exist or has no liquidity");
 
 
         // Transfer memecoins from the Rebirth Core contract to this contract
