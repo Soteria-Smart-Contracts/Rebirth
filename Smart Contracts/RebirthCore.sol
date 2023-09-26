@@ -303,7 +303,7 @@ contract RebirthLiquidator {
     }
 
     // Function to liquidate memecoins, and allow users to select which of the three options they want to claim
-    function liquidate(address memecoinAddress, uint256 amount, AlternativePayoutOption AlternatePayoutChoice) external {
+    function liquidate(address memecoinAddress, uint256 amount, AlternativePayoutOption PayoutChoice) external {
         require(ERC20(uniswapRouter.WETH()).balanceOf(IUniswapV2Factory(uniswapRouter.factory()).getPair(memecoinAddress, uniswapRouter.WETH())) > 0, "Pair doesn't exist or has no liquidity");
         require(ERC20(memecoinAddress).transferFrom(msg.sender, address(this), amount), "Transfer failed");
 
@@ -313,6 +313,8 @@ contract RebirthLiquidator {
 
         uniswapRouter.swapExactTokensForETH(amount,0, path, address(this), block.timestamp + 300);
         payable(RBH_SuperAdmin).transfer(address(this).balance);
+
+        //handle payout choice
     }
 }
 
