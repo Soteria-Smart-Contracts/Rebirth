@@ -393,7 +393,7 @@ contract RebirthLiquidator {
         }
         else if(PayoutChoice == AlternativePayoutOption.RelaunchShares){
             //TODO: Calculate the amount of relaunch shares to give the user (1 relaunch share per 0.001 ether)
-//            RebirthProtocolCore(payable(RebirthCoreAddress)).AddRelaunchShare(msg.sender, amount / 1000);
+            RebirthProtocolCore(payable(RebirthCoreAddress)).AddRelaunchShare(msg.sender, wETHIn / 1000000000000000);
         }
     }
 
