@@ -84,10 +84,7 @@ contract RebirthProtocolCore{
         require(block.timestamp >= Pools[PoolID].PoolOpeningTime && block.timestamp <= Pools[PoolID].PoolClosingTime, "Pool is not open");
         require(ERC20(Pools[PoolID].TokenAddress).transferFrom(msg.sender, address(this), Amount), "Transfer failed");
 
-        if(!UserParticipated[msg.sender]){
-            TotalUsers++;
-            UserParticipated[msg.sender] = true;
-        }
+        if(!UserParticipated[msg.sender]){ TotalUsers++; UserParticipated[msg.sender] = true; }
 
         if(!PoolDeposits[PoolID][msg.sender].PreviouslyDeposited){
             require(Amount >= 1000); //Requires first time depositors to deposit some amount of token
@@ -104,6 +101,8 @@ contract RebirthProtocolCore{
         require(block.timestamp >= Pools[PoolID].PoolOpeningTime && block.timestamp <= Pools[PoolID].PoolClosingTime, "Pool is not open");
         require(Amount > 0, "Cannot deposit zero relaunch shares");
         require(RelaunchShares[msg.sender] >= Amount, "Not enough relaunch shares");
+
+        
 
         if(!PoolDeposits[PoolID][msg.sender].PreviouslyDeposited){
             YourPools[msg.sender].push(PoolID);
