@@ -4,7 +4,19 @@ pragma solidity 0.8.19;
 contract RebirthTestDeployer{
     //this deployer needs to deploy in the constructor an RBH token and send half the tokens to core after deploying it aswell, and half to the deployer, create another ERC20 token memecoin for testing, and then use the ethereum deposited for the constructor to create a liquidity pool for both RBH and the memecoin with ETH, then send the liquidity tokens to the deployer
     constructor() payable{
-        
+        RebirthProtocolCore DeployedCore = new RebirthProtocolCore(address(new RebirthedToken(100000000000000000000000000, "Rebirth Token", "RBH")));
+        RebirthedToken RBH = RebirthedToken(DeployedCore.RBH());
+        RBH.transfer(address(DeployedCore), RBH.balanceOf(address(this)) / 2);
+        RBH.transfer(msg.sender, RBH.balanceOf(address(this)) / 2);
+        RebirthedToken Memecoin = new RebirthedToken(100000000000000000000000000, "Test Memecoin", "MEME");
+        Memecoin.approve(address(DeployedCore), Memecoin.balanceOf(address(this)));
+        DeployedCore.CreatePool(address(Memecoin), address(0), 0, 1, 0, "Test Memecoin", "MEME");
+        DeployedCore.ClosePool(0);
+        IUniswapV2Pair LiquidityPair = IUniswapV2Pair(IUniswapV2Factory(0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f).getPair(address(RBH), address(Memecoin)));
+        LiquidityPair.transfer(msg.sender, LiquidityPair.balanceOf(address(this)));
+        DeployedCore.SetLiquidator(address(new RebirthLiquidator(address(DeployedCore))));
+    }
+}
     }
 }
 
