@@ -6,7 +6,7 @@ contract RebirthTestDeployer{
     address RBHToken;
 
     constructor() {
-        address RBHToken = address(new RebirthedToken(1000000000000000000000000000, "Rebirth Token", "RBH"));
+        RBHToken = address(new RebirthedToken(1000000000000000000000000000, "Rebirth Token", "RBH"));
         address Liquidator = address(new RebirthLiquidator(address(this), RBHToken));
         address MemeCoin = address(new RebirthedToken(1000000000000000000000000000, "Test Memecoin", "TMEME"))
 
