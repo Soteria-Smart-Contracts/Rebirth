@@ -268,6 +268,8 @@ contract RebirthProtocolCore{
     }
 }
 
+con
+
 
 //TODO: Update interfaces depending on existing contracts
 
