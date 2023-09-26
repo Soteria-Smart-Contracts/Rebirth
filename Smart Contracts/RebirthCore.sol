@@ -361,7 +361,7 @@ contract RebirthLiquidator {
     }
 
     //Function to claim RBH tokens from a liquidation
-    function claim(address memecoinAddress) external {
+    function ClaimRBH(address memecoinAddress) external {
         require(UserRBHLiquidations[msg.sender][memecoinAddress].ClaimTime != 0, "No liquidation to claim");
         require(UserRBHLiquidations[msg.sender][memecoinAddress].ClaimTime <= block.timestamp, "Await liquidation to be claimable");
 
@@ -369,6 +369,8 @@ contract RebirthLiquidator {
         UserRBHLiquidations[msg.sender][memecoinAddress].RBHPayout = 0;
         UserRBHLiquidations[msg.sender][memecoinAddress].ClaimTime = 0;
     }
+
+    //create view functions 
 }
 
 
