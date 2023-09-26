@@ -392,7 +392,7 @@ contract RebirthLiquidator {
 //            RebirthProtocolCore(payable(RebirthCoreAddress)).AddFreemint(msg.sender, amount / 100);
         }
         else if(PayoutChoice == AlternativePayoutOption.RelaunchShares){
-            
+            //TODO: Calculate the amount of relaunch shares to give the user (1 relaunch share per 0.001 ether)
 //            RebirthProtocolCore(payable(RebirthCoreAddress)).AddRelaunchShare(msg.sender, amount / 1000);
         }
     }
