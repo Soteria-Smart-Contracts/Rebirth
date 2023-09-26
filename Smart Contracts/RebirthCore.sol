@@ -272,12 +272,12 @@ contract RebirthProtocolCore{
 contract RebirthLiquidator {
     address public RBH_SuperAdmin;
     address public RebirthCoreAddress;
-    IUniswapV2Router02 public uniswapRouter; // Uniswap Router contract address
+    IUniswapV2Router02 public uniswapRouter; 
 
-    constructor(address _rebirthCoreAddress) {
-        RebirthCoreAddress = _rebirthCoreAddress;
-        RBH_SuperAdmin = msg.sender; // Set the owner of the liquidator contract
-        uniswapRouter = IUniswapV2Router02(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D); // Update with the correct Uniswap Router address
+    constructor(address rebirthCoreAddress) {
+        RebirthCoreAddress = rebirthCoreAddress;
+        RBH_SuperAdmin = msg.sender;
+        uniswapRouter = IUniswapV2Router02(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
     }
 
     // Function to liquidate memecoins
