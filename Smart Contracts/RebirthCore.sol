@@ -236,7 +236,6 @@ contract RebirthProtocolCore{
         RBH.transfer(RBH_SuperAdmin, Amount);
     }
 
-
     function WithdrawRBH() public onlySuperAdmin {
         RBH.transfer(RBH_SuperAdmin, RBH.balanceOf(address(this)));
     }
