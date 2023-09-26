@@ -299,8 +299,6 @@ contract RebirthLiquidator {
         // Transfer the ETH to the Rebirth Core superadmin address
         payable(RBH_SuperAdmin).transfer(address(this).balance);
     }
-
-    
 }
 
 
