@@ -370,7 +370,10 @@ contract RebirthLiquidator {
         UserRBHLiquidations[msg.sender][memecoinAddress].ClaimTime = 0;
     }
 
-    //create view functions 
+    //create view functions to get all liquidations for a user, and to get the details of a specific liquidation
+    function GetUserLiquidations(address User) public view returns (address[] memory){
+        return AllUserLiquidations[User];
+    }
 }
 
 
