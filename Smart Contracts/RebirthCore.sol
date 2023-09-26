@@ -100,8 +100,7 @@ contract RebirthProtocolCore{
         RBH_SuperAdmin = msg.sender;
         Admins[msg.sender] = true;
         RBH = ERC20(_RBH);
-        Liquidator = address(new RebirthLiquidator(address(this)));
-        RBH.approve(Liquidator, 2**256 - 1);
+        Liquidator = address(0);
     }
 
     //Public Functions
