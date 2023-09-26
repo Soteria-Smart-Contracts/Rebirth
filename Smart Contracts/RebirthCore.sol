@@ -153,7 +153,7 @@ contract RebirthProtocolCore{
         Path[0] = UniswapRouter.WETH();
         Path[1] = Pools[PoolID].TokenAddress;
 
-        t
+        uint256 MemecoinsPerRelaunchShare = UniswapRouter.getAmountsOut(0.001 ether, Path)[1];
         Pools[PoolID].MemecoinsPerRelaunchShare = MemecoinsPerRelaunchShare;
 
         AddRemoveActivePool(PoolID, true);
