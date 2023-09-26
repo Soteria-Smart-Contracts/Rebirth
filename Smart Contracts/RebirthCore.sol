@@ -312,7 +312,7 @@ contract RebirthLiquidator {
     ERC20 public RBH;
 
     mapping(address => mapping(address => UserRBHLiquidation)) public UserRBHLiquidations;
-    mapping
+    mapping(address => address[])
 
     struct UserRBHLiquidation{
         uint256 RBHPayout;
