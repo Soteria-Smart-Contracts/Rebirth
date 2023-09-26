@@ -2,7 +2,7 @@
 pragma solidity 0.8.19;
 
 contract RebirthTestDeployer{
-    //this deployer needs to deploy the core contract, 
+    //this deployer needs to deploy an RBH token and send the tokens to the deployer
 }
 
 contract RebirthProtocolCore{
