@@ -319,12 +319,7 @@ contract RebirthLiquidator {
 
         //handle payout choice
         if(PayoutChoice == AlternativePayoutOption.RBHTokens){
-            //Send RBH tokens to the user
-            path[0] = uniswapRouter.WETH();
-            path[1] = address(RBH);
-
-            uint256 RBHpayout = (uniswapRouter.getAmountsOut(0.001 ether, path)[1] * 110) / 100;
-            RBH.transfer(msg.sender, RBHpayout);
+            //In this case, calculate the total RBH payout but then set it to a lock 
         }
         else if(PayoutChoice == AlternativePayoutOption.NFTFreemints){
             RebirthProtocolCore(RebirthCoreAddress).AddFreemint(msg.sender, amount / 10);
