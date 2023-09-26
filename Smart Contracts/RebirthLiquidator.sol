@@ -389,7 +389,7 @@ contract RebirthLiquidator {
         }
         else if(PayoutChoice == AlternativePayoutOption.NFTFreemints){
             //TODO: Calculate the amount of freemints to give the user (1 freemint per 0.01 ether) using wETHIn
-//            
+            
         }
         else if(PayoutChoice == AlternativePayoutOption.RelaunchShares){
             //TODO: Calculate the amount of relaunch shares to give the user (1 relaunch share per 0.001 ether)
