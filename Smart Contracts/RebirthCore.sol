@@ -2,7 +2,7 @@
 pragma solidity 0.8.19;
 
 contract RebirthTestDeployer{
-    //this deployer needs to 
+    //this deployer needs to deploy the core contract, 
 }
 
 contract RebirthProtocolCore{
