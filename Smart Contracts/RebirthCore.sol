@@ -270,12 +270,12 @@ contract RebirthProtocolCore{
 
 //This next contract needs to be able to accept any memecoin with any ethereum liquidity on uniswap, sell the ether, send to the rebirthcore superadmin address, then allow the user to claim once again one of the 3 available options
 contract RebirthLiquidator {
-    address public RBH_SuperAdmin; // Address of Rebirth Core superadmin
-    address public rebirthCoreAddress; // Address of the Rebirth Protocol Core contract
+    address public RBH_SuperAdmin;
+    address public RebirthCoreAddress;
     IUniswapV2Router02 public uniswapRouter; // Uniswap Router contract address
 
     constructor(address _rebirthCoreAddress) {
-        rebirthCoreAddress = _rebirthCoreAddress;
+        RebirthCoreAddress = _rebirthCoreAddress;
         RBH_SuperAdmin = msg.sender; // Set the owner of the liquidator contract
         uniswapRouter = IUniswapV2Router02(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D); // Update with the correct Uniswap Router address
     }
