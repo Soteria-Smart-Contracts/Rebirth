@@ -388,6 +388,7 @@ contract RebirthLiquidator {
 
         }
         else if(PayoutChoice == AlternativePayoutOption.NFTFreemints){
+            //TODO: Calcul
 //            RebirthProtocolCore(payable(RebirthCoreAddress)).AddFreemint(msg.sender, amount / 100);
         }
         else if(PayoutChoice == AlternativePayoutOption.RelaunchShares){
