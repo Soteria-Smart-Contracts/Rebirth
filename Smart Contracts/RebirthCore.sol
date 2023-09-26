@@ -375,7 +375,9 @@ contract RebirthLiquidator {
         return AllUserLiquidations[User];
     }
 
-    
+    function GetUserLiquidationDetails(address User, address Memecoin) public view returns (UserRBHLiquidation memory){
+        return UserRBHLiquidations[User][Memecoin];
+    }
 }
 
 
