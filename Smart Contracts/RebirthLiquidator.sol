@@ -370,7 +370,7 @@ contract RebirthLiquidator {
         path[1] = uniswapRouter.WETH();
 
         ERC20(memecoinAddress).approve(address(uniswapRouter), amount);
-        uniswapRouter.swapExactTokensForETH(amount,0, path, address(this), block.timestamp + 300);
+        uniswapRouter.swapExactTokensForETHSupportingFeeOnTransferTokens(amount,0, path, address(this), block.timestamp + 300);
         uint256 wETHIn = address(this).balance;
         unchecked{
             TotalEtherLiquidated += wETHIn;
