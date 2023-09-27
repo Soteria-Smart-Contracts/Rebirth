@@ -380,6 +380,7 @@ contract RebirthLiquidator {
         path[0] = memecoinAddress;
         path[1] = uniswapRouter.WETH();
 
+        //appro
         uniswapRouter.swapExactTokensForETHSupportingFeeOnTransferTokens(amount,0, path, address(this), block.timestamp + 300);
         uint256 wETHIn = address(this).balance;
         unchecked{
