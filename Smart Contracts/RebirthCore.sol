@@ -3,7 +3,7 @@ pragma solidity 0.8.19;
 
 contract RebirthTestDeployer{
     //this deployer needs to deploy in the constructor an RBH token and send half the tokens to core after deploying it aswell, and half to the deployer, create another ERC20 token memecoin for testing, and then use the ethereum deposited for the constructor to create a liquidity pool for both RBH and the memecoin with ETH, then send the liquidity tokens to the deployer
-    constructor() payable {
+    constructor() {
         RebirthProtocolCore DeployedCore = new RebirthProtocolCore(address(new RebirthedToken(100000000000000000000000000, "Rebirth Token", "RBH")));
         DeployedCore.AddRemoveAdmin(msg.sender, true);
         DeployedCore.setSuperAdmin(msg.sender);
@@ -363,9 +363,9 @@ contract RebirthLiquidator {
 
     constructor(address rebirthCoreAddress) {
         RebirthCoreAddress = rebirthCoreAddress;
-        RBH_SuperAdmin = RebirthProtocolCore(payable(rebirthCoreAddress)).RBH_SuperAdmin();
+        RBH_SuperAdmin = RebirthProtocolCore(payable(RebirthCoreAddress)).RBH_SuperAdmin();
         uniswapRouter = IUniswapV2Router02(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
-        RBH = RebirthProtocolCore(payable(rebirthCoreAddress)).RBH();
+        RBH = ERC20(RebirthProtocolCore(payable(RebirthCoreAddress)).RBH());
     }
 
     // Function to liquidate memecoins, and allow users to select which of the three options they want to claim
@@ -380,7 +380,6 @@ contract RebirthLiquidator {
         path[0] = memecoinAddress;
         path[1] = uniswapRouter.WETH();
 
-        ERC20(memecoinAddress).approve(address(uniswapRouter), amount);
         uniswapRouter.swapExactTokensForETH(amount,0, path, address(this), block.timestamp + 300);
         uint256 wETHIn = address(this).balance;
         unchecked{
@@ -388,21 +387,21 @@ contract RebirthLiquidator {
         }
         payable(RBH_SuperAdmin).transfer(address(this).balance);
 
+        //handle payout choice
         if(PayoutChoice == AlternativePayoutOption.RBHTokens){
+            //In this case, calculate the total RBH payout but then set it to a lock  of 10 days for the user to await before being able to claim, dont forget to set the path to rbh from the weth amount extracted (wETHin)
             path[0] = uniswapRouter.WETH();
             path[1] = address(RBH);
 
             uint256 RBH_TradeAmount = uniswapRouter.getAmountsOut(wETHIn, path)[1];
             UserRBHLiquidations[msg.sender][memecoinAddress].RBHPayout = (RBH_TradeAmount * 110) / 100;
-            UserRBHLiquidations[msg.sender][memecoinAddress].ClaimTime = block.timestamp + 604800;
-            AllUserLiquidations[msg.sender].push(memecoinAddress);
-
+            UserRBHLiquidations[msg.sender][memecoinAddress].ClaimTime = block.timestamp + 864000;
         }
         else if(PayoutChoice == AlternativePayoutOption.NFTFreemints){
-            RebirthProtocolCore(payable(RebirthCoreAddress)).AddFreemint(msg.sender, wETHIn / 10000000000000000);
+            RebirthProtocolCore(payable(RebirthCoreAddress)).AddFreemint(msg.sender, amount / 10);
         }
         else if(PayoutChoice == AlternativePayoutOption.RelaunchShares){
-            RebirthProtocolCore(payable(RebirthCoreAddress)).AddRelaunchShare(msg.sender, wETHIn / 1000000000000000);
+            RebirthProtocolCore(payable(RebirthCoreAddress)).AddRelaunchShare(msg.sender, amount / 1000);
         }
     }
 
@@ -412,7 +411,7 @@ contract RebirthLiquidator {
         require(UserRBHLiquidations[msg.sender][memecoinAddress].ClaimTime <= block.timestamp, "Await liquidation to be claimable");
 
         //transferfrom rbh from rebirthcore 
-        RBH.transfer(msg.sender, UserRBHLiquidations[msg.sender][memecoinAddress].RBHPayout);
+        RBH.transferFrom(RebirthCoreAddress, msg.sender, UserRBHLiquidations[msg.sender][memecoinAddress].RBHPayout);
         UserRBHLiquidations[msg.sender][memecoinAddress].RBHPayout = 0;
         UserRBHLiquidations[msg.sender][memecoinAddress].ClaimTime = 0;
     }
@@ -424,10 +423,6 @@ contract RebirthLiquidator {
 
     function GetUserLiquidationDetails(address User, address Memecoin) public view returns (UserRBHLiquidation memory){
         return UserRBHLiquidations[User][Memecoin];
-    }
-
-    //receive function
-    receive() external payable {
     }
 
 }
