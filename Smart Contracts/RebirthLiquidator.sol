@@ -363,7 +363,7 @@ contract RebirthLiquidator {
         require(ERC20(memecoinAddress).transferFrom(msg.sender, address(this), amount), "Transfer failed");
         require(UserRBHLiquidations[msg.sender][memecoinAddress].ClaimTime == 0, "Await or claim existing liquidation on this token");
 
-//        RebirthProtocolCore(payable(RebirthCoreAddress)).AddUserToCountAndParticipated(msg.sender);
+        RebirthProtocolCore(payable(RebirthCoreAddress)).AddUserToCountAndParticipated(msg.sender);
 
         address[] memory path = new address[](2);
         path[0] = memecoinAddress;
