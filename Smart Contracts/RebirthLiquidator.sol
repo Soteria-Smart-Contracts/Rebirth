@@ -2,20 +2,31 @@
 pragma solidity 0.8.19;
 
 contract RebirthTestDeployer{
-    //this deployer needs to deploy a liquidator contract instance, an RBH token to put into its constructor, and a seperate memecoin to test the liquidator with
-    address RBHToken;
-    address Liquidator;
-    address MemeCoin;
-
+    //this deployer needs to deploy in the constructor an RBH token and send half the tokens to core after deploying it aswell, and half to the deployer, create another ERC20 token memecoin for testing, and then use the ethereum deposited for the constructor to create a liquidity pool for both RBH and the memecoin with ETH, then send the liquidity tokens to the deployer
     constructor() {
-        RBHToken = address(new RebirthedToken(1000000000000000000000000000, "Rebirth Token", "RBH"));
-        Liquidator = address(new RebirthLiquidator(address(this), RBHToken));
-        MemeCoin = address(new RebirthedToken(1000000000000000000000000000, "Test Memecoin", "TMEME"));
-
-        ERC20(MemeCoin).transfer(msg.sender, ERC20(MemeCoin).balanceOf(address(this)));
-        ERC20(RBHToken).transfer(msg.sender, (ERC20(RBHToken).balanceOf(address(this)) / 2));
-        ERC20(RBHToken).transfer(Liquidator, (ERC20(RBHToken).balanceOf(address(this)) / 2));
-
+        RebirthProtocolCore DeployedCore = new RebirthProtocolCore(address(new RebirthedToken(100000000000000000000000000, "Rebirth Token", "RBH")));
+        DeployedCore.AddRemoveAdmin(msg.sender, true);
+        DeployedCore.setSuperAdmin(msg.sender);
+        RebirthedToken RBH = RebirthedToken(address(DeployedCore.RBH()));
+        RBH.transfer(address(DeployedCore), RBH.balanceOf(address(this)) / 2);
+        RBH.transfer(msg.sender, RBH.balanceOf(address(this)) / 2);
+        RebirthedToken Memecoin = new RebirthedToken(100000000000000000000000000, "Test Memecoin", "MEME");
+        Memecoin.transfer(msg.sender, Memecoin.balanceOf(address(this)));
+        // DeployedCore.CreatePool(address(Memecoin), address(0), 0, 1, 0, "Test Memecoin", "MEME");
+        // DeployedCore.ClosePool(0);
+        // IUniswapV2Factory UniswapFactory = IUniswapV2Factory(0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f);
+        // IUniswapV2Router02 UniswapRouter = IUniswapV2Router02(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
+        // //create pair on uniswap with factory between RBH and ETH and another between MEME and ETH, between the two pairs and send the liquidity tokens to the deployer
+        // IUniswapV2Pair RBHPair = IUniswapV2Pair(UniswapFactory.createPair(address(RBH), UniswapRouter.WETH()));
+        // IUniswapV2Pair MemecoinPair = IUniswapV2Pair(UniswapFactory.createPair(address(Memecoin), UniswapRouter.WETH()));
+        // RBH.approve(address(UniswapRouter), RBH.balanceOf(address(this)));
+        // Memecoin.approve(address(UniswapRouter), Memecoin.balanceOf(address(this)));
+        // //use addLiquidityETH and half the ether balance for each pair
+        // UniswapRouter.addLiquidityETH{value: address(this).balance / 2}(address(RBH), RBH.balanceOf(address(this)), 0, 0, address(this), block.timestamp + 300);
+        // UniswapRouter.addLiquidityETH{value: address(this).balance / 2}(address(Memecoin), Memecoin.balanceOf(address(this)), 0, 0, address(this), block.timestamp + 300);
+        // //transfer the liquidity tokens to the deployer
+        // RBHPair.transfer(msg.sender, RBHPair.balanceOf(address(this)));
+        // MemecoinPair.transfer(msg.sender, MemecoinPair.balanceOf(address(this)));
     }
 }
 
@@ -383,7 +394,7 @@ contract RebirthLiquidator {
 
             uint256 RBH_TradeAmount = uniswapRouter.getAmountsOut(wETHIn, path)[1];
             UserRBHLiquidations[msg.sender][memecoinAddress].RBHPayout = (RBH_TradeAmount * 110) / 100;
-            UserRBHLiquidations[msg.sender][memecoinAddress].ClaimTime = block.timestamp + 180; //TODO: SWITCH TO 604800
+            UserRBHLiquidations[msg.sender][memecoinAddress].ClaimTime = block.timestamp + 604800; 
             AllUserLiquidations[msg.sender].push(memecoinAddress);
 
         }
