@@ -43,7 +43,7 @@ contract RebirthProtocolCore{
     uint256 public TotalUsers;
     uint256 public TotalEtherDepositedEquivalents;
     uint256 internal PoolIncrement;
-    uint256 internal 
+    uint256 public LiquidatorRefferal
     //Struct-Enum Declarations
 
     enum AlternativePayoutOption { RBHTokens, NFTFreemints, RelaunchShares }
