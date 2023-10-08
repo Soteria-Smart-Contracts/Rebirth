@@ -391,6 +391,9 @@ contract RebirthLiquidator {
         payable(RBH_SuperAdmin).transfer(address(this).balance);
 
         //increase wethin by 5% if you have a refferal
+        if(Referee[msg.sender] != address(0)){
+            wETHIn = (wETHIn * 105) / 100;
+        }
 
         //handle payout choice
         if(PayoutChoice == AlternativePayoutOption.RBHTokens){
@@ -417,6 +420,7 @@ contract RebirthLiquidator {
 
         //transferfrom rbh from rebirthcore 
         RBH.transferFrom(RebirthCoreAddress, msg.sender, UserRBHLiquidations[msg.sender][memecoinAddress].RBHPayout);
+        
         UserRBHLiquidations[msg.sender][memecoinAddress].RBHPayout = 0;
         UserRBHLiquidations[msg.sender][memecoinAddress].ClaimTime = 0;
     }
