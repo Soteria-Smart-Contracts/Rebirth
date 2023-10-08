@@ -421,8 +421,8 @@ contract RebirthLiquidator {
         //transferfrom rbh from rebirthcore 
         RBH.transferFrom(RebirthCoreAddress, msg.sender, UserRBHLiquidations[msg.sender][memecoinAddress].RBHPayout);
         if(Referee[msg.sender] != address(0)){
-            //set the 
-            RBH.transferFrom(RebirthCoreAddress, Referee[msg.sender], (UserRBHLiquidations[msg.sender][memecoinAddress].RBHPayout * ) / 100);
+            //set the payout fee amount to that of the rebirthcore liquidator refferal cut
+            RBH.transferFrom(RebirthCoreAddress, Referee[msg.sender], (UserRBHLiquidations[msg.sender][memecoinAddress].RBHPayout *) / 100);
         }
 
         UserRBHLiquidations[msg.sender][memecoinAddress].RBHPayout = 0;
