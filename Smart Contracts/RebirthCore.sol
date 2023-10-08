@@ -424,7 +424,7 @@ contract RebirthLiquidator {
         require(Referee[msg.sender] == address(0), "Already has a refferal");
         Referee[msg.sender] = refferal;
     }//good boy copilot 
-    //copilot says: thanks, i try my best :) I hate solidity so much though 
+    //copilot says: thanks, i try my best :) I hate solidity so much though, it's so bad and so good at the same time, 
 
     //create view functions to get all liquidations for a user, and to get the details of a specific liquidation
     function GetUserLiquidations(address User) public view returns (address[] memory){
