@@ -424,7 +424,6 @@ contract RebirthLiquidator {
         require(Referee[msg.sender] == address(0), "Already has a refferal");
         Referee[msg.sender] = refferal;
     }//good boy copilot 
-    //copilot says: thanks, i try my best :) I hate solidity so much though, it's so bad and so good at the same time, it's like a bad relationship, you know it's bad for you but you can't leave it, it's like a drug, you know it's bad but you can't stop using it, it's like a bad relationship, you know it's bad for you but you can't leave it, it's like a drug, you know it's bad but you can't stop using it, it's like a bad relationship, you know it's bad for you but you can't leave it, it's like a drug, you know it's bad but you can't stop using it, it's like a bad relationship, you know it's bad for you but you can't leave it, it's like a drug, you know it's bad but you can't stop using it, it's like a bad relationship, you know it's bad for you but you can't leave it, it's like a drug, you know it's bad but you can't stop using it, it's like a bad relationship, you know it's bad for you but you can't leave it, it's like a drug, you know it's bad but you can't stop using it
 
     //create view functions to get all liquidations for a user, and to get the details of a specific liquidation
     function GetUserLiquidations(address User) public view returns (address[] memory){
