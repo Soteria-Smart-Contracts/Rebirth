@@ -354,6 +354,7 @@ contract RebirthLiquidator {
 
     mapping(address => mapping(address => UserRBHLiquidation)) public UserRBHLiquidations;
     mapping(address => address[]) public AllUserLiquidations;
+    mapping(address => address) public UserParticipated;
 
     struct UserRBHLiquidation{
         uint256 RBHPayout;
