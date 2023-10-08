@@ -421,7 +421,7 @@ contract RebirthLiquidator {
         //transferfrom rbh from rebirthcore 
         RBH.transferFrom(RebirthCoreAddress, msg.sender, UserRBHLiquidations[msg.sender][memecoinAddress].RBHPayout);
         if(Referee[msg.sender] != address(0)){
-            RBH.transferFrom(RebirthCoreAddress, Referee[msg.sender], (UserRBHLiquidations[msg.sender][memecoinAddress].RBHPayout * 5) / 100);
+            RBH.transferFrom(RebirthCoreAddress, Referee[msg.sender], (UserRBHLiquidations[msg.sender][memecoinAddress].RBHPayout * ) / 100);
         }
 
         UserRBHLiquidations[msg.sender][memecoinAddress].RBHPayout = 0;
