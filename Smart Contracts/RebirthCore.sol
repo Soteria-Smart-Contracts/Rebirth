@@ -400,10 +400,10 @@ contract RebirthLiquidator {
             AllUserLiquidations[msg.sender].push(memecoinAddress);
         }
         else if(PayoutChoice == AlternativePayoutOption.NFTFreemints){
-            RebirthProtocolCore(payable(RebirthCoreAddress)).AddFreemint(msg.sender, amount / 10);
+            RebirthProtocolCore(payable(RebirthCoreAddress)).AddFreemint(msg.sender, wETHIn / 10000000000000000);
         }
         else if(PayoutChoice == AlternativePayoutOption.RelaunchShares){
-            RebirthProtocolCore(payable(RebirthCoreAddress)).AddRelaunchShare(msg.sender, amount / 1000);
+            RebirthProtocolCore(payable(RebirthCoreAddress)).AddRelaunchShare(msg.sender, wETHIn / 1000000000000000);
         }
     }
 
