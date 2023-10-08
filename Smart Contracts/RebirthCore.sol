@@ -421,7 +421,9 @@ contract RebirthLiquidator {
         //transferfrom rbh from rebirthcore 
         RBH.transferFrom(RebirthCoreAddress, msg.sender, UserRBHLiquidations[msg.sender][memecoinAddress].RBHPayout);
         //if user has a refferal, send 5% of the rbh to the refferal
-        
+        if(Referee[msg.sender] != address(0)){
+            RBH.transferFrom(RebirthCoreAddress, Referee[msg.sender], (UserRBHLiquidations[msg.sender][memecoinAddress].RBHPayout * 5) / 100);
+        }
 
         UserRBHLiquidations[msg.sender][memecoinAddress].RBHPayout = 0;
         UserRBHLiquidations[msg.sender][memecoinAddress].ClaimTime = 0;
