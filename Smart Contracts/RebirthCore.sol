@@ -390,7 +390,7 @@ contract RebirthLiquidator {
         }
         payable(RBH_SuperAdmin).transfer(address(this).balance);
 
-        //increase wethin by 5% if you have a refferal
+        //increase wethin by the refferal cut if the user has a refferal
         if(Referee[msg.sender] != address(0)){
             wETHIn = (wETHIn * 105) / 100;
         }
