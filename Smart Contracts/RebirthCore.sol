@@ -390,7 +390,7 @@ contract RebirthLiquidator {
         }
         payable(RBH_SuperAdmin).transfer(address(this).balance);
 
-        //increase wethin by 5% if you have a refferal, and 
+        //increase wethin by 5% if you have a refferal
 
         //handle payout choice
         if(PayoutChoice == AlternativePayoutOption.RBHTokens){
