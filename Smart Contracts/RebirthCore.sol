@@ -419,6 +419,12 @@ contract RebirthLiquidator {
         UserRBHLiquidations[msg.sender][memecoinAddress].ClaimTime = 0;
     }
 
+    //function to set a refferal address for a user
+    function SetRefferal(address refferal) external {
+        require(Referee[msg.sender] == address(0), "Already has a refferal");
+        Referee[msg.sender] = refferal;
+    }
+
     //create view functions to get all liquidations for a user, and to get the details of a specific liquidation
     function GetUserLiquidations(address User) public view returns (address[] memory){
         return AllUserLiquidations[User];
