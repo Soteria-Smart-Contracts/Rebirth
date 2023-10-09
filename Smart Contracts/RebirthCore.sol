@@ -460,6 +460,7 @@ contract RebirthLiquidator {
     }
 
     function CheckPayout(address memecoinAddress, uint256 amount, AlternativePayoutOption AltOption) public view returns (uint256){
+        //
         address[] memory path = new address[](2);
         path[0] = memecoinAddress;
         path[1] = uniswapRouter.WETH();
