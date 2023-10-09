@@ -453,8 +453,6 @@ contract RebirthLiquidator {
         ReferalCut = referalCut;
     }
 
-    
-
 
     //receive function
     receive() external payable {
