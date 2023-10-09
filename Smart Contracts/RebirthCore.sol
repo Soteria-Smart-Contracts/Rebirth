@@ -466,9 +466,6 @@ contract RebirthLiquidator {
 
         uint256 wETHIn = uniswapRouter.getAmountsOut(amount, path)[1];
     
-        //if the user wants to claim rbh tokens, return the amount of rbh tokens they would get
-        //if the user wants to claim nft freemints, return the amount of freemints they would get
-        //if the user wants to claim relaunch shares, return the amount of relaunch shares they would get
         if(AltOption == AlternativePayoutOption.RBHTokens){
             if(Referrals[msg.sender] != address(0)){
                 wETHIn += (wETHIn * ReferalCut) / 10000;
