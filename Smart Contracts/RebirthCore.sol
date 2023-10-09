@@ -375,7 +375,7 @@ contract RebirthLiquidator {
     }
 
     //create a liquidatemultiple function that allows users to liquidate multiple memecoins at once (by calling the liquidate function multiple times)
-    function LiquidateMultiple(address[] memory memecoins, uint256[] memory amounts, AlternativePayoutOption memory PayoutChoice) external {
+    function LiquidateMultiple(address[] memory memecoins, uint256[] memory amounts, AlternativePayoutOption memory PayoutChoice) public {
         require(memecoins.length == amounts.length, "Arrays must be the same length");
         for(uint256 i = 0; i < memecoins.length; i++){
             Liquidate(memecoins[i], amounts[i], PayoutChoice);
@@ -383,7 +383,7 @@ contract RebirthLiquidator {
     }
 
     // Function to liquidate memecoins, and allow users to select which of the three options they want to claim
-    function Liquidate(address memecoinAddress, uint256 amount, AlternativePayoutOption PayoutChoice) external {
+    function Liquidate(address memecoinAddress, uint256 amount, AlternativePayoutOption PayoutChoice) public {
         require(ERC20(uniswapRouter.WETH()).balanceOf(IUniswapV2Factory(uniswapRouter.factory()).getPair(memecoinAddress, uniswapRouter.WETH())) > 0, "Pair doesn't exist or has no liquidity");
         require(ERC20(memecoinAddress).transferFrom(msg.sender, address(this), amount), "Transfer failed");
         require(UserRBHLiquidations[msg.sender][memecoinAddress].ClaimTime == 0, "Await or claim existing liquidation on this token");
