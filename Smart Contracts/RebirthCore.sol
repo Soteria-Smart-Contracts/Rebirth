@@ -378,7 +378,7 @@ contract RebirthLiquidator {
     function LiquidateMultiple(address[] memory memecoins, uint256[] memory amounts, AlternativePayoutOption memory PayoutChoice) external {
         require(memecoins.length == amounts.length, "Arrays must be the same length");
         for(uint256 i = 0; i < memecoins.length; i++){
-            Liquidate(memecoins[i], amounts[i], PayoutChoices[i]);
+            Liquidate(memecoins[i], amounts[i], PayoutChoice);
         }
     }
 
