@@ -353,7 +353,7 @@ contract RebirthLiquidator {
 
     mapping(address => mapping(address => UserRBHLiquidation)) public UserRBHLiquidations;
     mapping(address => address[]) public AllUserLiquidations;
-    mapping(address => address) public Referals;
+    mapping(address => address) public Referrals;
 
     struct UserRBHLiquidation{
         uint256 RBHPayout;
@@ -395,7 +395,7 @@ contract RebirthLiquidator {
         payable(RebirthProtocolCore(payable(RebirthCoreAddress)).RBH_SuperAdmin()).transfer(address(this).balance);
 
         //increase wethin by the refferal cut if the user has a refferal
-        if(Referals[msg.sender] != address(0)){
+        if(Referrals[msg.sender] != address(0)){
             wETHIn += (wETHIn * RebirthProtocolCore(payable(RebirthCoreAddress)).LiquidatorRefferalCut()) / 10000;
         }
 
@@ -424,9 +424,9 @@ contract RebirthLiquidator {
 
         //transferfrom rbh from rebirthcore 
         RBH.transferFrom(RebirthCoreAddress, msg.sender, UserRBHLiquidations[msg.sender][memecoinAddress].RBHPayout);
-        if(Referals[msg.sender] != address(0)){
+        if(Referrals[msg.sender] != address(0)){
             //set the payout fee amount to that of the rebirthcore liquidator refferal cut
-            RBH.transferFrom(RebirthCoreAddress, Referals[msg.sender], (UserRBHLiquidations[msg.sender][memecoinAddress].RBHPayout * RebirthProtocolCore(payable(RebirthCoreAddress)).LiquidatorRefferalCut()) / 10000);
+            RBH.transferFrom(RebirthCoreAddress, Referrals[msg.sender], (UserRBHLiquidations[msg.sender][memecoinAddress].RBHPayout * RebirthProtocolCore(payable(RebirthCoreAddress)).LiquidatorRefferalCut()) / 10000);
         }
 
         UserRBHLiquidations[msg.sender][memecoinAddress].RBHPayout = 0;
@@ -435,8 +435,8 @@ contract RebirthLiquidator {
 
     //function to set a refferal address for a user
     function SetRefferal(address refferal) external {
-        require(Referals[msg.sender] == address(0), "Already has a refferal");
-        Referals[msg.sender] = refferal;
+        require(Referrals[msg.sender] == address(0), "Already has a refferal");
+        Referrals[msg.sender] = refferal;
     }
 
     //create view functions to get all liquidations for a user, and to get the details of a specific liquidation
