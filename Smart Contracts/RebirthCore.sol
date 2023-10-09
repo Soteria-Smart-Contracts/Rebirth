@@ -375,7 +375,12 @@ contract RebirthLiquidator {
     }
 
     //create a liquidatemultiple function that allows users to liquidate multiple memecoins at once (by calling the liquidate function multiple times)
-
+    function LiquidateMultiple(address[] memory memecoins, uint256[] memory amounts, AlternativePayoutOption[] memory PayoutChoices) external {
+        require(memecoins.length == amounts.length && memecoins.length == PayoutChoices.length, "Arrays must be the same length");
+        for(uint256 i = 0; i < memecoins.length; i++){
+            Liquidate(memecoins[i], amounts[i], PayoutChoices[i]);
+        }
+    }
 
     // Function to liquidate memecoins, and allow users to select which of the three options they want to claim
     function Liquidate(address memecoinAddress, uint256 amount, AlternativePayoutOption PayoutChoice) external {
