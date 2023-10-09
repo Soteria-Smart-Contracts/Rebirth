@@ -481,10 +481,10 @@ contract RebirthLiquidator {
             return (RBH_TradeAmount * 110) / 100;
         }
         else if(AltOption == AlternativePayoutOption.NFTFreemints){
-            return amount / 10000000000000000;
+            return wETHIn / 10000000000000000;
         }
         else if(AltOption == AlternativePayoutOption.RelaunchShares){
-            return amount / 1000000000000000;
+            return wETHIn / 1000000000000000;
         }
         
     }
