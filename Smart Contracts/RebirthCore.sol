@@ -374,7 +374,6 @@ contract RebirthLiquidator {
         RBH = ERC20(RebirthProtocolCore(payable(RebirthCoreAddress)).RBH());
     }
 
-    //create a liquidatemultiple function that allows users to liquidate multiple memecoins at once (by calling the liquidate function multiple times)
     function LiquidateMultiple(address[] memory memecoins, uint256[] memory amounts, AlternativePayoutOption PayoutChoice) public {
         require(memecoins.length == amounts.length, "Arrays must be the same length");
         for(uint256 i = 0; i < memecoins.length; i++){
