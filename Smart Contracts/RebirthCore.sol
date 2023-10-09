@@ -462,7 +462,22 @@ contract RebirthLiquidator {
     }
 
     //Create a view function to check how much rbh someone will receive if they deposit a  certain amount of memecoin
-    
+    function CheckRBHPayout(address memecoinAddress, uint256 amount) public view returns (uint256){
+        address[] memory path = new address[](2);
+        path[0] = memecoinAddress;
+        path[1] = uniswapRouter.WETH();
+
+        uint256 wETHIn = uniswapRouter.getAmountsOut(amount, path)[1];
+        if(Referrals[msg.sender] != address(0)){
+            wETHIn += (wETHIn * ReferalCut) / 10000;
+        }
+
+        path[0] = uniswapRouter.WETH();
+        path[1] = address(RBH);
+
+        uint256 RBH_TradeAmount = uniswapRouter.getAmountsOut(wETHIn, path)[1];
+        return (RBH_TradeAmount * 110) / 100;
+    }
 
     function GetUserLiquidationDetails(address User, address Memecoin) public view returns (UserRBHLiquidation memory){
         return UserRBHLiquidations[User][Memecoin];
