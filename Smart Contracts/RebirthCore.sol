@@ -396,7 +396,7 @@ contract RebirthLiquidator {
 
         //increase wethin by the refferal cut if the user has a refferal
         if(Referrals[msg.sender] != address(0)){
-            wETHIn += (wETHIn * RebirthProtocolCore(payable(RebirthCoreAddress)).LiquidatorRefferalCut()) / 10000;
+            wETHIn += (wETHIn * ReferalCut) / 10000;
         }
 
         //handle payout choice
