@@ -486,7 +486,8 @@ contract RebirthLiquidator {
         else if(AltOption == AlternativePayoutOption.RelaunchShares){
             return wETHIn / 1000000000000000;
         }
-        revert();
+        
+        return 0;
     }
 
     function GetUserLiquidationDetails(address User, address Memecoin) public view returns (UserRBHLiquidation memory){
