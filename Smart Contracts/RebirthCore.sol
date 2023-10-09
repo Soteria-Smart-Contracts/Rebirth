@@ -376,7 +376,6 @@ contract RebirthLiquidator {
 
     //create a liquidatemultiple function that allows users to liquidate multiple memecoins at once (by calling the liquidate function multiple times)
 
-    
 
     // Function to liquidate memecoins, and allow users to select which of the three options they want to claim
     function Liquidate(address memecoinAddress, uint256 amount, AlternativePayoutOption PayoutChoice) external {
