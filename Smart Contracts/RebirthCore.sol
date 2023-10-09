@@ -459,7 +459,7 @@ contract RebirthLiquidator {
         return AllUserLiquidations[User];
     }
 
-    function CheckPayout(address memecoinAddress, uint256 amount, ) public view returns (uint256){
+    function CheckPayout(address memecoinAddress, uint256 amount, AlternativePayoutOption Al) public view returns (uint256){
         address[] memory path = new address[](2);
         path[0] = memecoinAddress;
         path[1] = uniswapRouter.WETH();
