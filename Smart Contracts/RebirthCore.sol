@@ -465,7 +465,12 @@ contract RebirthLiquidator {
         path[1] = uniswapRouter.WETH();
 
         uint256 wETHIn = uniswapRouter.getAmountsOut(amount, path)[1];
-        if(Referrals[msg.sender] != address(0)){
+    
+        //if the user wants to claim rbh tokens, return the amount of rbh tokens they would get
+        //if the user wants to claim nft freemints, return the amount of freemints they would get
+        //if the user wants to claim relaunch shares, return the amount of relaunch shares they would get
+        if(AltOption == AlternativePayoutOption.RBHTokens){
+            if(Referrals[msg.sender] != address(0)){
             wETHIn += (wETHIn * ReferalCut) / 10000;
         }
 
@@ -474,11 +479,6 @@ contract RebirthLiquidator {
 
         uint256 RBH_TradeAmount = uniswapRouter.getAmountsOut(wETHIn, path)[1];
         return (RBH_TradeAmount * 110) / 100;
-        //if the user wants to claim rbh tokens, return the amount of rbh tokens they would get
-        //if the user wants to claim nft freemints, return the amount of freemints they would get
-        //if the user wants to claim relaunch shares, return the amount of relaunch shares they would get
-        if(AltOption == AlternativePayoutOption.RBHTokens){
-            return GetRBHPayout(memecoinAddress, amount);
         }
         else if(AltOption == AlternativePayoutOption.NFTFreemints){
             return amount / 10000000000000000;
