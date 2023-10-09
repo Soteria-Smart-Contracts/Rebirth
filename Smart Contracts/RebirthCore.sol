@@ -363,6 +363,8 @@ contract RebirthLiquidator {
 
     enum AlternativePayoutOption { RBHTokens, NFTFreemints, RelaunchShares }
 
+    //superadmin mod
+
     constructor(address rebirthCoreAddress) {
         RebirthCoreAddress = rebirthCoreAddress;
         RBH_SuperAdmin = RebirthProtocolCore(payable(RebirthCoreAddress)).RBH_SuperAdmin();
@@ -446,7 +448,7 @@ contract RebirthLiquidator {
 
     //only superadmin functions
 
-    
+
 
     //receive function
     receive() external payable {
