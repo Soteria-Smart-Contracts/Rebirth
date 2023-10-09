@@ -461,7 +461,7 @@ contract RebirthLiquidator {
         return AllUserLiquidations[User];
     }
 
-    
+    //Create a view function to check how much rbh someone can claim from a liquidation
 
     function GetUserLiquidationDetails(address User, address Memecoin) public view returns (UserRBHLiquidation memory){
         return UserRBHLiquidations[User][Memecoin];
