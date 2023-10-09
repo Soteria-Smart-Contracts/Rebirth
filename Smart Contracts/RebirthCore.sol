@@ -444,9 +444,9 @@ contract RebirthLiquidator {
     //function to claim all liquidations for a user
     function ClaimAll() external {
         for(uint256 i = 0; i < AllUserLiquidations[msg.sender].length; i++){
-            //check if the liquidation is claimable
-            
-            ClaimRBH(AllUserLiquidations[msg.sender][i]);
+            if(UserRBHLiquidations[msg.sender][AllUserLiquidations[msg.sender][i]].ClaimTime <= block.timestamp){
+                ClaimRBH(AllUserLiquidations[msg.sender][i]);
+            }
         }
     }
 
