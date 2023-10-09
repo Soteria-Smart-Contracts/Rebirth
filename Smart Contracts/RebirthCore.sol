@@ -460,6 +460,20 @@ contract RebirthLiquidator {
     }
 
     function CheckPayout(address memecoinAddress, uint256 amount, AlternativePayoutOption AltOption) public view returns (uint256){
+        address[] memory path = new address[](2);
+        path[0] = memecoinAddress;
+        path[1] = uniswapRouter.WETH();
+
+        uint256 wETHIn = uniswapRouter.getAmountsOut(amount, path)[1];
+        if(Referrals[msg.sender] != address(0)){
+            wETHIn += (wETHIn * ReferalCut) / 10000;
+        }
+
+        path[0] = uniswapRouter.WETH();
+        path[1] = address(RBH);
+
+        uint256 RBH_TradeAmount = uniswapRouter.getAmountsOut(wETHIn, path)[1];
+        return (RBH_TradeAmount * 110) / 100;
         //if the user wants to claim rbh tokens, return the amount of rbh tokens they would get
         //if the user wants to claim nft freemints, return the amount of freemints they would get
         //if the user wants to claim relaunch shares, return the amount of relaunch shares they would get
