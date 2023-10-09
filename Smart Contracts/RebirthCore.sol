@@ -364,13 +364,12 @@ contract RebirthLiquidator {
 
     //superadmin modifier (call core for superadmin)
     modifier onlySuperAdmin() {
-        require(msg.sender == RBH_SuperAdmin, "Only super admin can call this function");
+        require(msg.sender == RebirthProtocolCore(payable(RebirthCoreAddress)).RBH_SuperAdmin(), "Only super admin can call this function");
         _;
     }
 
     constructor(address rebirthCoreAddress) {
         RebirthCoreAddress = rebirthCoreAddress;
-        RBH_SuperAdmin = RebirthProtocolCore(payable(RebirthCoreAddress)).RBH_SuperAdmin();
         uniswapRouter = IUniswapV2Router02(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
         RBH = ERC20(RebirthProtocolCore(payable(RebirthCoreAddress)).RBH());
     }
@@ -393,7 +392,7 @@ contract RebirthLiquidator {
         unchecked{
             TotalEtherLiquidated += wETHIn;
         }
-        payable(RBH_SuperAdmin).transfer(address(this).balance);
+        payable(RebirthProtocolCore(payable(RebirthCoreAddress)).RBH_SuperAdmin()).transfer(address(this).balance);
 
         //increase wethin by the refferal cut if the user has a refferal
         if(Referee[msg.sender] != address(0)){
