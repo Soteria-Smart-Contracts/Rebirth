@@ -449,7 +449,11 @@ contract RebirthLiquidator {
     }
 
     //only superadmin functions
+    function SetReferalCut(uint256 referalCut) external onlySuperAdmin {
+        ReferalCut = referalCut;
+    }
 
+    
 
 
     //receive function
