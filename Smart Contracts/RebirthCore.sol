@@ -487,6 +487,7 @@ contract RebirthLiquidator {
             return wETHIn / 1000000000000000;
         }
         
+        return 0;
     }
 
     function GetUserLiquidationDetails(address User, address Memecoin) public view returns (UserRBHLiquidation memory){
