@@ -456,12 +456,10 @@ contract RebirthLiquidator {
         Referrals[msg.sender] = refferal;
     }
 
-    //create view functions to get all liquidations for a user, and to get the details of a specific liquidation
     function GetUserLiquidations(address User) public view returns (address[] memory){
         return AllUserLiquidations[User];
     }
 
-    //Create a view function to check how much rbh someone will receive if they deposit a  certain amount of memecoin
     function CheckRBHPayout(address memecoinAddress, uint256 amount) public view returns (uint256){
         address[] memory path = new address[](2);
         path[0] = memecoinAddress;
