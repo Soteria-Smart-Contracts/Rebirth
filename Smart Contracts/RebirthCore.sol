@@ -350,7 +350,7 @@ contract RebirthLiquidator {
     IUniswapV2Router02 public uniswapRouter; 
     ERC20 public RBH;
     uint256 public TotalEtherLiquidated;
-    uint256 public ReferalCut; //in bps
+    uint256 public ReferalCut; //in bps (basis points)
 
     mapping(address => mapping(address => UserRBHLiquidation)) public UserRBHLiquidations;
     mapping(address => address[]) public AllUserLiquidations;
