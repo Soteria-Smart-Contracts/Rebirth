@@ -363,7 +363,11 @@ contract RebirthLiquidator {
 
     enum AlternativePayoutOption { RBHTokens, NFTFreemints, RelaunchShares }
 
-    //superadmin mod
+    //superadmin modifier
+    modifier onlySuperAdmin() {
+        require(msg.sender == RBH_SuperAdmin, "Only super admin can call this function");
+        _;
+    }
 
     constructor(address rebirthCoreAddress) {
         RebirthCoreAddress = rebirthCoreAddress;
