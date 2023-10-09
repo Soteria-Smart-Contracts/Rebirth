@@ -441,6 +441,8 @@ contract RebirthLiquidator {
         UserRBHLiquidations[msg.sender][memecoinAddress].ClaimTime = 0;
     }
 
+    //
+
     //function to set a refferal address for a user
     function SetRefferal(address refferal) external {
         require(Referrals[msg.sender] == address(0), "Already has a refferal");
