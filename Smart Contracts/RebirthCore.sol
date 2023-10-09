@@ -471,14 +471,14 @@ contract RebirthLiquidator {
         //if the user wants to claim relaunch shares, return the amount of relaunch shares they would get
         if(AltOption == AlternativePayoutOption.RBHTokens){
             if(Referrals[msg.sender] != address(0)){
-            wETHIn += (wETHIn * ReferalCut) / 10000;
-        }
+                wETHIn += (wETHIn * ReferalCut) / 10000;
+            }
 
-        path[0] = uniswapRouter.WETH();
-        path[1] = address(RBH);
+            path[0] = uniswapRouter.WETH();
+            path[1] = address(RBH);
 
-        uint256 RBH_TradeAmount = uniswapRouter.getAmountsOut(wETHIn, path)[1];
-        return (RBH_TradeAmount * 110) / 100;
+            uint256 RBH_TradeAmount = uniswapRouter.getAmountsOut(wETHIn, path)[1];
+            return (RBH_TradeAmount * 110) / 100;
         }
         else if(AltOption == AlternativePayoutOption.NFTFreemints){
             return amount / 10000000000000000;
