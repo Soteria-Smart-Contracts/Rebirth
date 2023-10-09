@@ -463,21 +463,16 @@ contract RebirthLiquidator {
         //if the user wants to claim rbh tokens, return the amount of rbh tokens they would get
         //if the user wants to claim nft freemints, return the amount of freemints they would get
         //if the user wants to claim relaunch shares, return the amount of relaunch shares they would get
-        if()
-        address[] memory path = new address[](2);
-        path[0] = memecoinAddress;
-        path[1] = uniswapRouter.WETH();
-
-        uint256 wETHIn = uniswapRouter.getAmountsOut(amount, path)[1];
-        if(Referrals[msg.sender] != address(0)){
-            wETHIn += (wETHIn * ReferalCut) / 10000;
+        if(AltOption == AlternativePayoutOption.RBHTokens){
+            return GetRBHPayout(memecoinAddress, amount);
         }
-
-        path[0] = uniswapRouter.WETH();
-        path[1] = address(RBH);
-
-        uint256 RBH_TradeAmount = uniswapRouter.getAmountsOut(wETHIn, path)[1];
-        return (RBH_TradeAmount * 110) / 100;
+        else if(AltOption == AlternativePayoutOption.NFTFreemints){
+            return amount / 10000000000000000;
+        }
+        else if(AltOption == AlternativePayoutOption.RelaunchShares){
+            return amount / 1000000000000000;
+        }
+        
     }
 
     function GetUserLiquidationDetails(address User, address Memecoin) public view returns (UserRBHLiquidation memory){
